@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+}
+
+.Header {
+    border: 1px solid black;
+    height: 100px;
+}
+
+.NavBar {
+    border: 1px dashed green;
+    height: 50px;
+    display: flex;
+}
+
+.NavButtonList {
+    border: 2px solid red;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.NavButtonList a{
+    border: 1px dashed blue;
+    height: 35px;
+    width: 90px;
+    text-align: center;
+    padding-top: 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.BoxContact {
+    height: 100%;
+    border: 1px dashed gray;
+    width: 250px;
+}
+
+.Logo {
+    border: 2px solid gray;
+    background-color: gray;
+    height: 100%;
+    width: 17%;
+}
+
+.Logo h1 {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+main {
+    height: 1224px;
+    border: 1px solid black;
+
+}
+
+.highlights {
+    height: 550px;
+    border: 1px solid brown;
+}
+
+.content {
+    height: 1300px;
+    border: 1px solid yellow;
+    background-color: bisque;
+}
+
+.AboutSpace {
+    height: 400px;
+    border: 1px solid white;
+    background-color: gray;
+
+}
