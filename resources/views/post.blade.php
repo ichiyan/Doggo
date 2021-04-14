@@ -2,5 +2,8 @@
 
 @section('body')
 <bread-crumb></bread-crumb>
-<advertisement></advertisement>
+<div>
+    <advertisement></advertisement>
+    <advertiser></advertiser>
+</div>
 @endsection

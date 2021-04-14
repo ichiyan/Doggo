@@ -13,12 +13,12 @@
         </div>
         <div class="post-body">
             <div class="album-space">
-                <img src="" alt="main pic"> make a class for all images and edit using class
+                <img src="" alt="main pic" class="album main-pic">
                 <div class="album">
-                    <img src="" alt="pic1">
-                    <img src="" alt="pic2">
-                    <img src="" alt="pic3">
-                    <img src="" alt="pic4">
+                    <img src="" alt="pic1" class="album sub-pic">
+                    <img src="" alt="pic2" class="album sub-pic">
+                    <img src="" alt="pic3" class="album sub-pic">
+                    <img src="" alt="pic4" class="album sub-pic">
                 </div>
             </div>
             <div class="details-space">
@@ -55,6 +55,8 @@ export default {
 .advertisement {
     width: 60%;
     max-width: 980px;
+    border: 1px solid salmon;
+    float: left;
 }
 
 .post-header, .post-utilities {
@@ -82,5 +84,24 @@ export default {
     display: flex;
 }
 
+.album {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.main-pic {
+    border: 1px solid black;
+    height: 250px;
+    min-width: 400px;
+    width: 100%;
+}
+
+.sub-pic {
+    height: 100px;
+    border: 1px solid black;
+    width: 100px;
+
+}
 
 </style>
