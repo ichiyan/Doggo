@@ -25,9 +25,12 @@ Route::get('/buy', function() {
     return view('PCCI.buy');
 })->middleware(['auth']);
 
-
 Route::get('/home', function() {
     return view('home');
+});
+
+Route::get('/post', function() {
+    return view('post');
 });
 
 require __DIR__.'/auth.php';
