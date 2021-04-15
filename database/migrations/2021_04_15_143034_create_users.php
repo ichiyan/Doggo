@@ -16,7 +16,7 @@ class CreateUsers extends Migration
         if (!Schema::hasTable('users')) {
             Schema::create('users', function (Blueprint $table) {
                 $table->id('user_id');
-                $table->foreignId('user_detail_id')->constrained('user_detail', 'user_detail_id');
+                $table->foreignId('user_detail_id')->nullable()->constrained('user_detail', 'user_detail_id');
                 $table->string('email')->unique();
                 $table->timestamp('email_verified_at')->nullable();
                 $table->string('password');
