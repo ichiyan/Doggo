@@ -21,7 +21,6 @@
         <div class="Header">
             <div class="NavBar">
                 <div class="Logo">
-                    <h1>Doggo</h1>
                 </div>
 
                 <div class="NavButtonList">
