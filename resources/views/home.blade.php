@@ -11,7 +11,6 @@
     <div class="Header">
         <div class="NavBar">
             <div class="Logo">
-                <h1>Doggo</h1>
             </div>
 
             <div class="NavButtonList">
@@ -19,6 +18,7 @@
                 <a href="{{ url('/adopt') }}">Adopt</a>
                 <a href="{{ url('/buy') }}">Shop</a>
                 <a href="{{ url('/about') }}">About</a>
+                <a href="{{ url('/contact') }}">Contact</a>
             </div>
 
             <div class="BoxContact">

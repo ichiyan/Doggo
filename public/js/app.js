@@ -3884,6 +3884,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -4106,7 +4127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.advertiser-space[data-v-c1860754] {\n    height: 500px;\n    width: 38%;\n    border: 1px solid salmon;\n    float: right;\n}\nh1[data-v-c1860754] {\n    padding: 0px;\n    margin: 0px;\n    font-size: 33px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.advertiser-space[data-v-c1860754] {\n    height: 500px;\n    width: 38%;\n    border: 1px solid salmon;\n    float: right;\n}\nh1[data-v-c1860754] {\n    padding: 0px;\n    margin: 0px;\n    font-size: 33px;\n}\n.line-detail[data-v-c1860754] {\n    display: flex;\n}\n.send-message-btn[data-v-c1860754] {\n    cursor: pointer;\n    display: flex;\n    border: 1px solid black;\n    width: 150px;\n}\n.send-message-btn img[data-v-c1860754] {\n    width: 20px;\n    height: 20px;\n    border: 1px solid black;\n}\n.block[data-v-c1860754] {\n    border-bottom: 1px solid gray;\n    margin-bottom: 5px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22388,33 +22409,63 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "advertiser-space" }, [
-      _c("h1", [_vm._v("Advertiser Details")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "line-detail" }, [
-        _c("b", [_c("p", [_vm._v("Name: ")])]),
+      _c("div", { staticClass: "advertiser-details block" }, [
+        _c("h1", [_vm._v("Advertiser Details")]),
         _vm._v(" "),
-        _c("p", [_vm._v("Lel Ouch")])
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Name: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Lel Ouch")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Account: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("User PCCI Member")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Date Listed: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("01/01/01")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Location: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Cebu City")])
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "line-detail" }, [
-        _c("b", [_c("p", [_vm._v("Account: ")])]),
+      _c("div", { staticClass: "contact-information block" }, [
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Contact Number: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("09777888777")])
+        ]),
         _vm._v(" "),
-        _c("p", [_vm._v("User PCCI Member")])
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Address: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Address")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "line-detail" }, [
+          _c("b", [_c("p", [_vm._v("Email: ")])]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Lel Ouch")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "send-message-btn" }, [
+          _c("img", { attrs: { src: "", alt: "message" } }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Send a message")])
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "line-detail" }, [
-        _c("b", [_c("p", [_vm._v("Date Listed: ")])]),
-        _vm._v(" "),
-        _c("p", [_vm._v("01/01/01")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "line-detail" }, [
-        _c("b", [_c("p", [_vm._v("Location: ")])]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Cebu City")])
-      ]),
-      _vm._v(" "),
-      _c("img", { attrs: { src: "", alt: "oof" } })
+      _c("div", { staticClass: "listings block" }, [
+        _vm._v("\n        different posts of seller\n    ")
+      ])
     ])
   }
 ]

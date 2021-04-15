@@ -3,7 +3,6 @@ body {
 }
 
 .Header {
-    border: 1px solid black;
     height: 100px;
 }
 
@@ -13,7 +12,6 @@ body {
 }
 
 .NavButtonList {
-    border: 1px solid red;
     height: 100%;
     width: 50%;
     display: flex;
@@ -21,8 +19,7 @@ body {
 }
 
 .NavButtonList a{
-    border: 1px dashed blue;
-    height: 50px;
+    height: 35px;
     width: 90px;
     text-align: center;
     padding-top: 15px;
@@ -34,19 +31,16 @@ body {
     height: 100%;
     border: 1px solid gray;
     width: 250px;
+    display: none;
 }
 
 .Logo {
-    border: 2px solid gray;
     background-color: gray;
     height: 100%;
     width: 17%;
-}
-
-.Logo h1 {
-    text-align: center;
-    width: 100%;
-    margin: auto;
+    background-image: url('./../images/brand.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 main {
@@ -57,7 +51,24 @@ main {
 
 .highlights {
     height: 550px;
-    border: 1px solid brown;
+    background: #000 ;
+}
+
+.highlight-content {
+    height: 100%;
+    background-image: url('./../images/home-pic.jpeg');
+    background-color: bisque;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+html {
+    height: 100%;
+}
+
+img {
+    height: 100%;
+    width: 100%;
 }
 
 .content {
