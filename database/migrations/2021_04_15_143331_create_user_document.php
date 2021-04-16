@@ -17,7 +17,7 @@ class CreateUserDocument extends Migration
         if (!Schema::hasTable('user_document')) {
             Schema::create('user_document', function (Blueprint $table) {
                 $table->id('user_doc_id');
-                $table->foreignId('user_id')->constrained('users','user_id');
+                $table->foreignId('user_id')->nullable()->constrained('users','user_id');
             });
         }
     }
