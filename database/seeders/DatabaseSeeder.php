@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Dog::factory(10)->create();
         \App\Models\User_detail::factory(10)->create();
         \App\Models\user::factory(10)->create();
+        \App\Models\post::factory(10)->create();
     }
 }

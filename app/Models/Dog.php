@@ -10,4 +10,5 @@ class Dog extends Model
     use HasFactory;
     protected $primaryKey = 'registered_number';
     protected $table = 'dog';
+    protected $keyType = 'string';
 }
