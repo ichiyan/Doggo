@@ -31,12 +31,14 @@
     .right {
         float: right;
         width: 78%;
-        height: 720px;
+        height: auto;
         border: 1px solid black;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        overflow-y: auto;
+    }
+    .pagination {
+        padding-bottom: 1em;
     }
 </style>
 @endsection
@@ -67,5 +69,10 @@
                 </a>
             </div>
         @endforeach
+        <div class="d-felx justify-content-center pagination">
+
+            {{ $posts->links() }}
+
+        </div>
     </div>
 @endsection

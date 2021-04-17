@@ -5,7 +5,6 @@
                 <img src="" alt="dog">
             </div>
             <div class="details-slot">
-                <!-- <h2>{{post.registered_number}}</h2> -->
                 <p>description</p>
                 <div class="breed-price">
                     <div class="breed">
