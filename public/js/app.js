@@ -3964,8 +3964,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['link']
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({// props: ['post'],
+  // data: {
+  //     url: '/'+post.id,
+  // },
+  // mounted: function() {
+  //     console.log('I got posted!')
+  // }
 });
 
 /***/ }),
@@ -22528,7 +22533,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card-post" }, [
-    _c("a", { attrs: { href: _vm.link } }, [_vm._m(0), _vm._v(" "), _vm._m(1)])
+    _c("a", { attrs: { href: _vm.url } }, [_vm._m(0), _vm._v(" "), _vm._m(1)])
   ])
 }
 var staticRenderFns = [
@@ -22537,7 +22542,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "image-slot" }, [
-      _c("img", { attrs: { src: "", alt: "img" } })
+      _c("img", { attrs: { src: "", alt: "dog" } })
     ])
   },
   function() {
@@ -22545,18 +22550,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "details-slot" }, [
-      _c("h2", [_vm._v("title")]),
-      _vm._v(" "),
       _c("p", [_vm._v("description")]),
       _vm._v(" "),
       _c("div", { staticClass: "breed-price" }, [
-        _c("div", { staticClass: "breed" }, [
-          _vm._v("\n                    German Sheepy\n                ")
-        ]),
+        _c("div", { staticClass: "breed" }),
         _vm._v(" "),
-        _c("div", { staticClass: "price" }, [
-          _vm._v("\n                    P12\n                ")
-        ])
+        _c("div", { staticClass: "price" })
       ])
     ])
   }

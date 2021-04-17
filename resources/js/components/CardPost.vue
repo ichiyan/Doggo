@@ -1,18 +1,18 @@
 <template>
     <div class="card-post">
-        <a :href="link">
+        <a :href="url">
             <div class="image-slot">
-                <img src="" alt="img">
+                <img src="" alt="dog">
             </div>
             <div class="details-slot">
-                <h2>title</h2>
+                <!-- <h2>{{post.registered_number}}</h2> -->
                 <p>description</p>
                 <div class="breed-price">
                     <div class="breed">
-                        German Sheepy
+
                     </div>
                     <div class="price">
-                        P12
+
                     </div>
                 </div>
             </div>
@@ -22,7 +22,13 @@
 
 <script>
 export default {
-    props: ['link'],
+    // props: ['post'],
+    // data: {
+    //     url: '/'+post.id,
+    // },
+    // mounted: function() {
+    //     console.log('I got posted!')
+    // }
 }
 </script>
 

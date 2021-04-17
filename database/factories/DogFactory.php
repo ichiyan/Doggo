@@ -27,11 +27,12 @@ class DogFactory extends Factory
         if (User::all()->count() == 0) {
             User::create([
                 'email' => 'user@gmail.com',
-                'password' => Hash::make('user123'),
+                'password' => Hash::make('User123'),
             ]);
         }
-        $user = User::all()->random()->id;
-        $dog_detail = Dog_detail::all()->random()->id;
+        $user = User::inRandomOrder()->first()->user_id;
+        $dog_detail = Dog_detail::inRandomOrder()->first()->dog_detail_id;
+
         return [
             'registered_number' => $this->faker->swiftBicNumber(),
             'dog_owner_id' => $user,

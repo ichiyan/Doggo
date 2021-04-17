@@ -13,9 +13,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/homeStyle.css') }}">
-
         <!-- Scripts -->
         <script src="{{ asset('/js/app.js') }}" defer></script>
+        @yield('asset')
     </head>
     <body>
         <div class="Header">

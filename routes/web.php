@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +30,6 @@ Route::get('/home', function() {
     return view('home');
 });
 
-Route::get('/post', function() {
-    return view('post');
-});
+Route::resource('shop', PostController::class);
 
 require __DIR__.'/auth.php';
