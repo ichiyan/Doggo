@@ -15,4 +15,8 @@ class Post extends Model
         'category',
     ];
     protected $table = 'post';
+
+    public function dog() {
+        return $this->hasOne(Dog::class, 'registered_number', 'registered_number');
+    }
 }

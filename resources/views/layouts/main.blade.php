@@ -26,7 +26,7 @@
                 <div class="NavButtonList">
                     <a href="{{ url('/') }}">Home</a>
                     <a href="{{ url('/adopt') }}">Adopt</a>
-                    <a href="{{ url('/buy') }}">Shop</a>
+                    <a href="{{ url('/shop') }}">Shop</a>
                     <a href="{{ url('/about') }}">About</a>
                 </div>
 

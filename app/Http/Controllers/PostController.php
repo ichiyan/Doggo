@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dog;
+use App\Models\Dog_detail;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\User_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -55,7 +59,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        $dog = Dog_detail::find($post->dog->dog_detail_id);
+        $user = User_detail::find($post->dog->owner);
+
+        return view('post', ['post' => $post, 'owner' => $user, 'dog' => $dog]);
     }
 
     /**

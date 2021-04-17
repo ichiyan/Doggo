@@ -31,7 +31,7 @@
     .right {
         float: right;
         width: 78%;
-        height: auto;
+        min-height: 1024px;
         border: 1px solid black;
         display: flex;
         justify-content: space-evenly;
@@ -39,6 +39,7 @@
     }
     .pagination {
         padding-bottom: 1em;
+        margin-top: auto;
     }
 </style>
 @endsection
@@ -50,7 +51,7 @@
     <div class="right">
         @foreach ($posts as $post)
             <div class="card-post">
-                <a href="#">
+                <a href="{{ route('shop.show',  $post->post_id) }}">
                     <div class="image-slot">
                         <img src="" alt="dog">
                     </div>
