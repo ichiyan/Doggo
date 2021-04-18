@@ -8,19 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Dog extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'registered_number';
-    protected $table = 'dog';
-    protected $keyType = 'string';
+    protected $table = 'dogs';
+    protected $fillable = [
+        'registered_number', 'dog_detail_id',
+        'dog_owner_id', 'dog_litter_id'
+    ];
 
-    public function post() {
-        return $this->belongsTo(Post::class);
+    public function siblings() {
+        return $this->belongsTo(DogLitter::class);
     }
 
-    public function dog_detail() {
-        return $this->hasOne(Dog_detail::class);
+    public function information() {
+        return $this->hasOne(DogDetail::class);
     }
 
     public function owner() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(PcciMember::class);
     }
 }

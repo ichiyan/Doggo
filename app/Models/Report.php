@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'report_id';
+    //protected $primaryKey = 'report_id';
+    protected $table = 'reports';
     protected $fillable = [
+        'post_id', 'user_profile_id',
         'reason', 'image',
     ];
-    protected $table = 'report';
+    
+    public function reports() {
+        return $this->belongsTo(Post::class);
+    }
+
 }

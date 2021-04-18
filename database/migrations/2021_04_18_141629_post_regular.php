@@ -15,10 +15,15 @@ class PostRegular extends Migration
     {
         //
         Schema::create('post_regular', function (Blueprint $table) {
-            $table->id();
-            $table->integer('post_id');
-            $table->integer('regular_id');
-            $table->timestamps();
+            // $table->id();
+            // $table->integer('post_id');
+            // $table->integer('regular_id');
+            // $table->timestamps();
+
+            $table->integer('post_id')->unsigned()->index();
+			$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+			$table->integer('regular_id')->unsigned()->index();
+			$table->foreign('regular_id')->references('id')->on('regulars')->onDelete('cascade');
         });
     }
 

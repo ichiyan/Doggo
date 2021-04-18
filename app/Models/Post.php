@@ -8,15 +8,35 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'post_id';
+    //protected $primaryKey = 'post_id';
+    protected $table = 'posts';
     protected $fillable = [
-        'description', 'price',
-        'contact_num', 'city',
-        'category',
+        'dog_litter_id', 'post_type_id',
+        'post_title', 'post_description',
+        'price', 'status',
     ];
-    protected $table = 'post';
+    
+    public function subjects() {
+        return $this->hasOne(DogLitter::class);
+    }
 
-    public function dog() {
-        return $this->hasOne(Dog::class, 'registered_number', 'registered_number');
+    public function categorized() {
+        return $this->hasOne(PostType::class);
+    }
+
+    public function tagged() {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function violations() {
+        return $this->hasMany(Report::class);
+    }
+
+    public function visuals() {
+        return $this->hasMany(Image::class);
+    }
+
+    public function postedBy() {
+        return $this->hasOne(UserProfile::class);
     }
 }

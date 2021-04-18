@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'image_id';
+    //protected $primaryKey = 'image_id';
+    protected $table = 'images';
     protected $fillable = [
-        'image', 'description',
+        'post_id', 'image_location', 
+        'description',
     ];
-    protected $table = 'image';
+    
+    public function viewable() {
+        return $this->belongsTo(Post::class);
+    }
+
 }

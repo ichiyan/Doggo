@@ -13,14 +13,13 @@ class CreateMessage extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('message')) {
-            Schema::create('message', function (Blueprint $table) {
-                $table->id('message_id');
-                $table->foreignId('chat_room_id')->constrained('chat_room', 'chat_room_id');
-                $table->foreignId('user_id')->constrained('users', 'user_id');
-                $table->timestamps();
-            });
-        }
+        Schema::create('messages', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('chat_room_id')->constrained('chat_rooms', 'id');
+            $table->foreignId('user_id')->constrained('users', 'id');
+            $table->string('text', 1000);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +29,6 @@ class CreateMessage extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('messages');
     }
 }

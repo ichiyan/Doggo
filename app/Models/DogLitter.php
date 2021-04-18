@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class DogLitter extends Model
 {
     use HasFactory;
+    protected $table = 'dog_litters';
+    protected $fillable = [
+        'population',
+    ];
+
+    public function pups() {
+        return $this->hasMany(Dog::class);
+    }
+
+    public function posted() {
+        return $this->belongsTo(Post::class);
+    }
+
 }

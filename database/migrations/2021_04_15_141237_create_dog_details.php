@@ -13,15 +13,15 @@ class CreateDogDetails extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('dog_detail')) {
-            Schema::create('dog_detail', function (Blueprint $table) {
-                $table->id('dog_detail_id');
-                $table->string('first_name');
-                $table->string('last_name');
-                $table->string('age');
-                $table->char('gender');
-            });
-        }
+        Schema::create('dog_details', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name', 250);
+            $table->string('kennel_name', 250);
+            $table->date('birthdate');
+            $table->string('gender', 10);
+            $table->string('breed', 100);
+            $table->timestamps();
+        });
     }
 
     /**

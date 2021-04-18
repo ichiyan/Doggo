@@ -13,15 +13,14 @@ class CreateDog extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('dog')) {
-            Schema::create('dog', function (Blueprint $table) {
-                $table->string('registered_number')->primary();
-                $table->foreignId('dog_detail_id')->nullable()->constrained('dog_detail', 'dog_detail_id');
-                $table->foreignId('dog_owner_id')->nullable()->constrained('users', 'user_id');
-                $table->foreignId('dog_doc_id')->nullable()->constrained('dog_document', 'dog_doc_id');
-                $table->timestamps();
-            });
-        }
+        Schema::create('dogs', function (Blueprint $table) {
+            $table->id();
+            $table->string('registered_number', 20);
+            $table->foreignId('dog_detail_id')->nullable()->constrained('dog_details', 'id');
+            $table->foreignId('dog_owner_id')->constrained('user_profiles', 'id');
+            $table->foreignId('dog_litter_id')->constrained('dog_pedigree_docs', 'id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -31,6 +30,6 @@ class CreateDog extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dog');
+        Schema::dropIfExists('dogs');
     }
 }
