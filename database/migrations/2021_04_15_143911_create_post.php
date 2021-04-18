@@ -13,18 +13,16 @@ class CreatePost extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('post')) {
-            Schema::create('post', function (Blueprint $table) {
-                $table->id('post_id');
-                $table->string('registered_number')->references('registered_number')->on('dog');
-                $table->string('description');
-                $table->float('price');
-                $table->string('contact_num');
-                $table->string('city');
-                $table->string('category');
-                $table->timestamps();
-            });
-        }
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('dog_litter_id')->constrained('dog_litters', 'id');
+            $table->foreignId('post_type_id')->constrained('post_types', 'id');
+            $table->string('post_title', 250);
+            $table->string('post_description', 1000);
+            $table->integer('price')->nullable();
+            $table->string('status', 250);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -34,6 +32,6 @@ class CreatePost extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('posts');
     }
 }
