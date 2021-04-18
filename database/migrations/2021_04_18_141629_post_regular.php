@@ -14,6 +14,12 @@ class PostRegular extends Migration
     public function up()
     {
         //
+        Schema::create('post_regular', function (Blueprint $table) {
+            $table->id();
+            $table->integer('post_id');
+            $table->integer('regular_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +30,6 @@ class PostRegular extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('post_regular');
     }
 }

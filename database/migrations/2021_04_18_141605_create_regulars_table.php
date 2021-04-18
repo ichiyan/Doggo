@@ -15,6 +15,7 @@ class CreateRegularsTable extends Migration
     {
         Schema::create('regulars', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_profile_id');
             $table->timestamps();
         });
     }

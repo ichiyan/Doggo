@@ -15,6 +15,14 @@ class CreatePcciMembersTable extends Migration
     {
         Schema::create('pcci_members', function (Blueprint $table) {
             $table->id();
+            $table->string('citizenship', 150);
+            $table->string('educational_attainment', 200);
+            $table->string('employment', 200);
+            $table->string('employer_name', 150);
+            $table->string('employer_address', 500);
+            $table->boolean('isInterestedInDogShows');
+            $table->boolean('isVolunteer');
+            $table->foreignId('user_profile_id');
             $table->timestamps();
         });
     }

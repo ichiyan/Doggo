@@ -13,11 +13,20 @@ class CreateReport extends Migration
      */
     public function up()
     {
+        Schema::create('reports', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('post_id')->constrained('post', 'id');
+            $table->foreignId('user_profile_id')->constrained('user_profile', 'id');
+            $table->string('reason', 1000);
+            $table->string('image', 1000)->nullable();
+            $table->timestamps();
+        });
+
         if (!Schema::hasTable('report')) {
             Schema::create('report', function (Blueprint $table) {
                 $table->id('report_id');
-                $table->foreignId('post_id')->constrained('post', 'post_id');
-                $table->foreignId('user_id')->constrained('users', 'user_id');
+                $table->foreignId('post_id');
+                $table->foreignId('user_id');
                 $table->string('reason');
                 $table->string('image');
                 $table->timestamps();

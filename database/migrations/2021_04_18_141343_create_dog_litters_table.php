@@ -15,6 +15,7 @@ class CreateDogLittersTable extends Migration
     {
         Schema::create('dog_litters', function (Blueprint $table) {
             $table->id();
+            $table->integer('population')->default(1);
             $table->timestamps();
         });
     }

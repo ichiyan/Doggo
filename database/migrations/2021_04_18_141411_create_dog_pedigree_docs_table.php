@@ -15,6 +15,8 @@ class CreateDogPedigreeDocsTable extends Migration
     {
         Schema::create('dog_pedigree_docs', function (Blueprint $table) {
             $table->id();
+            $table->string('registered_number', 20);
+            $table->string('directory', 500);
             $table->timestamps();
         });
     }
