@@ -22,14 +22,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/buy', function() {
-    return view('PCCI.buy');
-})->middleware(['auth']);
-
 Route::get('/home', function() {
     return view('home');
 });
 
-Route::resource('shop', PostController::class);
+Route::get('/form', function() {
+    return view('form');
+});
+
+Route::resource('shop', PostController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
