@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Address;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AddressFactory extends Factory
+class Post_tagFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Address::class;
+    protected $model = Model::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,8 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tag_id' => Tag::inRandomOrder()->first(),
+            'post_id' => Post::inRandomOrder()->first(),
         ];
     }
 }

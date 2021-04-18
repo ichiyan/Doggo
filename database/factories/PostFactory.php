@@ -26,20 +26,13 @@ class PostFactory extends Factory
         $dogs = Dog::pluck('registered_number')->all();
 
         return [
-            'registered_number' => $this->faker->randomElement($dogs),
+            'dog_litter_id' => Dog_litter::inRandomOrder()->first(),
+            'post_type' => Post_type::inRandomOrder()->first(),
+            'post_title' => $this->faker->realText(15),
             'description' => $this->faker->text(50),
             'price' => $this->faker->randomNumber(5),
-            'contact_num' => $this->faker->phoneNumber(),
-            'city' => $this->faker->city(),
-            'category' => $this->faker->randomElement([
-                'German Shepherd',
-                'Shiba Inu',
-                'Bulldog',
-                'Afghan Hound',
-                'Doberman',
-                'Chihuahua',
-                'ChaoChao'
-            ]),
+            'interests' => $this->faker->randomNumber(2),
+            'status' => $this->faker->randomElement(['Pending Documents', 'Has Documents']),
         ];
     }
 }

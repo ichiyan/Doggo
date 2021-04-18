@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\User_detail;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class User_detailFactory extends Factory
+class Dog_litterFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User_detail::class;
+    protected $model = Model::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +22,7 @@ class User_detailFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
-            'age' => $this->faker->randomDigit(),
-            'gender' => $this->faker->randomElement(['M', 'F']),
+            'population' => $this->faker->randomNumber(1),
         ];
     }
 }

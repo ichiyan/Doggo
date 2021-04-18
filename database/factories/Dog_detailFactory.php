@@ -23,9 +23,10 @@ class Dog_detailFactory extends Factory
     {
         return [
             'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
-            'age' => $this->faker->randomDigit(),
+            'kennel_name' => $this->faker->lastName(),
+            'birthdate' => $this->faker->date(),
             'gender' => $this->faker->randomElement(['M', 'F']),
+            'breed' => $this->faker->randomElement(['Shiba Inu', 'German Shepherd', 'Bulldog',]),
         ];
     }
 }

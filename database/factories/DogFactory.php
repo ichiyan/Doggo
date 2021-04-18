@@ -30,6 +30,7 @@ class DogFactory extends Factory
                 'password' => Hash::make('User123'),
             ]);
         }
+
         $user = User::inRandomOrder()->first()->user_id;
         $dog_detail = Dog_detail::inRandomOrder()->first()->dog_detail_id;
 
