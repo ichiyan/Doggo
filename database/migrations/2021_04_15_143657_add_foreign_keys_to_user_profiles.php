@@ -15,7 +15,6 @@ class AddForeignKeysToUserProfiles extends Migration
     {
         Schema::table('user_profiles', function (Blueprint $table) {
             $table->foreignId('PCCI_member_id')->nullable()->constrained('pcci_members', 'id');
-            $table->foreignId('regular_id')->nullable()->constrained('regulars', 'id');
         });
     }
 
