@@ -2,17 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Dog_document;
+use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use PostTag;
 
-class Dog_documentFactory extends Factory
+class PostTagFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Dog_document::class;
+    protected $model = PostTag::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +24,8 @@ class Dog_documentFactory extends Factory
     public function definition()
     {
         return [
-
+            'tag_id' => Tag::inRandomOrder()->first(),
+            'post_id' => Post::inRandomOrder()->first(),
         ];
     }
 }

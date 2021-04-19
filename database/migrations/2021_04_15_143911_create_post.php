@@ -21,6 +21,7 @@ class CreatePost extends Migration
             $table->string('post_description', 1000);
             $table->integer('price')->nullable();
             $table->string('status', 250);
+            $table->integer('interests');
             $table->timestamps();
         });
     }

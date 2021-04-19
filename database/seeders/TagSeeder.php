@@ -17,7 +17,7 @@ class TagSeeder extends Seeder
         $array = ['cute', 'valiant', 'grumpy', 'chill', 'shy', 'enthusiastic', 'mischievous'];
 
         foreach($array as $tag) {
-            DB::table('tag')->insert(['tag_name' => $tag]);
+            DB::table('tags')->insert(['tag_name' => $tag]);
         }
     }
 }

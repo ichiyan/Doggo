@@ -18,7 +18,7 @@ class CreateDog extends Migration
             $table->string('registered_number', 20);
             $table->foreignId('dog_detail_id')->nullable()->constrained('dog_details', 'id');
             $table->foreignId('dog_owner_id')->constrained('user_profiles', 'id');
-            $table->foreignId('dog_litter_id')->constrained('dog_pedigree_docs', 'id');
+            $table->foreignId('dog_litter_id')->constrained('dog_litters', 'id');
             $table->timestamps();
         });
     }

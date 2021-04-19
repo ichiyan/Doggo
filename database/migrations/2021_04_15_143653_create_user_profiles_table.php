@@ -15,17 +15,19 @@ class CreateUserProfilesTable extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('fname', 150);
-            $table->string('mname', 5);
-            $table->string('lname', 150);
+            $table->string('name', 60);
+            // $table->string('fname', 150);
+            // $table->string('mname', 5);
+            // $table->string('lname', 150);
             $table->date('birthdate');
             $table->string('username', 150);
-            $table->string('city', 50);
-            $table->string('province', 50);
-            $table->integer('zipCode');
+            $table->string('address', 100);
+            // // $table->string('city', 50);
+            // // $table->string('province', 50);
+            // // $table->integer('zipCode');
             $table->string('bio', 500);
             $table->string('profile_pic', 200);
-            $table->integer('contact_number');
+            $table->string('contact_number', 30);
             $table->foreignId('user_id')->constrained('users', 'id');
             $table->timestamps();
         });

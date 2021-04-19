@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PcciMember;
 use App\Models\User;
 use App\Models\UserProfile as ModelsUserProfile;
 use Database\Factories\PCCIMemberFactory;
@@ -17,12 +18,7 @@ class UserProfile extends Seeder
      */
     public function run()
     {
-        $users = User::all();
 
-        foreach($users as $user) {
-            $user->userId = ModelsUserProfile::factory(1)->create()->id;
-            $user->PCCI_member_id = PCCIMemberFactory::factory(1)->create()->id;
 
-        }
     }
 }

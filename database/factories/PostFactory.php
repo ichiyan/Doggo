@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Dog;
 use App\Models\Post;
+use App\Models\PostType;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\DB;
 
 class PostFactory extends Factory
 {
@@ -23,13 +23,11 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $dogs = Dog::pluck('registered_number')->all();
-
         return [
-            'dog_litter_id' => Dog_litter::inRandomOrder()->first(),
-            'post_type' => Post_type::inRandomOrder()->first(),
+            'dog_litter_id' => Dog::factory(1)->create()[0]->dog_litter_id,
+            'post_type_id' => PostType::inRandomOrder()->first()->id,
             'post_title' => $this->faker->realText(15),
-            'description' => $this->faker->text(50),
+            'post_description' => $this->faker->text(50),
             'price' => $this->faker->randomNumber(5),
             'interests' => $this->faker->randomNumber(2),
             'status' => $this->faker->randomElement(['Pending Documents', 'Has Documents']),

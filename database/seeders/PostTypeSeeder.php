@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Post_typeSeeder extends Seeder
+class PostTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class Post_typeSeeder extends Seeder
         $array = ['sell', 'stud', 'rehome'];
 
         foreach($array as $type) {
-            DB::table('post_type')->insert(['post_type_name' => $type]);
+            DB::table('post_types')->insert(['post_type_name' => $type]);
         }
     }
 }

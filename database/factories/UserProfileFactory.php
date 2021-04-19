@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,6 +30,7 @@ class UserProfileFactory extends Factory
             'bio' => "Hello, I am a cupcake",
             'profile_pic' => "/default-pic.png",
             'contact_number' => $this->faker->tollFreePhoneNumber(),
+            'user_id' => User::factory(1)->create()[0]->id,
         ];
     }
 }

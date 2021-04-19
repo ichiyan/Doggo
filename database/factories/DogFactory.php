@@ -3,9 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Dog;
-use App\Models\Dog_detail;
+use App\Models\DogDetail;
+use App\Models\DogLitter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Support\Facades\Hash;
 
 class DogFactory extends Factory
@@ -31,14 +33,13 @@ class DogFactory extends Factory
             ]);
         }
 
-        $user = User::inRandomOrder()->first()->user_id;
-        $dog_detail = Dog_detail::inRandomOrder()->first()->dog_detail_id;
+        $user = UserProfile::inRandomOrder()->first()->id;
 
         return [
             'registered_number' => $this->faker->swiftBicNumber(),
             'dog_owner_id' => $user,
-            'dog_detail_id' => $dog_detail,
-            'dog_doc_id' => null,
+            'dog_detail_id' => DogDetail::factory(1)->create()[0]->id,
+            'dog_litter_id' => DogLitter::factory(1)->create()[0]->id,
         ];
     }
 }
