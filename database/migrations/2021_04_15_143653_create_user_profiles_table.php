@@ -27,8 +27,6 @@ class CreateUserProfilesTable extends Migration
             $table->string('profile_pic', 200);
             $table->integer('contact_number');
             $table->foreignId('user_id')->constrained('users', 'id');
-            $table->foreignId('PCCI_member_id')->nullable()->constrained('pcci_members', 'id');
-            $table->foreignId('regular_id')->nullable()->constrained('regulars', 'id');
             $table->timestamps();
         });
     }
