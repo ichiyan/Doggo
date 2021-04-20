@@ -19,8 +19,8 @@ class CreateUsers extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamp('logged_in')->default(null);
-            $table->timestamp('logged_out')->default(null);
+            $table->timestamp('logged_in')->nullable();
+            $table->timestamp('logged_out')->nullable();
         });
     }
 
