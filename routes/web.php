@@ -30,6 +30,8 @@ Route::get('/form', function() {
     return view('form');
 });
 
-Route::resource('shop', PostController::class)->middleware(['auth']);
+// Route::resource('shop', PostController::class)->middleware(['auth']);
+
+Route::resource('shop', PostController::class);
 
 require __DIR__.'/auth.php';
