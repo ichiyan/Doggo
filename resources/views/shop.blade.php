@@ -51,7 +51,7 @@
     <div class="right">
         @foreach ($posts as $post)
             <div class="card-post">
-                <a href="{{ route('shop.show',  $post->post_id) }}">
+                <a href="{{ route('shop.show',  $post->id) }}">
                     <div class="image-slot">
                         <img src="" alt="dog">
                     </div>
@@ -60,7 +60,7 @@
                         <p>description</p>
                         <div class="breed-price">
                             <div class="breed">
-                                {{$post->category}}
+                                Breed (access from different table later)
                             </div>
                             <div class="price">
                                  ₱ {{$post->price}}

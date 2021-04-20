@@ -24,8 +24,8 @@ class PostController extends Controller
     // }
 
     public function index() {
-        $posts = DB::table('post')
-                    ->select('post_id', 'description', 'price', 'category')->paginate(9);
+        $posts = DB::table('posts')
+                    ->select('id', 'post_description', 'price')->paginate(9);
 
         return view('shop', ['posts' => $posts]);
     }
