@@ -100,14 +100,14 @@ class PostController extends Controller
         //find dog with dog_litter_id from post
         $dog = Dog::where('dog_litter_id', $post->dog_litter_id)->first();
         $user = UserProfile::find($dog->dog_owner_id);
-        $user->email = User::findfindOrFail($user->user_id)->email;
-        $dog = DogDetail::findfindOrFail($dog->dog_detail_id);
+        $user->email = User::findOrFail($user->user_id)->email;
+        $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
         // Post: post_title, post_description, price, status, interests, dog-litter_id
         // Dog_detail: first_name, kennel_name, birthdate, gender, breed
         // Dog:dog_detail_id
 
-        return view('post', compact('post', 'owner', 'dog') );
+        return view('post', compact('post', 'user', 'dog') );
     }
 
     /**
