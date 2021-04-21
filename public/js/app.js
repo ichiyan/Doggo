@@ -22627,25 +22627,21 @@ var staticRenderFns = [
             _vm._v("Labrador")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Shih Tzu")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Terrier")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("German Shepherd")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Shiba Inu")
@@ -22661,25 +22657,21 @@ var staticRenderFns = [
             _vm._v("Labrador")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Shih Tzu")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Terrier")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("German Shepherd")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Shiba Inu")
@@ -22693,13 +22685,11 @@ var staticRenderFns = [
             _vm._v("Date")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Breed")
           ]),
           _vm._v(" "),
-          _c("br"),
           _c("label", [
             _c("input", { attrs: { type: "checkbox", name: "breed" } }),
             _vm._v("Seller")

@@ -5,25 +5,25 @@
             <div>
                 <div>Breed</div>
                 <label><input type='checkbox' name='breed'>Labrador</label>
-                <br><label><input type='checkbox' name='breed'>Shih Tzu</label>
-                <br><label><input type='checkbox' name='breed'>Terrier</label>
-                <br><label><input type='checkbox' name='breed'>German Shepherd</label>
-                <br><label><input type='checkbox' name='breed'>Shiba Inu</label>
+                <label><input type='checkbox' name='breed'>Shih Tzu</label>
+                <label><input type='checkbox' name='breed'>Terrier</label>
+                <label><input type='checkbox' name='breed'>German Shepherd</label>
+                <label><input type='checkbox' name='breed'>Shiba Inu</label>
             </div><br>
             <div>
                 <div>Breed</div>
                 <label><input type='checkbox' name='breed'>Labrador</label>
-                <br><label><input type='checkbox' name='breed'>Shih Tzu</label>
-                <br><label><input type='checkbox' name='breed'>Terrier</label>
-                <br><label><input type='checkbox' name='breed'>German Shepherd</label>
-                <br><label><input type='checkbox' name='breed'>Shiba Inu</label>
+                <label><input type='checkbox' name='breed'>Shih Tzu</label>
+                <label><input type='checkbox' name='breed'>Terrier</label>
+                <label><input type='checkbox' name='breed'>German Shepherd</label>
+                <label><input type='checkbox' name='breed'>Shiba Inu</label>
             </div><br>
 
             Sort By:
             <div>
                 <label><input type='checkbox' name='breed'>Date</label>
-                <br><label><input type='checkbox' name='breed'>Breed</label>
-                <br><label><input type='checkbox' name='breed'>Seller</label>
+                <label><input type='checkbox' name='breed'>Breed</label>
+                <label><input type='checkbox' name='breed'>Seller</label>
             </div><br>
             <input type='submit' value='Filter'>
         </form>
