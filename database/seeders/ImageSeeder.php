@@ -16,12 +16,12 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        $array = ['dogPic1.png', 'dogPic2.png', 'dogPic3.png', 'dogPic4.png', 'dogPic5.png',];
+        $posts = Post::all();
 
-        foreach($array as $pic) {
+        foreach($posts as $post) {
             DB::table('images')->insert([
-                'post_id' => Post::inRandomOrder()->first()->id,
-                'image_location' => $pic,
+                'post_id' => $post->id,
+                'image_location' => "default-dog-pic.jpeg",
                 'description' => "A picture about the dog being posted",
             ]);
         }

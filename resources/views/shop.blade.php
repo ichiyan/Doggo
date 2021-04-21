@@ -53,11 +53,11 @@
             <div class="card-post">
                 <a href="{{ route('shop.show',  $post->id) }}">
                     <div class="image-slot">
-                        <img src="" alt="dog">
+                        <img src="{{ asset('images/'.$post->image) }}" alt="dog">
                     </div>
                     <div class="details-slot">
-                        <h2>TITLE</h2>
-                        <p>description</p>
+                        <h2>{{ $post->post_title }}</h2>
+                        <p>{{ $post->post_description }}</p>
                         <div class="breed-price">
                             <div class="breed">
                                 breed
