@@ -4133,7 +4133,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.advertisement[data-v-023d632a] {\r\n    width: 60%;\r\n    max-width: 980px;\r\n    border: 1px solid salmon;\r\n    float: left;\n}\n.post-header[data-v-023d632a], .post-utilities[data-v-023d632a] {\r\n    display: flex;\r\n    border: 1px solid black;\r\n    justify-content: space-between;\n}\n.post-body[data-v-023d632a] {\r\n    display: flex;\n}\n.album-space[data-v-023d632a] {\r\n    width: 50%;\r\n    border: 1px solid black;\r\n    height: 420px;\r\n    max-height: 50%;\n}\n.details-space[data-v-023d632a] {\r\n    margin-left: 8px;\n}\n.line-detail[data-v-023d632a] {\r\n    display: flex;\n}\n.album[data-v-023d632a] {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin-top: 5px;\n}\n.main-pic[data-v-023d632a] {\r\n    border: 1px solid black;\r\n    height: 250px;\r\n    min-width: 400px;\r\n    width: 100%;\n}\n.sub-pic[data-v-023d632a] {\r\n    height: 100px;\r\n    border: 1px solid black;\r\n    width: 100px;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.advertisement[data-v-023d632a] {\n    width: 60%;\n    max-width: 980px;\n    border: 1px solid salmon;\n    float: left;\n}\n.post-header[data-v-023d632a], .post-utilities[data-v-023d632a] {\n    display: flex;\n    border: 1px solid black;\n    justify-content: space-between;\n}\n.post-body[data-v-023d632a] {\n    display: flex;\n}\n.album-space[data-v-023d632a] {\n    width: 50%;\n    border: 1px solid black;\n    height: 420px;\n    max-height: 50%;\n}\n.details-space[data-v-023d632a] {\n    margin-left: 8px;\n}\n.line-detail[data-v-023d632a] {\n    display: flex;\n}\n.album[data-v-023d632a] {\n    display: flex;\n    justify-content: space-between;\n    margin-top: 5px;\n}\n.main-pic[data-v-023d632a] {\n    border: 1px solid black;\n    height: 250px;\n    min-width: 400px;\n    width: 100%;\n}\n.sub-pic[data-v-023d632a] {\n    height: 100px;\n    border: 1px solid black;\n    width: 100px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4157,7 +4157,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.advertiser-space[data-v-c1860754] {\r\n    height: 500px;\r\n    width: 38%;\r\n    border: 1px solid salmon;\r\n    float: right;\n}\nh1[data-v-c1860754] {\r\n    padding: 0px;\r\n    margin: 0px;\r\n    font-size: 33px;\n}\n.line-detail[data-v-c1860754] {\r\n    display: flex;\n}\n.send-message-btn[data-v-c1860754] {\r\n    cursor: pointer;\r\n    display: flex;\r\n    border: 1px solid black;\r\n    width: 150px;\n}\n.send-message-btn img[data-v-c1860754] {\r\n    width: 20px;\r\n    height: 20px;\r\n    border: 1px solid black;\n}\n.block[data-v-c1860754] {\r\n    border-bottom: 1px solid gray;\r\n    margin-bottom: 5px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.advertiser-space[data-v-c1860754] {\n    height: 500px;\n    width: 38%;\n    border: 1px solid salmon;\n    float: right;\n}\nh1[data-v-c1860754] {\n    padding: 0px;\n    margin: 0px;\n    font-size: 33px;\n}\n.line-detail[data-v-c1860754] {\n    display: flex;\n}\n.send-message-btn[data-v-c1860754] {\n    cursor: pointer;\n    display: flex;\n    border: 1px solid black;\n    width: 150px;\n}\n.send-message-btn img[data-v-c1860754] {\n    width: 20px;\n    height: 20px;\n    border: 1px solid black;\n}\n.block[data-v-c1860754] {\n    border-bottom: 1px solid gray;\n    margin-bottom: 5px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4181,7 +4181,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul.breadcrumb[data-v-1645430e] {\r\n  padding: 10px 16px;\r\n  list-style: none;\r\n  background-color: #eee;\n}\r\n\r\n/* Display list items side by side */\nul.breadcrumb li[data-v-1645430e] {\r\n  display: inline;\r\n  font-size: 18px;\n}\r\n\r\n/* Add a slash symbol (/) before/behind each list item */\nul.breadcrumb li+li[data-v-1645430e]:before {\r\n  padding: 8px;\r\n  color: black;\r\n  content: \"/\\00a0\";\n}\r\n\r\n/* Add a color to all links inside the list */\nul.breadcrumb li a[data-v-1645430e] {\r\n  color: #0275d8;\r\n  text-decoration: none;\n}\r\n\r\n/* Add a color on mouse-over */\nul.breadcrumb li a[data-v-1645430e]:hover {\r\n  color: #01447e;\r\n  text-decoration: underline;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul.breadcrumb[data-v-1645430e] {\n  padding: 10px 16px;\n  list-style: none;\n  background-color: #eee;\n}\n\n/* Display list items side by side */\nul.breadcrumb li[data-v-1645430e] {\n  display: inline;\n  font-size: 18px;\n}\n\n/* Add a slash symbol (/) before/behind each list item */\nul.breadcrumb li+li[data-v-1645430e]:before {\n  padding: 8px;\n  color: black;\n  content: \"/\\00a0\";\n}\n\n/* Add a color to all links inside the list */\nul.breadcrumb li a[data-v-1645430e] {\n  color: #0275d8;\n  text-decoration: none;\n}\n\n/* Add a color on mouse-over */\nul.breadcrumb li a[data-v-1645430e]:hover {\n  color: #01447e;\n  text-decoration: underline;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4205,7 +4205,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card-post[data-v-62f32d3b] {\r\n    max-width: 30%;\r\n    min-width: 30%;\r\n    width: 270px;\r\n    min-height: 320px;\r\n    height: 320px;\r\n    border: 1px solid black;\r\n    margin-bottom: 40px;\n}\n.image-slot[data-v-62f32d3b] {\r\n    height: 50%;\r\n    width: 100%;\n}\nimg[data-v-62f32d3b] {\r\n    height: 100%;\r\n    width: 100%;\r\n    border: 1px solid red;\n}\n.breed-price[data-v-62f32d3b] {\r\n    display: flex;\r\n    justify-content: space-evenly;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card-post[data-v-62f32d3b] {\n    max-width: 30%;\n    min-width: 30%;\n    width: 270px;\n    min-height: 320px;\n    height: 320px;\n    border: 1px solid black;\n    margin-bottom: 40px;\n}\n.image-slot[data-v-62f32d3b] {\n    height: 50%;\n    width: 100%;\n}\nimg[data-v-62f32d3b] {\n    height: 100%;\n    width: 100%;\n    border: 1px solid red;\n}\n.breed-price[data-v-62f32d3b] {\n    display: flex;\n    justify-content: space-evenly;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4229,7 +4229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.filter-space[data-v-a685a63a] {\r\n    width: 20%;\r\n    max-width: 400px;\r\n    min-height: 550px;\r\n    height: 20%;\r\n    border: 1px solid black;\r\n    float: left;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.filter-space[data-v-a685a63a] {\n    width: 20%;\n    max-width: 400px;\n    min-height: 550px;\n    height: 20%;\n    border: 1px solid black;\n    float: left;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4253,7 +4253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search-space[data-v-39499713] {\r\n    display: flex;\r\n    border: 1px solid black;\r\n    border-radius: 25px;\r\n    width: 350px;\r\n    margin: 0 auto;\n}\ninput[data-v-39499713] {\r\n    height: 100%;\r\n    width: 80%;\r\n    border: none;\r\n    border-radius: 25px;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.search-space[data-v-39499713] {\n    display: flex;\n    border: 1px solid black;\n    border-radius: 25px;\n    width: 350px;\n    margin: 0 auto;\n}\ninput[data-v-39499713] {\n    height: 100%;\n    width: 80%;\n    border: none;\n    border-radius: 25px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

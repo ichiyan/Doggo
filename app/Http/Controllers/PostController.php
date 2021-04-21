@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dog;
 use App\Models\DogDetail;
 use App\Models\DogLitter;
+use App\Models\Image;
 use App\Models\Post;
 use App\Models\PostType;
 use App\Models\User;
@@ -33,10 +34,10 @@ class PostController extends Controller
     public function index() {
         $posts = DB::table('posts')
                     ->where('status', '!=', 'Complete')
-                    ->select('id', 'post_description', 'price', 
-                                'post_title', 'dog_litter_id', 
-                                'interests')
+                    ->join('images', 'posts.id', '=', 'images.post_id')
+                    ->select('posts.*', 'images.image_location as image')
                     ->paginate(9);
+
         $dogs = DB::table('dogs')
                     ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
                     ->get();
@@ -63,6 +64,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // Lacking Validation $request->validate([attr.s])
         $post_type = PostType::create(['post_type_name' => $request->input('post-type')]);
         $userProfile = UserProfile::where('user_id', Auth::id())->get('id');
         // for registered dog being posted results to Dog litter being created
@@ -84,6 +86,19 @@ class PostController extends Controller
             'status' => "Has Documentation",
         ]);
 
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'image' => 'mimes:jpeg, bmp, png'
+            ]);
+
+            $request->file->store('posts/'.$post->user_profile_id, 'public');
+
+            $image = Image::create([
+                'post_id' => $post->id,
+                'image_location' => $request->file->hashName(),
+                'description' => '',
+            ]);
+        }
 
         return redirect()->route('shop.index');
     }

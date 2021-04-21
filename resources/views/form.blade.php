@@ -98,7 +98,7 @@
         </div>
     </div>
 
-    <form action="{{ route('shop.store') }}" method="POST">
+    <form action="{{ route('shop.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="post-type" class="col-sm-2 col-form-label">Post Type</label>
@@ -158,7 +158,7 @@
         <div class="form-group row">
             <label for="images" class="col-sm-2 col-form-label">Images</label>
             <div class="col-sm-10">
-                <input type="file" id="images" name="images" placeholder="Images...">
+                <input type="file" id="images" name="file" placeholder="Images...">
             </div>
         </div>
 
