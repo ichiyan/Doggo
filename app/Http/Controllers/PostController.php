@@ -25,9 +25,17 @@ class PostController extends Controller
 
     public function index() {
         $posts = DB::table('posts')
-                    ->select('id', 'post_description', 'price')->paginate(9);
+                    ->where('status', '!=', 'Complete')
+                    ->select('id', 'post_description', 'price', 
+                                'post_title', 'dog_litter_id', 
+                                'interests')
+                    ->paginate(9);
+        $dogs = DB::table('dogs')
+                    ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
+                    ->get();
 
-        return view('shop', ['posts' => $posts]);
+//dd($dogs);
+        return view('shop', compact('posts', 'dogs') );
     }
 
     /**
@@ -59,11 +67,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        $dog = Dog_detail::find($post->dog->dog_detail_id);
-        $user = User_detail::find($post->dog->owner);
+        $post = Post::findOrFail($id);
+        $dog = Dog_detail::findOrFail($post->dog->dog_detail_id);
+        $user = User_detail::findOrFail($post->dog->owner);
 
-        return view('post', ['post' => $post, 'owner' => $user, 'dog' => $dog]);
+        return view('post', compact('post', 'owner', 'dog') );
     }
 
     /**

@@ -149,13 +149,13 @@
 @section('body')
 <ul class="breadcrumb">
     <li><a href="{{route('shop.index')}}">buy/sell</a></li>
-    <li>{{ $dog->first_name }} {{$dog->last_name}}</li>
+    <li>{{ $dog_details->id }} {{$dog_details->kennel_name}}</li>
 </ul>
 <div>
     <div class="post-content">
         <div class='advertisement'>
             <div class="post-header">
-                <h1>{{ $dog->first_name }} {{$dog->last_name}}</h1>
+                <h1>{{ $dog_details->first_name }} {{$dog_details->kennel_name}}</h1>
 
                 <div class="post-utilities">
                     <div class="report">
