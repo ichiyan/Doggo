@@ -22,7 +22,6 @@ class CreatePcciMembersTable extends Migration
             $table->string('employer_address', 500);
             $table->boolean('isInterestedInDogShows');
             $table->boolean('isVolunteer');
-            $table->foreignId('user_profile_id')->constrained('user_profiles', 'id');
             $table->timestamps();
         });
     }

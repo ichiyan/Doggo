@@ -24,7 +24,7 @@ class PCCIMemberFactory extends Factory
         return [
             'citizenship' => $this->faker->country(),
             'educational_attainment' => $this->faker->randomElement(['Elementary Graduate', 'Highschool Graduate', 'College Graduate']),
-            'employment' => $this->faker->place->company(),
+            'employment' => $this->faker->company(),
             'employer_name' => $this->faker->name(),
             'employer_address' => $this->faker->address(),
             'isInterestedInDogShows' => $this->faker->randomElement([true, false]),

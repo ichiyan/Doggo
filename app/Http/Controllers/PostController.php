@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dog;
-use App\Models\Dog_detail;
+use App\Models\DogDetail;
+use App\Models\DogLitter;
 use App\Models\Post;
+use App\Models\PostType;
 use App\Models\User;
 use App\Models\User_detail;
+use App\Models\UserProfile;
+use Carbon\Carbon;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -45,7 +52,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('form')->with('dog', session()->get('dog'));
     }
 
     /**
@@ -56,7 +63,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post_type = PostType::create(['post_type_name' => $request->input('post-type')]);
+        $userProfile = UserProfile::where('user_id', Auth::id())->get('id');
+        // for registered dog being posted results to Dog litter being created
+        // unless able to determine which dog litter it came from.
+        // can't access dog to update dog_litter_id (FK)
+        $dlID = DogLitter::create(['population' => 1])->id;
+
+        $dog = Dog::where('registered_number', request()->session()->get('DRN'))->first();
+        $dog->dog_litter_id = $dlID;
+        $dog->save();
+
+        $post = Post::create([
+            'dog_litter_id' => $dlID,
+            'user_profile_id' => $userProfile,
+            'post_type_id' => $post_type->id,
+            'post_title' => $request->input('post-title'),
+            'price' => $request->input('price'),
+            'post_description' => $request->input('description'),
+            'status' => "Has Documentation",
+        ]);
+
+
+        return redirect()->route('shop.index');
     }
 
     /**
@@ -68,8 +97,15 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $dog = Dog_detail::findOrFail($post->dog->dog_detail_id);
-        $user = User_detail::findOrFail($post->dog->owner);
+        //find dog with dog_litter_id from post
+        $dog = Dog::where('dog_litter_id', $post->dog_litter_id)->first();
+        $user = UserProfile::find($dog->dog_owner_id);
+        $user->email = User::findfindOrFail($user->user_id)->email;
+        $dog = DogDetail::findfindOrFail($dog->dog_detail_id);
+        $dog->age = $this->getMonths($dog->birthdate);
+        // Post: post_title, post_description, price, status, interests, dog-litter_id
+        // Dog_detail: first_name, kennel_name, birthdate, gender, breed
+        // Dog:dog_detail_id
 
         return view('post', compact('post', 'owner', 'dog') );
     }
@@ -106,5 +142,12 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getMonths($date) {
+        $currentDate = Carbon::now()->toDate();
+        $date = Carbon::parse($date);
+        $result = $date->diffInMonths($currentDate);
+        return $result;
     }
 }

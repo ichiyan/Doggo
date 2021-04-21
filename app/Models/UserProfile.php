@@ -13,7 +13,7 @@ class UserProfile extends Model
         'fname', 'mname', 'lname',
         'birthdate', 'username',
         'city', 'province', 'zipCode',
-        'bio', 'profile_pic', 
+        'bio', 'profile_pic',
         'contact_number', 'user_id',
         'PCCI_member_id', 'regular_id'
     ];
@@ -22,9 +22,9 @@ class UserProfile extends Model
         return $this->hasOne(User::class);
     }
 
-    public function reg() {
-        return $this->hasOne(Regular::class);
-    }
+    // public function reg() {
+    //     return $this->hasOne(Regular::class);
+    // }
 
     public function member() {
         return $this->hasOne(PcciMember::class);

@@ -149,13 +149,21 @@
 @section('body')
 <ul class="breadcrumb">
     <li><a href="{{route('shop.index')}}">buy/sell</a></li>
+<<<<<<< HEAD
     <li>{{ $dog_details->id }} {{$dog_details->kennel_name}}</li>
+=======
+    <li>{{ $post->post_title }}</li>
+>>>>>>> da85aabad9463e8c83411a915953b4cb45dc769f
 </ul>
 <div>
     <div class="post-content">
         <div class='advertisement'>
             <div class="post-header">
+<<<<<<< HEAD
                 <h1>{{ $dog_details->first_name }} {{$dog_details->kennel_name}}</h1>
+=======
+                <h1>{{ $post->post_title }}</h1>
+>>>>>>> da85aabad9463e8c83411a915953b4cb45dc769f
 
                 <div class="post-utilities">
                     <div class="report">
@@ -178,25 +186,28 @@
                 </div>
                 <div class="details-space">
                     <div class="line-detail">
-                        <b><p>Location: </p></b> <p>{{ $post->city }}</p>
+                        <p><b>Location: </b>{{ $owner->address }}</p>
                     </div>
                     <div class="line-detail">
-                        <b><p>Date Listed: </p></b> <p>{{ $post->created }}</p>
+                        <p><b>Date Listed: </b> {{ $post->created_at }}</p>
                     </div>
                     <div class="line-detail">
-                        <b><p>Price: </p></b><p>{{ $post->price }}</p>
+                        <p><b>Price:</b> {{ $post->price }}</p>
                     </div>
                     <div class="line-detail">
-                        <b><p>Description: </p></b> <p>{{ $post->description }}</p>
+                        <p><b>Description:</b> {{ $post->post_description }}</p>
                     </div>
+
                     <div class="line-detail">
-                        <b><p>Age: </p></b> <p>7</p>
+                        <p><b>Dog Name:</b> {{$dog->first_name}} {{$dog->kennel_name}}</p>
                     </div>
+
                     <div class="line-detail">
-                        <b><p>Gender: </p></b> <p>M/F</p>
+                        <p><b>Age:</b> {{$dog->age}} Months</p>
                     </div>
+
                     <div class="line-detail">
-                        <b><p>User: </p></b> <p>M/F</p>
+                        <p><b>Gender:</b> {{$dog->gender}}</p>
                     </div>
                 </div>
             </div>
@@ -206,16 +217,10 @@
             <div class="advertiser-details block">
                 <h1>Advertiser Details</h1>
                 <div class="line-detail">
-                    <b><p>Name: </p></b> <p></p>
+                    <b><p>Name: </b>{{ $owner->name }}</p>
                 </div>
                 <div class="line-detail">
                     <b><p>Account: </p></b> <p>User PCCI Member</p>
-                </div>
-                <div class="line-detail">
-                    <b><p>Date Listed: </p></b> <p>01/01/01</p>
-                </div>
-                <div class="line-detail">
-                    <b><p>Location: </p></b> <p>Cebu City</p>
                 </div>
             </div>
             <div class="contact-information block">
@@ -223,10 +228,10 @@
                     <b><p>Contact Number: </p></b> <p>09777888777</p>
                 </div>
                 <div class="line-detail">
-                    <b><p>Address: </p></b> <p>Address</p>
+                    <b><p>Address: </b>{{ $owner->address }}</p>
                 </div>
                 <div class="line-detail">
-                    <b><p>Email: </p></b> <p>Lel Ouch</p>
+                    <b><p>Email: </b>{{ $owner->email }}</p>
                 </div>
 
                 <div class="adv-btn-block">
