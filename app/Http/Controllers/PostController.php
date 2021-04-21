@@ -34,10 +34,10 @@ class PostController extends Controller
     public function index() {
         $posts = DB::table('posts')
                     ->where('status', '!=', 'Complete')
-                    ->select('id', 'post_description', 'price',
-                                'post_title', 'dog_litter_id',
-                                'interests')
+                    ->join('images', 'posts.id', '=', 'images.post_id')
+                    ->select('posts.*', 'images.image_location as image')
                     ->paginate(9);
+
         $dogs = DB::table('dogs')
                     ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
                     ->get();
