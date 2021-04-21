@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\PcciMember;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -31,6 +32,7 @@ class UserProfileFactory extends Factory
             'profile_pic' => "/default-pic.png",
             'contact_number' => $this->faker->tollFreePhoneNumber(),
             'user_id' => User::factory(1)->create()[0]->id,
+            'PCCI_member_id' => PcciMember::factory(1)->create()[0]->id,
         ];
     }
 }

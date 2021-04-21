@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreatePostController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +29,12 @@ Route::get('/home', function() {
 
 Route::get('/form', function() {
     return view('form');
-});
+})->name('createForm');
 
 // Route::resource('shop', PostController::class)->middleware(['auth']);
 
 Route::resource('shop', PostController::class);
+
+Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
 
 require __DIR__.'/auth.php';

@@ -26,117 +26,159 @@
 .col-2 {
     margin-left: 20px;
 }
+
+
 </style>
 @endsection
+
+@section('script')
+<script>
+
+    // $(document).on("submit", "#dog-validate", function(e) {
+    //     e.preventDefault();
+    //     var selectedVal= document.getElementById('DRN').value;
+    //     $.ajax({
+    //             type:"POST",
+    //             url: "/getDog",
+    //             headers: {
+    //                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    //             },
+    //             data:{ value:selectedVal},
+    //             contentType: "application/json; charset=utf-8",
+    //             dataType: "Json",
+    //             success: function(result){
+    //                 if(confirm(result.nrs)){
+    //                      $("#dog-validate").submit();
+    //               }
+    //             }
+    //         });
+    // });
+</script>
+@endsection
+
 @section('body')
-<div class="form-container">
-    <div class="form-row">
-        <div class="col-1">
-          <label for="post">Type of Post</label>
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+            <h5 class="modal-title">PCCI Registered</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <div class="col-2">
-          <select id="post" name="post">
-            <option value="Sell">Sell</option>
-            <option value="Stud">Stud</option>
-            <option value="Rehome">Rehome</option>
-          </select>
+
+        <div class="modal-body">
+            <form class="needs-validation" id="dog-validate" method="GET" action="{{ url('/dog') }}">
+                @csrf
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                    <label for="DRN">Dog Registered Number</label>
+                    <input type="text" class="form-control" id="DRN" name="DRN" placeholder="Dog Registered NumberNumber" value="" required>
+
+                    @isset(session('dog')->code_response)
+                        {!! session('dog')->code_response !!}
+                    @endisset
+
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="dog-validate-submit" class="btn btn-primary">Verify</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="form-container" style="margin: 0 auto;">
+    <div class="form-group">
+        <div class="col-sm-10">
+            <a data-toggle="modal" data-target="#myModal" href="#" style="color:rgba(1, 102, 133, 0.979)"><b>Already a registered dog?</b></a>
         </div>
     </div>
-    <form action="#">
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="listing-title">Listing Title</label>
+    <form action="{{ route('shop.store') }}" method="POST">
+        @csrf
+        <div class="form-group row">
+            <label for="post-type" class="col-sm-2 col-form-label">Post Type</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="post-type" name="post-type">
+                    <option value="Sell">Sell</option>
+                    <option value="Stud">Stud</option>
+                    <option value="Rehome">Rehome</option>
+                </select>
+            </div>
         </div>
-        <div class="col-2">
-          <input type="text" id="listing-title" name="title" placeholder="Post Title...">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="dog-breed">Dog Breed</label>
+        <div class="form-group row">
+            <label for="post-title" class="col-sm-2 col-form-label">Listing Title</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="post-title" name="post-title" placeholder="Post Title...">
+            </div>
         </div>
-        <div class="col-2">
-          <input type="text" id="dog-breed" name="breed" placeholder="Dog Breed..">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="price">Price</label>
+        <div class="form-group row">
+            <label for="dog-breed" class="col-sm-2 col-form-label">Dog Breed</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="dog-breed" name="breed"
+                    @isset(session('fill')->breed)
+                        value="{{session('fill')->breed}}" disabled
+                    @endisset
+                placeholder="Dog Breed..">
+            </div>
         </div>
-        <div class="col-2">
-          <input type="number" id="price" step="0.01" min="0" maxlength="12" name="price" placeholder="Price..">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="age">Age</label>
+        <div class="form-group row">
+            <label for="price" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="price" step="any" min="1" maxlength="12" name="price" placeholder="Price..">
+            </div>
         </div>
-        <div class="col-2">
-          <input type="number" maxlength="3" id="age" name="age" placeholder="Age in months...">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="description">Description</label>
+        <div class="form-group row">
+            <label for="birthdate" class="col-sm-2 col-form-label">Age</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" maxlength="3" id="birthdate" name="age"
+                    @isset(session('fill')->age)
+                        value="{{session('fill')->age}}" disabled
+                    @endisset
+                placeholder="birthdate...">
+            </div>
         </div>
-        <div class="col-2">
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:220px; width: 500px;"></textarea>
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="region">Region</label>
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="description" name="description"
+                 placeholder="Write something.." style="height:220px; width: 500px;"></textarea>
+            </div>
         </div>
-        <div class="col-2">
-          <input type="text" id="region" name="region" placeholder="Region...">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="address">Address</label>
+        <div class="form-group row">
+            <label for="images" class="col-sm-2 col-form-label">Images</label>
+            <div class="col-sm-10">
+                <input type="file" id="images" name="images" placeholder="Images...">
+            </div>
         </div>
-        <div class="col-2">
-          <input type="text" id="address" name="address" placeholder="Address...">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="images">Images</label>
+        <div class="form-group row">
+            <label for="kennel" class="col-sm-2 col-form-label">Registered Kennel Name</label>
+            <div class="col-sm-10">
+                <input type="text" id="kennel" name="kennel"
+                    @isset(session('fill')->kennel_name)
+                        value="{{session('fill')->kennel_name}}" disabled
+                    @endisset
+                placeholder="Kennel Name...">
+            </div>
         </div>
-        <div class="col-2">
-          <input type="file" id="images" name="images" placeholder="Images...">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="reg-num">Dog PCCI Registration Number</label>
+        <div class="form-group">
+            <div style="margin-left: 90%;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-        <div class="col-2">
-            <input type="text" id="reg-num" name="reg-num" placeholder="Reg. Number...">
-        </div>
-      </div>
 
-      <div class="form-row">
-        <div class="col-1">
-          <label for="kennel">Registered Kennel Name</label>
-        </div>
-        <div class="col-2">
-            <input type="text" id="kennel" name="kennel" placeholder="Kennel Name...">
-        </div>
-      </div>
-
-      <div class="form-row" style="margin-left: 70%;">
-        <input type="submit" value="Submit" style="width: 100px;">
-      </div>
     </form>
 </div>
 @endsection
