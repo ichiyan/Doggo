@@ -149,13 +149,21 @@
 @section('body')
 <ul class="breadcrumb">
     <li><a href="{{route('shop.index')}}">buy/sell</a></li>
+<<<<<<< HEAD
+    <li>{{ $dog_details->id }} {{$dog_details->kennel_name}}</li>
+=======
     <li>{{ $post->post_title }}</li>
+>>>>>>> da85aabad9463e8c83411a915953b4cb45dc769f
 </ul>
 <div>
     <div class="post-content">
         <div class='advertisement'>
             <div class="post-header">
+<<<<<<< HEAD
+                <h1>{{ $dog_details->first_name }} {{$dog_details->kennel_name}}</h1>
+=======
                 <h1>{{ $post->post_title }}</h1>
+>>>>>>> da85aabad9463e8c83411a915953b4cb45dc769f
 
                 <div class="post-utilities">
                     <div class="report">

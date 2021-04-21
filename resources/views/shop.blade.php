@@ -11,23 +11,19 @@
         border: 1px solid black;
         margin-bottom: 40px;
     }
-
     .image-slot {
         height: 50%;
         width: 100%;
     }
-
     img {
         height: 100%;
         width: 100%;
         border: 1px solid red;
     }
-
     .breed-price {
         display: flex;
         justify-content: space-evenly;
     }
-
     .right {
         float: right;
         width: 78%;
@@ -48,6 +44,12 @@
     <search-post></search-post>
 
     <filter-post></filter-post>
+
+    <div>
+        <div> Activated filters </div>
+        <div>  </div>
+    </div>
+
     <div class="right">
         @foreach ($posts as $post)
             <div class="card-post">
@@ -60,11 +62,21 @@
                         <p>{{ $post->post_description }}</p>
                         <div class="breed-price">
                             <div class="breed">
-                                breed
+                                @foreach($dogs as $dog)
+                                    @if($post->dog_litter_id == $dog->dog_litter_id)
+                                        {{$dog->breed}}
+                                    @endif
+                                @endforeach
                             </div>
                             <div class="price">
                                  ₱ {{$post->price}}
                             </div>
+                        </div>
+                        <div>
+                            Location: {{$post->interests}}
+                        </div>
+                        <div> <!-- change to icon later??? -->
+                            People Interested: {{$post->interests}}
                         </div>
                     </div>
                 </a>

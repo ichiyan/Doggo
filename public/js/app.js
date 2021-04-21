@@ -3992,6 +3992,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -4203,7 +4229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.filter-space[data-v-a685a63a] {\n    width: 20%;\n    max-width: 400px;\n    min-height: 550px;\n    height: 50%;\n    border: 1px solid black;\n    float: left;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.filter-space[data-v-a685a63a] {\n    width: 20%;\n    max-width: 400px;\n    min-height: 550px;\n    height: 20%;\n    border: 1px solid black;\n    float: left;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22589,9 +22615,90 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-space" }, [
-      _vm._v("\n    Filter "),
-      _c("br"),
-      _vm._v("\n    Sort By:\n")
+      _c("form", { attrs: { method: "", action: "/posts/filter" } }, [
+        _vm._v("\n        Filter "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", [_vm._v("Breed")]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Labrador")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Shih Tzu")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Terrier")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("German Shepherd")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Shiba Inu")
+          ])
+        ]),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", [_vm._v("Breed")]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Labrador")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Shih Tzu")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Terrier")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("German Shepherd")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Shiba Inu")
+          ])
+        ]),
+        _c("br"),
+        _vm._v("\n\n        Sort By:\n        "),
+        _c("div", [
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Date")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Breed")
+          ]),
+          _vm._v(" "),
+          _c("label", [
+            _c("input", { attrs: { type: "checkbox", name: "breed" } }),
+            _vm._v("Seller")
+          ])
+        ]),
+        _c("br"),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "submit", value: "Filter" } })
+      ])
     ])
   }
 ]

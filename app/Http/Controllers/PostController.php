@@ -33,10 +33,17 @@ class PostController extends Controller
 
     public function index() {
         $posts = DB::table('posts')
-            ->select('posts.*', 'images.image_location as image')
-            ->join('images', 'posts.id', '=', 'images.post_id')
-            ->paginate(9);
-        return view('shop', ['posts' => $posts]);
+                    ->where('status', '!=', 'Complete')
+                    ->select('id', 'post_description', 'price',
+                                'post_title', 'dog_litter_id',
+                                'interests')
+                    ->paginate(9);
+        $dogs = DB::table('dogs')
+                    ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
+                    ->get();
+
+//dd($dogs);
+        return view('shop', compact('posts', 'dogs') );
     }
 
     /**
@@ -104,18 +111,18 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         //find dog with dog_litter_id from post
         $dog = Dog::where('dog_litter_id', $post->dog_litter_id)->first();
         $user = UserProfile::find($dog->dog_owner_id);
-        $user->email = User::find($user->user_id)->email;
-        $dog = DogDetail::find($dog->dog_detail_id);
+        $user->email = User::findfindOrFail($user->user_id)->email;
+        $dog = DogDetail::findfindOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
         // Post: post_title, post_description, price, status, interests, dog-litter_id
         // Dog_detail: first_name, kennel_name, birthdate, gender, breed
         // Dog:dog_detail_id
 
-        return view('post', ['post' => $post, 'owner' => $user, 'dog' => $dog]);
+        return view('post', compact('post', 'owner', 'dog') );
     }
 
     /**

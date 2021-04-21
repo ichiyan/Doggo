@@ -13,7 +13,7 @@ class Post extends Model
     protected $fillable = [
         'dog_litter_id', 'post_type_id',
         'post_title', 'post_description',
-        'price', 'status',
+        'price', 'status', 'interests'
     ];
     
     public function subjects() {
@@ -38,5 +38,12 @@ class Post extends Model
 
     public function postedBy() {
         return $this->hasOne(UserProfile::class);
+    }
+
+    public function scopeFilterBy($query, $filter) {
+        $namespace = 'App\Utilities\PostFilters';
+        $filter = new FilterBuilder($query, $filters, $namespace);
+
+        return $filter->apply();
     }
 }
