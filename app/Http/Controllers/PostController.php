@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -42,7 +43,6 @@ class PostController extends Controller
                     ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
                     ->get();
 
-//dd($dogs);
         return view('shop', compact('posts', 'dogs') );
     }
 
@@ -91,11 +91,11 @@ class PostController extends Controller
                 'image' => 'mimes:jpeg, bmp, png'
             ]);
 
-            $request->file->store('posts/'.$post->user_profile_id, 'public');
+            $path = $request->file->store('posts');
 
             $image = Image::create([
                 'post_id' => $post->id,
-                'image_location' => $request->file->hashName(),
+                'image_location' => $path,
                 'description' => '',
             ]);
         }
