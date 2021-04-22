@@ -33,7 +33,7 @@ class PostController extends Controller
 
     public function index() {
         $posts = DB::table('posts')
-                    ->where('status', '!=', 'Complete')
+                    ->where('post_type_id', 1)
                     ->join('images', 'posts.id', '=', 'images.post_id')
                     ->select('posts.*', 'images.image_location as image')
                     ->paginate(9);
@@ -42,7 +42,7 @@ class PostController extends Controller
                     ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
                     ->get();
 
-//dd($dogs);
+//dd($posts);
         return view('shop', compact('posts', 'dogs') );
     }
 
