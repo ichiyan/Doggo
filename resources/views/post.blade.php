@@ -149,21 +149,13 @@
 @section('body')
 <ul class="breadcrumb">
     <li><a href="{{route('shop.index')}}">buy/sell</a></li>
-<<<<<<< HEAD
-    <li>{{ $dog_details->id }} {{$dog_details->kennel_name}}</li>
-=======
     <li>{{ $post->post_title }}</li>
->>>>>>> da85aabad9463e8c83411a915953b4cb45dc769f
 </ul>
 <div>
     <div class="post-content">
         <div class='advertisement'>
             <div class="post-header">
-<<<<<<< HEAD
-                <h1>{{ $dog_details->first_name }} {{$dog_details->kennel_name}}</h1>
-=======
                 <h1>{{ $post->post_title }}</h1>
->>>>>>> da85aabad9463e8c83411a915953b4cb45dc769f
 
                 <div class="post-utilities">
                     <div class="report">
@@ -176,7 +168,7 @@
             </div>
             <div class="post-body">
                 <div class="album-space">
-                    <img src="" alt="main pic" class="album main-pic">
+                    <img src="{{ url('storage/'.$post->image->image_location) }}" alt="main pic" class="album main-pic">
                     <div class="album">
                         <img src="" alt="pic1" class="album sub-pic">
                         <img src="" alt="pic2" class="album sub-pic">
@@ -186,7 +178,7 @@
                 </div>
                 <div class="details-space">
                     <div class="line-detail">
-                        <p><b>Location: </b>{{ $owner->address }}</p>
+                        <p><b>Location: </b>{{ $user->address }}</p>
                     </div>
                     <div class="line-detail">
                         <p><b>Date Listed: </b> {{ $post->created_at }}</p>
@@ -217,7 +209,7 @@
             <div class="advertiser-details block">
                 <h1>Advertiser Details</h1>
                 <div class="line-detail">
-                    <b><p>Name: </b>{{ $owner->name }}</p>
+                    <b><p>Name: </b>{{ $user->name }}</p>
                 </div>
                 <div class="line-detail">
                     <b><p>Account: </p></b> <p>User PCCI Member</p>
@@ -228,10 +220,10 @@
                     <b><p>Contact Number: </p></b> <p>09777888777</p>
                 </div>
                 <div class="line-detail">
-                    <b><p>Address: </b>{{ $owner->address }}</p>
+                    <b><p>Address: </b>{{ $user->address }}</p>
                 </div>
                 <div class="line-detail">
-                    <b><p>Email: </b>{{ $owner->email }}</p>
+                    <b><p>Email: </b>{{ $user->email }}</p>
                 </div>
 
                 <div class="adv-btn-block">
