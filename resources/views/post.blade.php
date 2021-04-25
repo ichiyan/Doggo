@@ -39,7 +39,7 @@
         float: left;
     }
 
-    .post-header, .post-utilities {
+    .post-header {
         display: flex;
         border: 1px solid black;
         justify-content: space-between;
@@ -143,6 +143,17 @@
         text-align: center;
         border: 1px solid red;
     }
+
+    .post-utilities {
+        display: flex;
+        justify-content: space-evenly;
+        width: 50px;
+    }
+
+    i {
+        font-size: 22px;
+    }
+
 </style>
 @endsection
 
@@ -159,10 +170,10 @@
 
                 <div class="post-utilities">
                     <div class="report">
-                        <img src="" alt="report">
+                        <i class="fa fa-flag" aria-hidden="true"></i>
                     </div>
                     <div class="print">
-                        <img src="" alt="print">
+                        <i class="fa fa-print" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -228,12 +239,12 @@
 
                 <div class="adv-btn-block">
                     <div class="send-message-btn adv-btn">
-                        <img src="" alt="message">
+                        <i class="fa fa-comments" aria-hidden="true"></i>
                         <p>Send a Message</p>
                     </div>
 
                     <div class="send-reserve-btn adv-btn">
-                        <img src="" alt="reserve">
+                        <i class="fa fa-calendar-check" aria-hidden="true"></i>
                         <p>Send a Reservation</p>
                     </div>
                 </div>
