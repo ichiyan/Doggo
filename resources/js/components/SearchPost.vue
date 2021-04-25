@@ -2,7 +2,7 @@
     <div class="search-space">
         <input type="search" name="" id="">
         <div class="search-btn">
-            <img src="" alt="search">
+            <i class="fa fa-search" aria-hidden="true"></i>
         </div>
     </div>
 </template>
