@@ -22735,7 +22735,10 @@ var staticRenderFns = [
       _c("input", { attrs: { type: "search", name: "", id: "" } }),
       _vm._v(" "),
       _c("div", { staticClass: "search-btn" }, [
-        _c("img", { attrs: { src: "", alt: "search" } })
+        _c("i", {
+          staticClass: "fa fa-search",
+          attrs: { "aria-hidden": "true" }
+        })
       ])
     ])
   }

@@ -41,7 +41,12 @@
 @endsection
 
 @section('body')
-    <search-post></search-post>
+    <form action="{{ route('shop.index') }}" method="get" role="search" class="form-inline my-2 my-lg-0 justify-content-center" style="margin: 0 auto;">
+        @csrf
+        <input class="form-control mr-sm-2" type="search" name="search-post" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        {{-- <a href="{{ route('shop.index') }}" class="btn btn-outline-success my-2 my-sm-0">Reset</a> --}}
+    </form>
 
     <filter-post></filter-post>
 

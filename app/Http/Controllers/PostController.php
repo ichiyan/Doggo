@@ -32,9 +32,10 @@ class PostController extends Controller
     //     $this->middleware('log');
     // }
 
-    public function index() {
+    public function index(Request $request) {
+        $search = $request->input('search-post');
         $posts = DB::table('posts')
-                    ->where('status', '!=', 'Complete')
+                    ->where('posts.post_title', 'LIKE', "%{$search}%")
                     ->join('images', 'posts.id', '=', 'images.post_id')
                     ->select('posts.*', 'images.image_location as image')
                     ->paginate(9);

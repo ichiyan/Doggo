@@ -32,6 +32,8 @@ class CreatePostController extends Controller
         $dog = Dog::where('registered_number', $DRN)->first();
 
         $dog = DogDetail::find($dog->dog_detail_id);
+        //dog->registered_number should be from table not from $DRN;
+        $dog->registered_number = $DRN;
         $dog->age = $this->getMonths($dog->birthdate);
 
         return $dog;
