@@ -52,43 +52,65 @@
 
     <div>
         <div> Activated filters </div>
-        <div> </div>
+        <div>  </div>
     </div>
 
     <div class="right">
-        @foreach ($posts as $post)
-        <div class="list-group" style="width: 90%;">
-            <a href="{{ route('shop.show',  $post->id) }}" class="list-group-item list-group-item-action">
-                <header class="d-flex w-100 justify-content-between">
-                    <span>{{ $post->post_title }}</span>
-                    <span>₱ {{ $post->price }}</span>
-                </header>
-                <div class="list-content-box d-flex w-100 justify-content-between">
-                    <div style="border: 1px solid black;">
-                        <img src="{{ url('storage/'.$post->image) }}" alt="" style="width:300px; height: 250px;">
+        <div class="card-post">
+            <a href="">
+                <div class="image-slot">
+                    <img src="" alt="dog">
+                </div>
+                <div class="details-slot">
+                    <h2>Title</h2>
+                    <p>Description</p>
+                    <div class="breed-price">
+                        <div class="breed">
+                            breed
+                        </div>
+                        <div class="price">
+                             ₱ ????
+                        </div>
                     </div>
-                    <div class="d-flex w-100 justify-content-between" style="border: 1px solid black;">
-                        <ul class="features">
-                            <li>Dog Name: ??</li>
-                            <li>Age: ??</li>
-                            <li>Breed:
+                    <div>
+                        Location:
+                    </div>
+                    <div> <!-- change to icon later??? -->
+                        Interests
+                    </div>
+                </div>
+            </a>
+        </div>
+        @foreach ($posts as $post)
+            <div class="card-post">
+                <a href="{{ route('shop.show',  $post->id) }}">
+                    <div class="image-slot">
+                        <img src="{{ url('storage/'.$post->image) }}" alt="dog">
+                    </div>
+                    <div class="details-slot">
+                        <h2>{{ $post->post_title }}</h2>
+                        <p>{{ $post->post_description }}</p>
+                        <div class="breed-price">
+                            <div class="breed">
                                 @foreach($dogs as $dog)
                                     @if($post->dog_litter_id == $dog->dog_litter_id)
                                         {{$dog->breed}}
                                     @endif
                                 @endforeach
-                            </li>
-                            <li>Registered</li>
-                            <li>Users showing interests: {{$post->interests}}</li>
-                            <li>{{ $post->post_description }}</li>
-                        </ul>
+                            </div>
+                            <div class="price">
+                                 ₱ {{$post->price}}
+                            </div>
+                        </div>
+                        <div>
+                            Location: {{$post->interests}}
+                        </div>
+                        <div> <!-- change to icon later??? -->
+                            People Interested: {{$post->interests}}
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex justify-content-end">
-                    reserve button
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
         @endforeach
         <div class="d-felx justify-content-center pagination">
 
