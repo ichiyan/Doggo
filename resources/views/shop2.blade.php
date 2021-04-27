@@ -48,7 +48,7 @@
         {{-- <a href="{{ route('shop.index') }}" class="btn btn-outline-success my-2 my-sm-0">Reset</a> --}}
     </form>
 
-    <filter-post></filter-post>
+    {{-- <filter-post></filter-post> --}}
 
     <div>
         <div> Activated filters </div>

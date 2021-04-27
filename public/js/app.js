@@ -22615,7 +22615,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-space" }, [
-      _c("form", { attrs: { method: "", action: "/posts/filter" } }, [
+      _c("form", { attrs: { method: "", action: "" } }, [
         _vm._v("\n        Filter "),
         _c("br"),
         _vm._v(" "),

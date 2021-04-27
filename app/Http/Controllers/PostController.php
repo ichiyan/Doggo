@@ -7,13 +7,16 @@ use App\Models\DogDetail;
 use App\Models\DogLitter;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\PostTag;
 use App\Models\PostType;
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\User_detail;
 use App\Models\UserProfile;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -33,16 +36,37 @@ class PostController extends Controller
     // }
 
     public function index(Request $request) {
-        $search = $request->input('search-post');
-        $posts = DB::table('posts')
-                    ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->join('images', 'posts.id', '=', 'images.post_id')
-                    ->select('posts.*', 'images.image_location as image')
-                    ->paginate(9);
 
+        if ($request->has('FilterForm')) {
+            $filterRequests = collect($request->input());
+            $filters = [];
+
+            foreach($filterRequests as $key => $value) {
+                if ($value == "on"){
+                    $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first('id')->id;
+                }
+            }
+
+            $search = $request->input('search-post');
+
+            $posts = DB::table('posts')->where('posts.post_title', 'LIKE', "%{$search}%")
+                ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+                ->whereIn('post_tag.tag_id', $filters)
+                ->join('images', 'posts.id', '=', 'images.post_id')
+                ->select('posts.*', 'images.image_location as image')
+                ->paginate(9);
+
+        } else {
+            $search = $request->input('search-post');
+            $posts = DB::table('posts')
+                        ->where('posts.post_title', 'LIKE', "%{$search}%")
+                        ->join('images', 'posts.id', '=', 'images.post_id')
+                        ->select('posts.*', 'images.image_location as image')
+                        ->paginate(9);
+        }
         $dogs = DB::table('dogs')
-                    ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
-                    ->get();
+                        ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
+                        ->get();
 
         return view('shop', compact('posts', 'dogs') );
     }

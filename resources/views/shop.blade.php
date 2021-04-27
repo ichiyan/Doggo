@@ -37,6 +37,15 @@
         padding-bottom: 1em;
         margin-top: auto;
     }
+
+    .filter-space {
+        width: 20%;
+        max-width: 400px;
+        min-height: 550px;
+        height: 20%;
+        border: 1px solid black;
+        float: left;
+    }
 </style>
 @endsection
 
@@ -48,11 +57,32 @@
         {{-- <a href="{{ route('shop.index') }}" class="btn btn-outline-success my-2 my-sm-0">Reset</a> --}}
     </form>
 
-    <filter-post></filter-post>
+    <div class="filter-space" style="border: 1px solid black;">
+        <form method="get" action='{{ route('shop.index') }}'>
+            @csrf
+            Filter <br>
+            <div>
+                <div>Breed</div>
+                <label><input type='checkbox' name='Labrador'>Labrador</label>
+                <label><input type='checkbox' name='Shih Tzu'>Shih Tzu</label>
+                <label><input type='checkbox' name='Terrier'>Terrier</label>
+                <label><input type='checkbox' name='German Shepherd'>German Shepherd</label>
+                <label><input type='checkbox' name='Shiba Inu'>Shiba Inu</label>
+            </div><br>
 
-    <div>
-        <div> Activated filters </div>
-        <div> </div>
+            Sort By:
+            <div>
+                <label><input type='checkbox' name='Date'>Date</label>
+                <label><input type='checkbox' name='Breed'>Breed</label>
+                <label><input type='checkbox' name='Seller'>Seller</label>
+            </div><br>
+            <input type='submit' name="FilterForm" class="btn btn-primary" value='Filter'>
+        </form>
+
+        <div>
+            <div> Activated filters </div>
+            <div> </div>
+        </div>
     </div>
 
     <div class="right">

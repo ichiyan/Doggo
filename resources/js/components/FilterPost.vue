@@ -1,6 +1,6 @@
 <template>
     <div class="filter-space">
-        <form method='' action='/posts/filter'>
+        <form method="" action=''>
             Filter <br>
             <div>
                 <div>Breed</div>
@@ -27,7 +27,7 @@
             </div><br>
             <input type='submit' value='Filter'>
         </form>
-        
+
     </div>
 </template>
 
