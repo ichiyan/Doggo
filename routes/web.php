@@ -17,9 +17,15 @@ use App\Http\Controllers\CreatePostController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/welcome', function () {
+    return view('welcome');
 });
+
+Route::get('/', function () {
+    return view('landing_page');
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
