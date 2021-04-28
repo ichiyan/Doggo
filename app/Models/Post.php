@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Classes\Filter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,9 +15,13 @@ class Post extends Model
     protected $fillable = [
         'dog_litter_id', 'post_type_id',
         'post_title', 'post_description',
-        'price', 'status', 'interests'
+        'price', 'status', 'interests',
     ];
-    
+
+    public function getDogLitter() {
+        $dog_litter = DogLitter::find($this->dog_litter_id);
+    }
+
     public function subjects() {
         return $this->hasOne(DogLitter::class);
     }
@@ -45,5 +51,10 @@ class Post extends Model
         $filter = new FilterBuilder($query, $filters, $namespace);
 
         return $filter->apply();
+    }
+
+    public function scopeFilter(Builder $builder, $request)
+    {
+        return (new Filter($request))->filter($builder);
     }
 }

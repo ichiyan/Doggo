@@ -37,6 +37,7 @@ Route::get('/form', function() {
 
 Route::resource('shop', PostController::class);
 
+
 Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
 
 require __DIR__.'/auth.php';

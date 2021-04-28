@@ -100,21 +100,88 @@
 
     <form action="{{ route('shop.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="form-group row">
-            <label for="post-type" class="col-sm-2 col-form-label">Post Type</label>
-            <div class="col-sm-10">
-                <select class="form-control" id="post-type" name="post-type">
-                    <option value="Sell">Sell</option>
-                    <option value="Stud">Stud</option>
-                    <option value="Rehome">Rehome</option>
-                </select>
+        <fieldset class="form-group">
+            <legend class="col-form-legend col-sm-5 pt-0">Post:</legend>
+            <div class="form-group row">
+                <label for="post-type" class="col-sm-2 col-form-label">Post Type</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="post-type" name="post-type">
+                        <option value="Sell">Sell</option>
+                        <option value="Stud">Stud</option>
+                        <option value="Rehome">Rehome</option>
+                    </select>
+                </div>
             </div>
+
+            <div class="form-group row">
+                <label for="post-title" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" id="post-title" name="post-title" placeholder="Post Title...">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="description" name="description"
+                     placeholder="Write something.." style="height:220px; width: 500px;"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="price" class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" id="price" step="any" min="1" maxlength="12" name="price" placeholder="Price..">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="images" class="col-sm-2 col-form-label">Images</label>
+                <div class="col-sm-10">
+                    <input type="file" id="images" name="file" placeholder="Images...">
+                </div>
+            </div>
+        </fieldset>
+
+        <input type="hidden" id="kennel" name="kennel"
+                    @isset(session('fill')->kennel_name)
+                        value="{{session('fill')->kennel_name}}" disabled
+                    @endisset
+        placeholder="Kennel Name...">
+
+        <input class="form-control" type="hidden" id="dog-breed" name="breed"
+                    @isset(session('fill')->breed)
+                        value="{{session('fill')->breed}}" disabled
+                    @endisset
+        placeholder="Dog Breed..">
+
+        <input class="form-control" type="hidden" maxlength="3" id="birthdate" name="age"
+                    @isset(session('fill')->age)
+                        value="{{session('fill')->age}}" disabled
+                    @endisset
+        placeholder="birthdate...">
+
+        <div class="form-group">
+        @isset(session('fill')->kennel_name)
+            <h2>Dog Information</h2>
+            <span><b>Registered Number:</b> {{session('fill')->registered_number}}</span><br>
+            <span><b>Kennel Name:</b> {{session('fill')->kennel_name}}</span><br>
+            <span><b>First Name:</b> {{session('fill')->first_name}}</span><br>
+            <span><b>Birthdate: </b>{{session('fill')->age}}</span><br>
+            <span><b>Gender:</b> {{session('fill')->gender}}</span><br>
+            <span><b>Dog Breed:</b> {{session('fill')->breed}}</span><br>
+        @endisset
         </div>
 
+{{--
         <div class="form-group row">
-            <label for="post-title" class="col-sm-2 col-form-label">Listing Title</label>
+            <label for="kennel" class="col-sm-2 col-form-label">Registered Kennel Name</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" id="post-title" name="post-title" placeholder="Post Title...">
+                <input type="text" id="kennel" name="kennel"
+                    @isset(session('fill')->kennel_name)
+                        value="{{session('fill')->kennel_name}}" disabled
+                    @endisset
+                placeholder="Kennel Name...">
             </div>
         </div>
 
@@ -130,14 +197,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="price" class="col-sm-2 col-form-label">Price</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" id="price" step="any" min="1" maxlength="12" name="price" placeholder="Price..">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="birthdate" class="col-sm-2 col-form-label">Age</label>
+            <label for="birthdate" class="col-sm-2 col-form-label">Birthdate: </label>
             <div class="col-sm-10">
                 <input class="form-control" type="text" maxlength="3" id="birthdate" name="age"
                     @isset(session('fill')->age)
@@ -145,33 +205,7 @@
                     @endisset
                 placeholder="birthdate...">
             </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="description" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" id="description" name="description"
-                 placeholder="Write something.." style="height:220px; width: 500px;"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="images" class="col-sm-2 col-form-label">Images</label>
-            <div class="col-sm-10">
-                <input type="file" id="images" name="file" placeholder="Images...">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="kennel" class="col-sm-2 col-form-label">Registered Kennel Name</label>
-            <div class="col-sm-10">
-                <input type="text" id="kennel" name="kennel"
-                    @isset(session('fill')->kennel_name)
-                        value="{{session('fill')->kennel_name}}" disabled
-                    @endisset
-                placeholder="Kennel Name...">
-            </div>
-        </div>
+        </div> --}}
 
         <div class="form-group">
             <div style="margin-left: 90%;">

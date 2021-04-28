@@ -22615,7 +22615,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-space" }, [
-      _c("form", { attrs: { method: "", action: "/posts/filter" } }, [
+      _c("form", { attrs: { method: "", action: "" } }, [
         _vm._v("\n        Filter "),
         _c("br"),
         _vm._v(" "),
@@ -22735,7 +22735,10 @@ var staticRenderFns = [
       _c("input", { attrs: { type: "search", name: "", id: "" } }),
       _vm._v(" "),
       _c("div", { staticClass: "search-btn" }, [
-        _c("img", { attrs: { src: "", alt: "search" } })
+        _c("i", {
+          staticClass: "fa fa-search",
+          attrs: { "aria-hidden": "true" }
+        })
       ])
     ])
   }
@@ -35420,7 +35423,7 @@ Vue.compile = compileToFunctions;
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			if(runtime) var result = runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
@@ -35429,7 +35432,7 @@ Vue.compile = compileToFunctions;
 /******/ 				}
 /******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 			__webpack_require__.O();
+/******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];

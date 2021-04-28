@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Dog::factory(10)->create();
         $this->call([TagSeeder::class, PostTypeSeeder::class]);
         \App\Models\Post::factory(10)->create();
+        \App\Models\PostTag::factory(10)->create();
         $this->call([ImageSeeder::class]);
     }
 }
