@@ -55,7 +55,7 @@
             <div class="card-post">
                 <a href="{{ route('shop.show',  $post->id) }}">
                     <div class="image-slot">
-                        <img src="{{ asset('images/'.$post->image) }}" alt="dog">
+                        <img src="{{ url('storage/'.$post->image) }}" alt="dog">
                     </div>
                     <div class="details-slot">
                         <h2>{{ $post->post_title }}</h2>

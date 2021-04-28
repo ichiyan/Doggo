@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -91,11 +92,11 @@ class PostController extends Controller
                 'image' => 'mimes:jpeg, bmp, png'
             ]);
 
-            $request->file->store('posts/'.$post->user_profile_id, 'public');
+            $path = $request->file->store('posts');
 
             $image = Image::create([
                 'post_id' => $post->id,
-                'image_location' => $request->file->hashName(),
+                'image_location' => $path,
                 'description' => '',
             ]);
         }
@@ -118,6 +119,7 @@ class PostController extends Controller
         $user->email = User::findOrFail($user->user_id)->email;
         $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
+        $post->image = Image::where('post_id', $post->id)->first();
         // Post: post_title, post_description, price, status, interests, dog-litter_id
         // Dog_detail: first_name, kennel_name, birthdate, gender, breed
         // Dog:dog_detail_id
