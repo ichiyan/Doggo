@@ -66,6 +66,7 @@
         <form action="{{ route('shop.index') }}" method="get" role="search" class="form-inline my-2 my-lg-0 justify-content-center" style="margin: 0 auto;">
             @csrf
             <input class="form-control mr-sm-2" type="search" name="search-post" placeholder="Search" aria-label="Search">
+            <input type='hidden' value='{{$posts}}' name='prev_posts'>
             <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             {{-- <a href="{{ route('shop.index') }}" class="btn btn-outline-success my-2 my-sm-0">Reset</a> --}}
         </form>
@@ -89,6 +90,7 @@
                     <label><input type='checkbox' name='Breed'>Breed</label>
                     <label><input type='checkbox' name='Seller'>Seller</label>
                 </div><br>
+                <input type='hidden' value='{{$posts}}' name='prev_posts'>
                 <input type='submit' name="FilterForm" class="btn btn-primary" value='Filter'>
             </form>
 
@@ -108,7 +110,7 @@
                     </header>
                     <div class="list-content-box d-flex w-100 justify-content-between">
                         <div style="border: 1px solid black;">
-                            <img src="{{ url('storage/'.$post->image) }}" alt="" style="width:300px; height: 250px;">
+                            <img src="{{$post->image}}" alt="dog-pic" style="width:300px; height: 250px;">
                         </div>
                         <div class="d-flex w-100 justify-content-between" style="border: 1px solid black;">
                             <ul class="features">

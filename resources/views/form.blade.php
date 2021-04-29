@@ -5,11 +5,14 @@
 .form-container {
     border: 2px solid black;
     background-color: rgba(219, 217, 217, 0.904);
-
+    
     height: 920px;
     width: 1020px;
 }
 
+body{
+    margin-top: 100px;
+}
 
 .form-row {
     display: flex;
@@ -26,8 +29,6 @@
 .col-2 {
     margin-left: 20px;
 }
-
-
 </style>
 @endsection
 
@@ -56,7 +57,7 @@
 </script>
 @endsection
 
-@section('body')
+@section('main')
 <div id="myModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

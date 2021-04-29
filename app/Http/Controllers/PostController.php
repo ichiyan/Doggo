@@ -54,7 +54,7 @@ class PostController extends Controller
         //     $posts = $this->getPosts($search ?? '', $filters ?? []);
         // }
         $search = $request->input('search-post');
-        $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? []);
+        $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
 
         return view('shop', compact('posts') );
     }
@@ -203,21 +203,20 @@ class PostController extends Controller
         return $bool;
     }
 
-    public function getPosts($search, $filters) {
+    public function getPosts($search, $filters, $prev_posts) {
         $posts = new Collection([]);
         // if (count($filters) > 0) {
 
         //     $posts = Post::where('post_type_id', 1)
         //             ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-        //             // ->whereIn('post_tag.tag_id', array($filters))
-        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
+        //             ->whereIn('post_tag.tag_id', array($filters))
         //             ->paginate(9);
-
         // } else {
         //     $posts = Post::where('post_type_id', 1)
         //             ->where('posts.post_title', 'LIKE', "%{$search}%")
         //             ->paginate(9);
         // }
+
         $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
                     ->paginate(3);
@@ -237,7 +236,7 @@ class PostController extends Controller
 
         foreach($collection as $key => $value) {
             if ($value == "on") {
-                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->get();
+                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first()->id;
             }
         }
 

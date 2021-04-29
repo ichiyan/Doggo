@@ -219,7 +219,7 @@
                     </div>
                     <div class="post-body">
                         <div class="album-space">
-                            <img src="{{ url('storage/'.$post->image->image_location) }}" alt="main pic" class="album main-pic">
+                            <img src="{{$post->image->image_location}}" alt="main pic" class="album main-pic">
                             <div class="album">
                                 <img src="" alt="pic1" class="album sub-pic">
                                 <img src="" alt="pic2" class="album sub-pic">
