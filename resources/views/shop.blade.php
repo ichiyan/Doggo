@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('asset')
+@section('hero')
 <style>
     .card-post {
         max-width: 30%;
@@ -49,7 +49,7 @@
 </style>
 @endsection
 
-@section('body')
+@section('main')
     <form action="{{ route('shop.index') }}" method="get" role="search" class="form-inline my-2 my-lg-0 justify-content-center" style="margin: 0 auto;">
         @csrf
         <input class="form-control mr-sm-2" type="search" name="search-post" placeholder="Search" aria-label="Search">

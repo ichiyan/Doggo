@@ -38,7 +38,7 @@ body {
     background-color: gray;
     height: 100%;
     width: 17%;
-    background-image: url('./../images/brand.png');
+    background-image: url('/images/brand.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -56,7 +56,7 @@ main {
 
 .highlight-content {
     height: 100%;
-    background-image: url('./../images/home-pic.jpeg');
+    background-image: url('/images/home-pic.jpeg');
     background-color: bisque;
     background-repeat: no-repeat;
     background-size: 100% 100%;
