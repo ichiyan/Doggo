@@ -205,22 +205,25 @@ class PostController extends Controller
 
     public function getPosts($search, $filters) {
         $posts = new Collection([]);
-        // if (count($filters) > 0) {
+        if (count($filters) > 0) {
 
-        //     $posts = Post::where('post_type_id', 1)
-        //             ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-        //             // ->whereIn('post_tag.tag_id', array($filters))
-        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
-        //             ->paginate(9);
+            $posts = Post::where('post_type_id', 1)
+                    ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+                    ->whereIn('post_tag.tag_id', $filters)
+                    ->where('posts.post_title', 'LIKE', "%{$search}%")
+                    ->distinct('id')
+                    ->paginate(3);
 
-        // } else {
-        //     $posts = Post::where('post_type_id', 1)
-        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
-        //             ->paginate(9);
-        // }
-        $posts = Post::where('post_type_id', 1)
+        } else {
+            $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
                     ->paginate(3);
+        }
+
+
+        // $posts = Post::where('post_type_id', 1)
+        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
+        //             ->paginate(3);
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();
@@ -237,7 +240,7 @@ class PostController extends Controller
 
         foreach($collection as $key => $value) {
             if ($value == "on") {
-                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->get();
+                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first()->id;
             }
         }
 
