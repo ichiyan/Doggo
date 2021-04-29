@@ -16,6 +16,7 @@ use App\Models\User_detail;
 use App\Models\UserProfile;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -37,21 +38,23 @@ class PostController extends Controller
     // }
 
     public function index(Request $request) {
-        if ($request->has('FilterForm')) {
-            $filters = $this->getFilters(collect($request->input()));
+        // if ($request->has('FilterForm')) {
+        //     $filters = $this->getFilters(collect($request->input()));
 
-            $search = $request->input('search-post');
-            $posts = DB::table('posts')->where('posts.post_title', 'LIKE', "%{$search}%")
-                ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-                ->whereIn('post_tag.tag_id', $filters)
-                ->join('images', 'posts.id', '=', 'images.post_id')
-                ->select('posts.*', 'images.image_location as image', 'post_tag.tag_id')
-                ->paginate(9);
+        //     $search = $request->input('search-post');
+        //     $posts = DB::table('posts')->where('posts.post_title', 'LIKE', "%{$search}%")
+        //         ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+        //         ->whereIn('post_tag.tag_id', $filters)
+        //         ->join('images', 'posts.id', '=', 'images.post_id')
+        //         ->select('posts.*', 'images.image_location as image', 'post_tag.tag_id')
+        //         ->paginate(9);
 
-        } else {
-            $search = $request->input('search-post');
-            $posts = $this->getPosts($search ?? '', $filters ?? []);
-        }
+        // } else {
+        //     $search = $request->input('search-post');
+        //     $posts = $this->getPosts($search ?? '', $filters ?? []);
+        // }
+        $search = $request->input('search-post');
+        $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? []);
 
         return view('shop', compact('posts') );
     }
@@ -201,7 +204,23 @@ class PostController extends Controller
     }
 
     public function getPosts($search, $filters) {
-        $posts = Post::where('post_type_id', 1)->paginate(9);
+        $posts = new Collection([]);
+        // if (count($filters) > 0) {
+
+        //     $posts = Post::where('post_type_id', 1)
+        //             ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+        //             // ->whereIn('post_tag.tag_id', array($filters))
+        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
+        //             ->paginate(9);
+
+        // } else {
+        //     $posts = Post::where('post_type_id', 1)
+        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
+        //             ->paginate(9);
+        // }
+        $posts = Post::where('post_type_id', 1)
+                    ->where('posts.post_title', 'LIKE', "%{$search}%")
+                    ->paginate(3);
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();
@@ -210,7 +229,6 @@ class PostController extends Controller
             $post->image = Image::where('post_id', $post->id)->first()->image_location;
         }
 
-
         return $posts;
     }
 
@@ -218,8 +236,8 @@ class PostController extends Controller
         $filters = [];
 
         foreach($collection as $key => $value) {
-            if ($value == "on"){
-                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first('id')->id;
+            if ($value == "on") {
+                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->get();
             }
         }
 

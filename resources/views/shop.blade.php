@@ -93,7 +93,7 @@
             </form>
 
             <div>
-                <div> Activated filters </div>
+                <div>Activated filters </div>
                 <div> </div>
             </div>
         </div>
