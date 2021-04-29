@@ -15,6 +15,7 @@ class CreateUsers extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -22,6 +23,16 @@ class CreateUsers extends Migration
             $table->timestamp('logged_in')->nullable();
             $table->timestamp('logged_out')->nullable();
         });
+
+        DB::table('users')->insert(
+            array(
+                ['name' => 'Gabriela',
+                'email' => "admin@gmail.com",
+                'password' => bcrypt('p@ssw0rd')
+                ]
+            )
+        );
+
     }
 
     /**

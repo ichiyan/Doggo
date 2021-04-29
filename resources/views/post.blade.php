@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="report" id="report-form" method="post" action="{{ route('shop.report') }}" enctype="multipart/form-data">
+                    <form class="report" id="report-form" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <input type="hidden" name="post_id" value={{$post->id}}>

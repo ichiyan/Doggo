@@ -53,10 +53,11 @@ class PostController extends Controller
         //     $search = $request->input('search-post');
         //     $posts = $this->getPosts($search ?? '', $filters ?? []);
         // }
+
         $search = $request->input('search-post');
         $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? []);
 
-        return view('shop', compact('posts') );
+        return view('shopv3', compact('posts') );
     }
 
     /**
@@ -197,7 +198,7 @@ class PostController extends Controller
         $bool = false;
         if ($request->hasFile('file')) {
             $request->validate([
-                'image' => 'mimes:jpeg, bmp, png'
+                'image' => 'mimes:jpeg, jpg, bmp, png'
             ]);
             $bool = true;
         }

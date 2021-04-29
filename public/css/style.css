@@ -1,9 +1,3 @@
-/**
-* Template Name: Appland - v4.1.0
-* Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 /*--------------------------------------------------------------
 # General
@@ -242,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #5777ba;
+  color: #7861ad;
 }
 
 .navbar .dropdown:hover > ul {
@@ -272,6 +266,21 @@ h1, h2, h3, h4, h5, h6 {
     left: -100%;
   }
 }
+
+.img-profile{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.rounded-circle{
+    border-radius: 50% !important;
+}
+
+.nav-user-dropdown{
+    padding: 0.20rem 2.50rem !important;
+}
+
+
 
 /**
 * Mobile Navigation
@@ -516,51 +525,6 @@ section {
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Breadcrumbs
---------------------------------------------------------------*/
-.breadcrumbs {
-  padding: 15px 0;
-  background-color: #f6f8fb;
-  min-height: 40px;
-}
-
-.breadcrumbs h2 {
-  font-size: 24px;
-  font-weight: 300;
-}
-
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-}
-
-.breadcrumbs ol li + li {
-  padding-left: 10px;
-}
-
-.breadcrumbs ol li + li::before {
-  display: inline-block;
-  padding-right: 10px;
-  color: #6c757d;
-  content: "/";
-}
-
-@media (max-width: 768px) {
-  .breadcrumbs .d-flex {
-    display: block !important;
-  }
-  .breadcrumbs ol {
-    display: block;
-  }
-  .breadcrumbs ol li {
-    display: inline-block;
-  }
-}
 
 /*--------------------------------------------------------------
 # About
@@ -1060,3 +1024,131 @@ section {
     font-size: 14px;
     color: #919aa3;
 }
+
+/*--------------------------------------------------------------
+# Shop
+--------------------------------------------------------------*/
+.shop-posts {
+    background: #fff;
+    padding: 60px 0;
+  }
+
+  .shop-posts .post {
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    transition: 0.3s;
+    margin: 5%;
+  }
+
+  .shop-posts .post .post-img {
+    position: relative;
+    overflow: hidden;
+    border: transparent;
+  }
+
+  .shop-posts .post .post-img:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../images/shop-post-shape.svg') no-repeat center bottom;
+    background-size: contain;
+    z-index: 1;
+  }
+
+  .shop-posts .post .options {
+    position: absolute;
+    right: -100%;
+    top: 30px;
+    opacity: 0;
+    border-radius: 4px;
+    transition: 0.5s;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 2;
+  }
+
+  .shop-posts .post .options a {
+    transition: color 0.3s;
+    margin: 15px 12px;
+    display: block;
+    line-height: 0;
+    text-align: center;
+  }
+
+
+  .shop-posts .post .options .more-info {
+    color: rgb(250, 217, 153, 0.8);
+  }
+
+  .shop-posts .post .options .more-info:hover {
+    color: rgb(250, 217, 153);
+  }
+
+  .shop-posts .post .options .heart {
+    color: rgb(255, 198, 194, 0.8);
+  }
+
+  .shop-posts .post .options .heart:hover {
+    color: rgb(255, 198, 194);
+  }
+
+
+
+  .shop-posts .post .options i {
+    font-size: 35px;
+  }
+
+  .shop-posts .post .post-info {
+    padding: 10px 15px 20px 15px;
+  }
+
+  .shop-posts .post .post-info h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #5a4977;
+    text-transform: uppercase;
+  }
+
+  .shop-posts .post .post-info .breed {
+    /* display: block; */
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaaaaa;
+  }
+
+  .shop-posts .post .post-info .price {
+    /* display: block; */
+    float: right;
+    font-size: 20px;
+    font-weight: 900;
+    color: #7861ad;
+  }
+
+  .shop-posts .post .post-info .badge-primary {
+    /* display: block; */
+    background-color: #7ccfcf !important;
+  }
+
+  .shop-posts .post .post-info p {
+    font-style: italic;
+    font-size: 14px;
+    padding-top: 5px;
+    line-height: 26px;
+    color: #5e5e5e;
+  }
+
+  .shop-posts .post:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  }
+
+  .shop-posts .post:hover .options {
+    right: 8px;
+    opacity: 1;
+  }
