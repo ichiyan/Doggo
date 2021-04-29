@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('asset')
+@section('hero')
 <style>
 .form-container {
     border: 2px solid black;
@@ -31,7 +31,7 @@
 </style>
 @endsection
 
-@section('script')
+@section('hero')
 <script>
 
     // $(document).on("submit", "#dog-validate", function(e) {
@@ -91,6 +91,7 @@
       </div>
     </div>
 </div>
+
 <div class="form-container" style="margin: 0 auto;">
     <div class="form-group">
         <div class="col-sm-10">

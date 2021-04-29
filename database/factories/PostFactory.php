@@ -23,10 +23,11 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $dog = Dog::factory(1)->create()[0]->dog_litter_id;
         return [
-            'dog_litter_id' => Dog::factory(1)->create()[0]->dog_litter_id,
+            'dog_litter_id' => $dog,
             'post_type_id' => PostType::inRandomOrder()->first()->id,
-            'post_title' => $this->faker->realText(15),
+            'post_title' => "Post " . $dog,
             'post_description' => $this->faker->text(50),
             'price' => $this->faker->randomNumber(5),
             'interests' => $this->faker->randomNumber(2),

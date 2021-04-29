@@ -17,6 +17,10 @@ class DogLitter extends Model
         return $this->hasMany(Dog::class);
     }
 
+    public function dog() {
+        return $this->hasOne(dog::class);
+    }
+
     public function posted() {
         return $this->belongsTo(Post::class);
     }

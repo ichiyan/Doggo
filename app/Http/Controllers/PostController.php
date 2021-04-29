@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Models\PostType;
+use App\Models\Report;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\User_detail;
@@ -36,39 +37,23 @@ class PostController extends Controller
     // }
 
     public function index(Request $request) {
-
         if ($request->has('FilterForm')) {
-            $filterRequests = collect($request->input());
-            $filters = [];
-
-            foreach($filterRequests as $key => $value) {
-                if ($value == "on"){
-                    $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first('id')->id;
-                }
-            }
+            $filters = $this->getFilters(collect($request->input()));
 
             $search = $request->input('search-post');
-
             $posts = DB::table('posts')->where('posts.post_title', 'LIKE', "%{$search}%")
                 ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
                 ->whereIn('post_tag.tag_id', $filters)
                 ->join('images', 'posts.id', '=', 'images.post_id')
-                ->select('posts.*', 'images.image_location as image')
+                ->select('posts.*', 'images.image_location as image', 'post_tag.tag_id')
                 ->paginate(9);
 
         } else {
             $search = $request->input('search-post');
-            $posts = DB::table('posts')
-                        ->where('posts.post_title', 'LIKE', "%{$search}%")
-                        ->join('images', 'posts.id', '=', 'images.post_id')
-                        ->select('posts.*', 'images.image_location as image')
-                        ->paginate(9);
+            $posts = $this->getPosts($search ?? '', $filters ?? []);
         }
-        $dogs = DB::table('dogs')
-                        ->join('dog_details', 'dogs.dog_detail_id', 'dog_details.id')
-                        ->get();
 
-        return view('shop', compact('posts', 'dogs') );
+        return view('shop', compact('posts') );
     }
 
     /**
@@ -111,11 +96,7 @@ class PostController extends Controller
             'status' => "Has Documentation",
         ]);
 
-        if ($request->hasFile('file')) {
-            $request->validate([
-                'image' => 'mimes:jpeg, bmp, png'
-            ]);
-
+        if ($this->validateImage($request)) {
             $path = $request->file->store('posts');
 
             $image = Image::create([
@@ -190,5 +171,58 @@ class PostController extends Controller
         $date = Carbon::parse($date);
         $result = $date->diffInMonths($currentDate);
         return $result;
+    }
+
+    public function report(Request $request) {
+        if ($request->has('post_id') && $request->has('user_profile_id')) {
+
+            $path = $request->file('image')->store('reports');
+
+            Report::create([
+                'post_id' => $request->input('post_id'),
+                'user_profile_id' => $request->input('user_profile_id'),
+                'reason' => $request->input('reason'),
+                'image' => $path,
+            ]);
+        };
+
+        return back()->with('message', 'Report created');
+    }
+
+    public function validateImage($request) {
+        $bool = false;
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'image' => 'mimes:jpeg, bmp, png'
+            ]);
+            $bool = true;
+        }
+        return $bool;
+    }
+
+    public function getPosts($search, $filters) {
+        $posts = Post::where('post_type_id', 1)->paginate(9);
+
+        foreach ($posts as $post) {
+            $post->dog = $post->getDog();
+            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
+            $post->dog->age = $this->getMonths($post->dog->birthdate);
+            $post->image = Image::where('post_id', $post->id)->first()->image_location;
+        }
+
+
+        return $posts;
+    }
+
+    public function getFilters($collection) {
+        $filters = [];
+
+        foreach($collection as $key => $value) {
+            if ($value == "on"){
+                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first('id')->id;
+            }
+        }
+
+        return $filters;
     }
 }

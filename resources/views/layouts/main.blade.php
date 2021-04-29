@@ -56,6 +56,7 @@
             </div>
         </header><!-- End Header -->
 
+
         @if (!(str_contains(url()->current(), 'login') || str_contains(url()->current(), 'register')) )
             @yield('hero')
             @yield('main')

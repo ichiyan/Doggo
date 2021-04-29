@@ -2,9 +2,9 @@
     <ul>
       <li><a class="nav-link scrollto {{ Request::is('/') ? 'active' : '' }} " href="{{ url('/') }}">Home</a></li>
       <li><a class="nav-link scrollto" href="/#about">About</a></li>
-      <li><a class="nav-link scrollto" href="">Shop</a></li>
-      <li><a class="nav-link scrollto" href="">Rehome</a></li>
-      <li><a class="nav-link scrollto" href="">Stud Service</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('shop.index') }}">Shop</a></li>
+      <li><a class="nav-link scrollto" href="/#rehome">Rehome</a></li>
+      <li><a class="nav-link scrollto" href="/#stud-service">Stud Service</a></li>
       <li><a class="nav-link scrollto" href="/#faq">F.A.Q</a></li>
       <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
       @if (Route::has('login'))

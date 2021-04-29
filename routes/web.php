@@ -43,6 +43,7 @@ Route::get('/form', function() {
 
 Route::resource('shop', PostController::class);
 
+Route::post('shop/report', [PostController::class, 'report'])->name('shop.report');
 
 Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
 

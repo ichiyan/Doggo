@@ -23,8 +23,15 @@ class Post extends Model
         $dog_litter = DogLitter::find($this->dog_litter_id);
     }
 
-    public function subjects() {
-        return $this->hasOne(DogLitter::class);
+    public function subject() {
+        return $this->belongsTo(DogLitter::class);
+    }
+
+    public function getDog() {
+        $dog = Dog::where('dog_litter_id', $this->dog_litter_id)
+                ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+                ->first();
+        return $dog;
     }
 
     public function categorized() {
