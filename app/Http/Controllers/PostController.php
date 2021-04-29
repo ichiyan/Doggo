@@ -78,7 +78,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // Lacking Validation $request->validate([attr.s])
-        $post_type = PostType::create(['post_type_name' => $request->input('post-type')]);
+        // $post_type = PostType::create(['post_type_name' => $request->input('post-type')]);
+        // PostType::create(['post_type_name' => $request->input('post-type')]);
         $userProfile = UserProfile::where('user_id', Auth::id())->get('id');
         // for registered dog being posted results to Dog litter being created
         // unless able to determine which dog litter it came from.
@@ -92,7 +93,7 @@ class PostController extends Controller
         $post = Post::create([
             'dog_litter_id' => $dlID,
             'user_profile_id' => $userProfile,
-            'post_type_id' => $post_type->id,
+            'post_type_id' => 1,
             'post_title' => $request->input('post-title'),
             'price' => $request->input('price'),
             'post_description' => $request->input('description'),
@@ -205,21 +206,25 @@ class PostController extends Controller
 
     public function getPosts($search, $filters, $prev_posts) {
         $posts = new Collection([]);
-        // if (count($filters) > 0) {
+        if (count($filters) > 0) {
 
-        //     $posts = Post::where('post_type_id', 1)
-        //             ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-        //             ->whereIn('post_tag.tag_id', array($filters))
-        //             ->paginate(9);
-        // } else {
-        //     $posts = Post::where('post_type_id', 1)
-        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
-        //             ->paginate(9);
-        // }
+            $posts = Post::where('post_type_id', 1)
+                    ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
+                    ->whereIn('post_tag.tag_id', $filters)
+                    ->where('posts.post_title', 'LIKE', "%{$search}%")
+                    ->distinct('id')
+                    ->paginate(3);
 
-        $posts = Post::where('post_type_id', 1)
+        } else {
+            $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
                     ->paginate(3);
+        }
+
+
+        // $posts = Post::where('post_type_id', 1)
+        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
+        //             ->paginate(3);
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();

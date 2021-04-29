@@ -5,7 +5,6 @@
 .form-container {
     border: 2px solid black;
     background-color: rgba(219, 217, 217, 0.904);
-    
     height: 920px;
     width: 1020px;
 }
@@ -32,7 +31,7 @@ body{
 </style>
 @endsection
 
-@section('hero')
+{{-- @section('hero')
 <script>
 
     // $(document).on("submit", "#dog-validate", function(e) {
@@ -55,10 +54,10 @@ body{
     //         });
     // });
 </script>
-@endsection
+@endsection --}}
 
 @section('main')
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
+<div id="myModal" tabindex="-1" style="margin-top: 100px;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
 
@@ -93,10 +92,10 @@ body{
     </div>
 </div>
 
-<div class="form-container" style="margin: 0 auto;">
+<div class="form-container" style="margin: 0 auto; margin-top: 100px;">
     <div class="form-group">
         <div class="col-sm-10">
-            <a data-toggle="modal" data-target="#myModal" href="#" style="color:rgba(1, 102, 133, 0.979)"><b>Already a registered dog?</b></a>
+            <a data-toggle="modal" data-target="#myModal" style="color:rgba(1, 102, 133, 0.979)"><b>Already a registered dog?</b></a>
         </div>
     </div>
 
