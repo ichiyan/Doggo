@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Classes\Filter;
+use App\Utilities\FilterBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -46,7 +47,7 @@ class Post extends Model
         return $this->hasOne(UserProfile::class);
     }
 
-    public function scopeFilterBy($query, $filter) {
+    public function scopeFilterBy($query, $filters) {
         $namespace = 'App\Utilities\PostFilters';
         $filter = new FilterBuilder($query, $filters, $namespace);
 

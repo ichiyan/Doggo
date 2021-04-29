@@ -70,6 +70,11 @@
                 <label><input type='checkbox' name='Shiba Inu'>Shiba Inu</label>
             </div><br>
 
+            Tags
+            <div>
+                <label><input type='text' name='tags'></label>
+            </div><br>
+
             Sort By:
             <div>
                 <label><input type='checkbox' name='Date'>Date</label>
