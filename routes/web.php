@@ -27,9 +27,9 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/', function () {
+//     return view('landing_page');
+// })->middleware(['auth'])->name('landing_page');
 
 Route::get('/home', function() {
     return view('home');
@@ -43,7 +43,6 @@ Route::get('/form', function() {
 
 Route::resource('shop', PostController::class);
 
-Route::post('shop/report', [PostController::class, 'report'])->name('shop.report');
 
 Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
 

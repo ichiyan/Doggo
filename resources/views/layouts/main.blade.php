@@ -31,9 +31,12 @@
 
         <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
         {{-- <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
+
+        {{-- will remove some later --}}
         <link href="{{asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
         <link href="{{ asset('vendor/icofont/icofont.min.css') }}" rel="stylesheet">
         <link href="{{asset('vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
         <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
@@ -56,7 +59,6 @@
             </div>
         </header><!-- End Header -->
 
-
         @if (!(str_contains(url()->current(), 'login') || str_contains(url()->current(), 'register')) )
             @yield('hero')
             @yield('main')
@@ -68,16 +70,43 @@
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         {{-- <div id="preloader"></div> --}}
 
-         <!-- Vendor JS Files -->
-        <script src="{{asset('vendor/aos/aos.js')}}"></script>
-        <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
-        <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
-        <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+        <!-- Logout Modal-->
+     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-        <!-- Template Main JS File -->
-        <script src="{{asset('js/main.js')}}"></script>
+
+    <!-- Vendor JS Files -->
+    <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{asset('vendor/aos/aos.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
+    <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+
+    <!-- Template Main JS File -->
+    <script src="{{asset('js/main.js')}}"></script>
 
     </body>
 </html>
