@@ -44,6 +44,8 @@
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
         {{-- <link rel="stylesheet" href="{{asset('css/heroStyle.css')}}"> --}}
 
+        @livewireStyles
+
     </head>
     <body>
          <!-- ======= Header ======= -->
@@ -96,8 +98,9 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
-    <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    {{-- <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script> --}}
     <script src="{{asset('vendor/aos/aos.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
@@ -108,5 +111,6 @@
     <!-- Template Main JS File -->
     <script src="{{asset('js/main.js')}}"></script>
 
+    @livewireScripts
     </body>
 </html>

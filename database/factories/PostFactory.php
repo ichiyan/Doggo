@@ -23,7 +23,11 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $dog = Dog::factory(1)->create()[0]->dog_litter_id;
+        $dog = Dog::factory(1)->create()[0];
+        $dog->is_Posted = true;
+        $dog->save();
+        $dog = $dog->dog_litter_id;
+
         return [
             'dog_litter_id' => $dog,
             'post_type_id' => PostType::inRandomOrder()->first()->id,

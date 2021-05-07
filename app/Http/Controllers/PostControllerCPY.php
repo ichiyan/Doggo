@@ -2,41 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Classes\PostFunctions;
 use App\Models\Dog;
 use App\Models\DogDetail;
 use App\Models\DogLitter;
 use App\Models\Image;
 use App\Models\Post;
-use App\Models\PostTag;
-use App\Models\PostType;
-use App\Models\Report;
-use App\Models\Tag;
 use App\Models\User;
-use App\Models\User_detail;
 use App\Models\UserProfile;
 use Carbon\Carbon;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+class PostController2 extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    //only used when login/register is implemented
-    // public function __construct() {
-    //     $this->middleware('auth');
-    //     $this->middleware('log');
-    // }
-
     public function index(Request $request) {
         // if ($request->has('FilterForm')) {
         //     $filters = $this->getFilters(collect($request->input()));
@@ -55,7 +39,7 @@ class PostController extends Controller
         // }
 
         $search = $request->input('search-post');
-        $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? []);
+        $posts = $this->getPostsV3($search ?? '', $this->getFilters(collect($request->input())) ?? []);
 
         return view('shopv3', compact('posts') );
     }
@@ -67,11 +51,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        // $user = UserProfile::where('user_id', Auth::id())->get(['PCCI_member_id']);
-        // if($user == null) {
-        //     return back();
-        // }
-
         return view('form')->with('dog', session()->get('dog'));
     }
 
@@ -174,83 +153,5 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getMonths($date) {
-        $currentDate = Carbon::now()->toDate();
-        $date = Carbon::parse($date);
-        $result = $date->diffInMonths($currentDate);
-        return $result;
-    }
-
-    public function report(Request $request) {
-        if ($request->has('post_id') && $request->has('user_profile_id')) {
-
-            $path = $request->file('image')->store('reports');
-
-            Report::create([
-                'post_id' => $request->input('post_id'),
-                'user_profile_id' => $request->input('user_profile_id'),
-                'reason' => $request->input('reason'),
-                'image' => $path,
-            ]);
-        };
-
-        return back()->with('message', 'Report created');
-    }
-
-    public function validateImage($request) {
-        $bool = false;
-        if ($request->hasFile('file')) {
-            $request->validate([
-                'image' => 'mimes:jpeg, jpg, bmp, png'
-            ]);
-            $bool = true;
-        }
-        return $bool;
-    }
-
-    public function getPosts($search, $filters) {
-        $posts = new Collection([]);
-        if (count($filters) > 0) {
-
-            $posts = Post::where('post_type_id', 1)
-                    ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-                    ->whereIn('post_tag.tag_id', $filters)
-                    ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->distinct('id')
-                    ->paginate(3);
-
-        } else {
-            $posts = Post::where('post_type_id', 1)
-                    ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->paginate(3);
-        }
-
-
-        // $posts = Post::where('post_type_id', 1)
-        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
-        //             ->paginate(3);
-
-        foreach ($posts as $post) {
-            $post->dog = $post->getDog();
-            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
-            $post->dog->age = $this->getMonths($post->dog->birthdate);
-            $post->image = Image::where('post_id', $post->id)->first()->image_location;
-        }
-
-        return $posts;
-    }
-
-    public function getFilters($collection) {
-        $filters = [];
-
-        foreach($collection as $key => $value) {
-            if ($value == "on") {
-                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first()->id;
-            }
-        }
-
-        return $filters;
     }
 }
