@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Post</h5>
-                  <form wire:submit.prevent="submitForm" method="POST">
+                  <form wire:submit.prevent="submitForm">
 
                     <fieldset class="form-group">
 
@@ -32,7 +32,6 @@
                             <div class="col-sm-10">
                                 <input wire:model.lazy="post_title" class="form-control" type="text" id="post_title" name="post_title" placeholder="Post Title...">
                                 @error('post_title')<span class="error">{{$message}}</span>@enderror
-                                    </div>
                             </div>
                         </div>
 

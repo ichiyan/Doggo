@@ -34,17 +34,17 @@ class ShopForm extends Component
     protected function rules() {
         return [
                 'post_title' => 'required|min:7|max:30',
-                'registered_number' => ['required', 'min:8', 'exists:dogs', new UniquePost],
+                'registered_number' => 'required',
                 'post_description' => 'required|min:20|max:1000',
                 'price' => 'required|numeric',
-                'photos.*' => 'image|max:30720|max:5|mimes:png,jpg,jpeg|dimensions:min_width=100,min_height=100',
+                'photos.*' => 'max:30720|max:5|mimes:png,jpg,jpeg|dimensions:min_width=100,min_height=100',
                 'photos' => 'array|max:5',
             ];
     }
 
 
     public function updated($property) {
-        $this->validateOnly($property);
+        $this->validateOnly($property, $this->rules());
 
         if ($property == 'registered_number' && $this->registered_number != null) {
             session()->flash($property, 'Registered Number is valid.');
@@ -54,14 +54,11 @@ class ShopForm extends Component
                     ->first();
             session()->flash('dog', $dog);
         }
-        // else {
-        //     session()->flash($property, $this->validationAttributes[$property] . " is valid.");
-        // }
     }
 
     public function submitForm(Request $request)
     {
-        $validatedData = $this->validate();
+        $validatedData = $this->validate($this->rules());
 
         dd('cant reach here');
         $post = Post::create([
