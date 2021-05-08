@@ -67,10 +67,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        // $user = UserProfile::where('user_id', Auth::id())->get(['PCCI_member_id']);
-        // if($user == null) {
-        //     return back();
-        // }
 
         return view('form')->with('dog', session()->get('dog'));
     }
@@ -211,32 +207,14 @@ class PostController extends Controller
     }
 
     public function getPosts($search, $filters) {
-        $posts = new Collection([]);
-        if (count($filters) > 0) {
-
-            $posts = Post::where('post_type_id', 1)
-                    ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-                    ->whereIn('post_tag.tag_id', $filters)
+        $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->distinct('id')
-                    ->paginate(3);
-
-        } else {
-            $posts = Post::where('post_type_id', 1)
-                    ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->paginate(3);
-        }
-
-
-        // $posts = Post::where('post_type_id', 1)
-        //             ->where('posts.post_title', 'LIKE', "%{$search}%")
-        //             ->paginate(3);
+                    ->paginate(6);
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
-            $post->image = Image::where('post_id', $post->id)->first()->image_location;
         }
 
         return $posts;

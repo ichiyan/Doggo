@@ -18,7 +18,6 @@
         <title>Doggo</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
-
         <!-- Favicons -->
         <link href="{{ asset('images/temp-logo.png') }}" rel="icon" sizes="16x16 32x32">
 
@@ -39,12 +38,11 @@
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
         <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-
+        @livewireStyles
         <!-- Template Main CSS File -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
         {{-- <link rel="stylesheet" href="{{asset('css/heroStyle.css')}}"> --}}
 
-        @livewireStyles
 
     </head>
     <body>
@@ -97,7 +95,7 @@
     </div>
 
 
-
+    @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
     {{-- <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script> --}}
@@ -111,6 +109,5 @@
     <!-- Template Main JS File -->
     <script src="{{asset('js/main.js')}}"></script>
 
-    @livewireScripts
-    </body>
+</body>
 </html>

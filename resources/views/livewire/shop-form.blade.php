@@ -1,4 +1,9 @@
 <div class="card">
+    @if (session()->has('post_added'))
+        <div class="alert alert-success" role="alert">
+            {{ session('post_added') }}
+        </div>
+    @endif
     <div class="card-body">
         <div class="row justify-content-center" >
             <div class="col-sm-6">

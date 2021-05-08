@@ -26,10 +26,7 @@ class UniquePost implements Rule
      */
     public function passes($attribute, $value)
     {
-        if ($attribute == 'registered_number') {
-            $dog = Dog::where('registered_number', $value)->first();
-            return $dog != null && $dog->is_Posted === 0;
-        }
+        return Dog::where('registered_number', $value)->where('is_Posted', 0)->first() !== null;
     }
 
     /**

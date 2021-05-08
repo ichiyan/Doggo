@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Dog;
+use App\Models\DogLitter;
 use App\Models\Image;
 use App\Models\Post;
 use App\Rules\UniquePost;
@@ -16,6 +17,7 @@ class ShopForm extends Component
     use WithFileUploads;
     public $registered_number, $post_type, $post_title, $post_description, $price;
     public $photos;
+    //new CreateForm
 
     // https://laravel-livewire.com/docs/2.x/input-validation
     // protected $messages = [
@@ -34,10 +36,10 @@ class ShopForm extends Component
     protected function rules() {
         return [
                 'post_title' => 'required|min:7|max:30',
-                'registered_number' => 'required',
+                'registered_number' => ['required', 'min:8', 'exists:dogs', new UniquePost()],
                 'post_description' => 'required|min:20|max:1000',
                 'price' => 'required|numeric',
-                'photos.*' => 'max:30720|max:5|mimes:png,jpg,jpeg|dimensions:min_width=100,min_height=100',
+                'photos.*' => 'max:30720|mimes:png,jpg,jpeg|dimensions:min_width=100,min_height=100',
                 'photos' => 'array|max:5',
             ];
     }
@@ -58,22 +60,28 @@ class ShopForm extends Component
 
     public function submitForm(Request $request)
     {
-        $validatedData = $this->validate($this->rules());
+        $validatedData = $this->validate();
 
-        dd('cant reach here');
+        $dog = Dog::where('registered_number', $validatedData['registered_number'])->first();
+
         $post = Post::create([
             'post_type_id' => 1,
-            'post_title' => $this->post_title,
-            'dog_litter_id' => 20,
-            'post_description' => $this->post_description,
-            'price' => $this->price,
+            'post_title' => $validatedData['post_title'],
+            'dog_litter_id' => $dog->dog_litter_id,
+            'post_description' => $validatedData['post_description'],
+            'price' => $validatedData['price'],
             'status' => 'Has Documents',
         ]);
 
-        foreach ($this->photos as $photo) {
+        $dog->is_Posted = 1;
+
+        foreach ($validatedData['photos'] as $photo) {
             $location = $photo->store('posts');
             Image::create(['post_id' => $post->id, 'image_location' => $location, 'description' => 'to be filled']);
         }
+
+        $this->reset();
+        session()->flash('post_added', 'Successfully added a post.');
         return redirect('shop');
     }
 

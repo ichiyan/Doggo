@@ -57,6 +57,11 @@
     </div>
 </section>
 
+<div class="d-felx justify-content-center pagination">
+
+    {{ $posts->links() }}
+</div>
+
 
 @endsection
 

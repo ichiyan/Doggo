@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostController2;
 use App\Http\Controllers\CreatePostController;
 
 /*
