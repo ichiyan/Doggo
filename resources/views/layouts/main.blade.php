@@ -26,10 +26,14 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/dropdown.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/transition.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/search.min.css">
+
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
         <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
-        {{-- <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
+        <link href="{{asset('vendor/bootstrap-5.0.0/css/bootstrap.min.css')}}" rel="stylesheet">
 
         {{-- will remove some later --}}
         <link href="{{asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
@@ -40,6 +44,8 @@
         <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
         @livewireStyles
         <!-- Template Main CSS File -->
+
+        <!--  Main CSS File -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
         {{-- <link rel="stylesheet" href="{{asset('css/heroStyle.css')}}"> --}}
 
@@ -99,15 +105,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
     {{-- <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script> --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{{asset('vendor/aos/aos.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
     <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
     <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/dropdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/transition.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/search.min.js"></script>
 
 
     <!-- Template Main JS File -->
     <script src="{{asset('js/main.js')}}"></script>
 
 </body>
+    <script>
+        $('.ui.dropdown').dropdown();
+    </script>
+
+    </body>
 </html>

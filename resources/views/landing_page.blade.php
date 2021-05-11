@@ -6,7 +6,8 @@
 
     <div id="hero">
         <div class="container">
-            <div class="row text-center text-xl-left justify-content-center justify-content-xl-start">
+            {{-- omitted class text center (if mobile), will add once bug is fixed --}}
+            <div class="row text-xl-left justify-content-xl-start justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-6 px-lg-5" data-aos="fade-up" data-aos-delay="900" data-aos-duration="800">
                     <h1 class="text-uppercase mb-0">Doggo</h1>
                     <h2 class="font-weight-light text-uppercase mb-0">Committed to ethical dog breeding</h2>

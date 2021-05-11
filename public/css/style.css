@@ -1040,7 +1040,7 @@ section {
     background: #fff;
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
     transition: 0.3s;
-    margin: 5%;
+    margin: 6% 1%;
   }
 
   .shop-posts .post .post-img {
@@ -1082,7 +1082,7 @@ section {
 
 
   .shop-posts .post .options .more-info {
-    color: rgb(250, 217, 153, 0.8);
+    color: rgb(250, 217, 153, 0.88);
   }
 
   .shop-posts .post .options .more-info:hover {
@@ -1090,7 +1090,7 @@ section {
   }
 
   .shop-posts .post .options .heart {
-    color: rgb(255, 198, 194, 0.8);
+    color: rgb(255, 198, 194, 0.88);
   }
 
   .shop-posts .post .options .heart:hover {
@@ -1152,3 +1152,119 @@ section {
     right: 8px;
     opacity: 1;
   }
+
+/*--------------------------------------------------------------
+# Shop Filter
+--------------------------------------------------------------*/
+.ui.button{
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    vertical-align: baseline;
+    background: #e0e1e2 none;
+    color: rgba(0,0,0,.6);
+    margin: 0 .25em 0 0;
+    padding: .78571429em 1.5em .78571429em;
+    font-weight: 600;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    border-radius: .28571429rem;
+    -webkit-box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(34,36,38,.15) inset;
+    box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(34,36,38,.15) inset;
+    -webkit-transition: opacity .1s ease,background-color .1s ease,color .1s ease,background .1s ease,-webkit-box-shadow .1s ease;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,background .1s ease,-webkit-box-shadow .1s ease;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease,-webkit-box-shadow .1s ease;
+    will-change: '';
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ui.label .icon:before {
+    content: '\eee4';
+    font-family: "IcoFont";
+    font-style: normal;
+    font-weight:900;
+    font-size: 12px;
+    padding-left: 5px;
+    position: relative;
+    top: -1px;
+    opacity: 0.5;
+}
+
+.ui.label .icon:hover:before {
+    color: black;
+    opacity: 1;
+}
+
+a.ui.label:hover, a.ui.labels .label:hover {
+    background-color: #e0e0e0;
+    border-color: #e0e0e0;
+    background-image: none;
+    color: rgba(0,0,0,.8);
+}
+
+a.ui.active.label:hover, a.ui.labels .active.label:hover {
+    background-color: #c8c8c8;
+    border-color: #c8c8c8;
+    background-image: none;
+    color: rgba(0,0,0,.95);
+}
+
+.ui.label {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: baseline;
+    margin: 0 .14285714em;
+    background-color: #e8e8e8;
+    background-image: none;
+    padding: .5833em .833em;
+    color: rgba(0,0,0,.6);
+    text-transform: none;
+    font-weight: 500;
+    border: 0 solid transparent;
+    border-radius: .28571429rem;
+    -webkit-transition: background .1s ease;
+    transition: background .1s ease;
+}
+
+.accordion-button:not(.collapsed){
+    color: #fff;
+    background-color: #927aca;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:not(.collapsed)::after{
+    background-image: url("../images/accordion-caret-btn.svg");
+    transform: rotate(-180deg);
+}
+
+.badge-light{
+    color: #212529;
+    background-color: #e9e9e9;
+}
+
+.badge-pill{
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+
+.filter .apply {
+    background: #7861ad;
+    color: #fff;
+    padding: 12px 25px;
+    /* margin-left: 30px; */
+    color: #fff;
+    line-height: 1;
+    border-radius: 50px;
+}
+
+.filter .apply:hover {
+    background: #927aca;
+    color: #fff;
+}
+
+
+
