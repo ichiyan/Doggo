@@ -1,8 +1,5 @@
 @extends('layouts.main')
 
-@section('hero')
-
-@endsection
 
 @section('main')
 
@@ -25,8 +22,13 @@
     </div>
 </div> --}}
 
-<section id="shop-posts" class="shop-posts" style="margin-top: 5%;">
 
+<div class="shop-shapes-wrapper">
+    <img class="shop-shape-top-right-over" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right2.svg')}}" />
+    <img class="shop-shape-top-right-under" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right-blue2.svg')}}" />
+</div>
+
+<section id="shop-posts" class="shop-posts">
     <div class="container" data-aos="fade-up">
 
         <div class="filter" style="float: left; width: 25%; height: 100vw; margin-right:2%; margin-top:5%;">
@@ -336,7 +338,7 @@
         </div>
 
         <div class="right">
-            <div class="row justify-content-end" style="margin-bottom: 5%;">
+            <div class="row justify-content-start" style="margin-bottom: 5%;">
                 <div class="col-4">
                     <form action="{{ route('shop.index') }}" method="get" role="search" class="" style="display: block">
                         @csrf
@@ -351,7 +353,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-4 text-right">
+                <div class="col-4 text-left">
                     <div class="ui floating labeled icon dropdown button">
                         <i class="bx bx-sort"></i>
                         <span class="text">Sort by</span>
@@ -405,7 +407,6 @@
         </div>
     </div>
 </section>
-
 <script>
     $('.ui.dropdown').dropdown();
 </script>

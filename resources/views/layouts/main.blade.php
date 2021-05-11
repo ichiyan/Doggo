@@ -42,14 +42,8 @@
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
         <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        @livewireStyles
+        {{-- @livewireStyles --}}
         <!-- Template Main CSS File -->
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
         <!--  Main CSS File -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -107,7 +101,7 @@
     </div>
 
 
-    @livewireScripts
+    {{-- @livewireScripts --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
     {{-- <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script> --}}
@@ -126,13 +120,7 @@
     <!-- Template Main JS File -->
     <script src="{{asset('js/main.js')}}"></script>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 </body>
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     <script>
         $('.ui.dropdown').dropdown();
     </script>
