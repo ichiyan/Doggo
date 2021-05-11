@@ -209,7 +209,7 @@ class PostController extends Controller
     public function getPosts($search, $filters) {
         $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->paginate(6);
+                    ->paginate(9);
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();
