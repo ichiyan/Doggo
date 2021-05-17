@@ -43,9 +43,10 @@ Route::get('/form', function() {
 
 // Route::resource('shop', PostController::class)->middleware(['auth']);
 
-Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
 Route::post('shop/{post_id}/report', [PostController::class, 'report'])->name('report_post');
+Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
 Route::resource('shop', PostController::class);
+
 
 Route::get('admin/dashboard', function() {
     return view('admin.dashboard');

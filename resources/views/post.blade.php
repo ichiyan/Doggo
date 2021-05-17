@@ -163,40 +163,6 @@
 
 @section('main')
     <div class="content">
-        <div id="myModal" class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title">Report: <b>{{$post->post_title}}</b></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <form class="report" id="report-form" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="hidden" name="post_id" value={{$post->id}}>
-                        <input type="hidden" name="user_profile_id" value={{$user->id}}>
-                        <div class="form-row">
-                            <div class="">
-                                <label for="reason"></label>
-                                <textarea name="reason" class="form-control" id="reason" cols="100" rows="5" placeholder="Reason for reporting..." maxlength="300"></textarea>
-                                <br>
-                                <input type="file" name="image">
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" id="report-submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            </div>
-        </div>
 
         <ul class="breadcrumb">
             <li><a href="{{route('shop.index')}}">buy/sell</a></li>
@@ -210,21 +176,45 @@
 
                         <div class="post-utilities">
                             <div class="report">
-                                <a data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-flag" aria-hidden="true"></i></a>
+                                <a data-toggle="modal" data-target="#reportModal" href="#"><i class="fa fa-flag" aria-hidden="true"></i></a>
                             </div>
                             <div class="print">
-                                <a data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-print" aria-hidden="true"></i></a>
+                                <a href="{{ route('print_post', ['post_id' => $post->id]) }}" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="post-body">
                         <div class="album-space">
-                            <img src="{{ url('storage/'.$post->image->image_location) }}" alt="main pic" class="album main-pic">
+                            <img src="{{ url('storage/'.$post->images[0]) }}"  data-toggle="modal" data-target="#image-0"  alt="main pic" class="album main-pic">
+                            <div class="modal fade" id="image-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 500px; width: 500px;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <img src="{{ url('storage/'.$post->images[0]) }}" alt="dog image" style="height: 100%; width: 100%;">
+                                    </div>
+                                </div>
+                            </div>`
                             <div class="album">
-                                <img src="" alt="pic1" class="album sub-pic">
-                                <img src="" alt="pic2" class="album sub-pic">
-                                <img src="" alt="pic3" class="album sub-pic">
-                                <img src="" alt="pic4" class="album sub-pic">
+                                @foreach ($post->images as $key => $image)
+                                    @if ($key != 0)
+                                        <img src="{{ url('storage/'.$image) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic" style="margin-bottom: 10px;">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="image-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 500px; width: 500px;">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <img src="{{ url('storage/'.$image) }}" alt="dog image" style="height: 100%; width: 100%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                         <div class="details-space">
@@ -322,6 +312,29 @@
                                 </div>
                             </div>
                         </div> --}}
+
+                        <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="report">
+                                <form action="{{ route('report_post', ['post_id' => $post->id]) }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Report post</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <textarea name="reason" cols="55" rows="10" placeholder="Reason for report"></textarea>
+                                            <input type="file" name="report_image" >
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Submit Report</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

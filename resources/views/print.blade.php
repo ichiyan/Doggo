@@ -132,8 +132,7 @@
 
 								<td>
 									Invoice #: 123<br />
-									Created: January 1, 2015<br />
-									Due: February 1, 2015
+									Created: {{$post->print_date}}<br />
 								</td>
 							</tr>
 						</table>
@@ -179,15 +178,15 @@
 				</tr>
 
 				<tr class="item">
-					<td>Dog post</td>
+					<td>{{$post->post_title}}</td>
 
-					<td>$300.00</td>
+					<td>&#8369  {{ number_format($post->price, 2, '.', ',') }}</td>
 				</tr>
 
 				<tr class="item">
 					<td>Stud Service</td>
 
-					<td>$0.00</td>
+					<td>&#8369 0.00</td>
 				</tr>
 
 				{{-- <tr class="item last">
@@ -199,7 +198,7 @@
 				<tr class="total">
 					<td></td>
 
-					<td>Total: $300.00</td>
+					<td>Total: &#8369  {{ number_format($post->price, 2, '.', ',') }}</td>
 				</tr>
 			</table>
 		</div>

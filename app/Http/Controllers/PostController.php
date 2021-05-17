@@ -133,7 +133,7 @@ class PostController extends Controller
         $post->images = Image::where('post_id', $post->id)->limit(5)->pluck('image_location');
 
 
-        return view('post2', compact('post', 'user', 'dog') );
+    return view('post', compact('post', 'user', 'dog') );
     }
 
     /**
@@ -203,7 +203,11 @@ class PostController extends Controller
     }
 
     public function print($post_id) {
-        return view('print');
+        $post = Post::find($post_id);
+        $post->print_date = now()->toFormattedDateString();
+        // print_date,
+
+        return view('print', compact('post'));
     }
 
     public function validateImage($request) {

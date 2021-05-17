@@ -36,47 +36,60 @@
 
 @section('content')
     {{-- view reports and listing logs --}}
+    {{-- Have 2 different logs --}}
 <div class="reports">
-    <table class="table">
-        <thead class="table-dark">
-          <th>Post</th>
-          <th>Reporter</th>
-          <th>Reason</th>
-          <th>Reported at</th>
-        </thead>
-        <tbody>
-            @foreach ($reports as $report)
-                <tr>
-                    <td><a href="#">{{ $report->post_title }}</a></td>
-                    <td><a href="#">{{ $report->name }}</a></td>
-                    <td>{{ $report->reason }}</td>
-                    <td>{{ $report->created_at }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
 
-    <div class="card">hello</div>
-    <div class="container report">
-        <div class="row">
-            <div class="col-sm">
-                <i>ICON</i>
-            </div>
-
-            <div class="col-11">
-                <div class="row">
-                    Post Title
+    @foreach ($reports as $report)
+        <div class="container report">
+            <div class="row">
+                <div class="col-sm" style="max-width: 55px; border: 1px solid black; font-size: 24px;">
+                    <i class="far fa-flag"></i>
                 </div>
 
-                <div class="row">
-                    <div class="col">
-                    reported by _____ 2 hrs ago.
+                <div class="col-11">
+                    <div class="row">
+                        {{-- page for the report or it can be modal --}}
+                        <a href="">{{ $report->post->post_title}}</a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                        reported by {{ $report->username }} on {{ $report->created_at->toFormattedDateString() }}.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 
+</div>
+
+<br>
+listings
+<br>
+<div class="listings">
+    @foreach ($posts as $post)
+        <div class="container report">
+            <div class="row">
+                <div class="col-sm" style="max-width: 55px; border: 1px solid black; font-size: 24px;">
+                    <i class="fas fa-paw"></i>
+                </div>
+
+                <div class="col-11">
+                    <div class="row">
+                        {{-- page for the report or it can be modal --}}
+                        <a href="">{{ $post->post_title}}</a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                        posted by {{ $post->post_description }} on {{ $post->created_at->toFormattedDateString() }}.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>
 
 @endsection
