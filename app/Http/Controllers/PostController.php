@@ -130,12 +130,10 @@ class PostController extends Controller
         $user->email = User::findOrFail($user->user_id)->email;
         $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
-        $post->image = Image::where('post_id', $post->id)->first();
-        // Post: post_title, post_description, price, status, interests, dog-litter_id
-        // Dog_detail: first_name, kennel_name, birthdate, gender, breed
-        // Dog:dog_detail_id
+        $post->images = Image::where('post_id', $post->id)->limit(5)->pluck('image_location');
 
-        return view('post', compact('post', 'user', 'dog') );
+
+        return view('post2', compact('post', 'user', 'dog') );
     }
 
     /**
@@ -179,20 +177,33 @@ class PostController extends Controller
         return $result;
     }
 
-    public function report(Request $request) {
-        if ($request->has('post_id') && $request->has('user_profile_id')) {
+    public function report($post_id, Request $request) {
+        $post = Post::find($post_id);
+        if ($post != NULL) {
+            $path = '';
+            if($request->input('report_image') != NULL) {
+                // dd($request->input('report_image') != NULL, $request->input('report_image'), 'agfg');
+                // $validated = $request->validateWithBag('image',[
+                //     'report_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+                //     ]);
+                // fix validation
+                $path = $request->file('report_image')->store('reports');
+            }
 
-            $path = $request->file('image')->store('reports');
-
-            Report::create([
-                'post_id' => $request->input('post_id'),
-                'user_profile_id' => $request->input('user_profile_id'),
+            $report = Report::create([
+                'post_id' => $post->id,
+                'user_profile_id' => UserProfile::where('user_id', Auth::id())->first()->id,
                 'reason' => $request->input('reason'),
                 'image' => $path,
             ]);
+
         };
 
-        return back()->with('message', 'Report created');
+        return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+    }
+
+    public function print($post_id) {
+        return view('print');
     }
 
     public function validateImage($request) {

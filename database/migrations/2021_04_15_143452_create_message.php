@@ -15,10 +15,15 @@ class CreateMessage extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chat_room_id')->constrained('chat_rooms', 'id');
             $table->foreignId('user_id')->constrained('users', 'id');
+            $table->foreignId('receiver')->constrained('users', 'id');
             $table->string('text', 1000);
-            $table->timestamps();
+            $table->timestamp('is_seen')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->string('file')->nullable();
+            $table->string('file_name')->nullable();
+
         });
     }
 

@@ -31,7 +31,8 @@
 <section id="shop-posts" class="shop-posts">
     <div class="container" data-aos="fade-up">
 
-        <div class="filter" style="float: left; width: 25%; height: 100vw; margin-right:2%; margin-top:5%;">
+        <form action="">
+          <div class="filter" style="float: left; width: 25%; height: 100vw; margin-right:2%; margin-top:5%;">
             <h1><small>Filter</small></h1>
 
             <div class="accordion" id="accordionExample">
@@ -48,8 +49,9 @@
                         <strong>Search for specific breeds.</strong>
                     </p>
                     <div class="form-group">
-                        <select id="multiple-select" class="ui fluid search dropdown" multiple name="">
+                        <select id="multiple-select" class="ui fluid search dropdown" multiple name="breed">
                             {{--options should be fetched from db--}}
+                            {{-- Make table for breeds --}}
                             <option value="1">Siberian Husky (42)</option>
                             <option value="2">Welsh Corgi (42)</option>
                             <option value="3">Shiba Inu (42)</option>
@@ -248,16 +250,16 @@
                   <div class="accordion-body">
                       <div class="filter-content">
                           <div class="card-body">
-                          <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label>Min</label>
-                            <input type="number" class="form-control" id="" placeholder="&#8369 0">
-                          </div>
-                          <div class="form-group col-md-6 text-right">
-                            <label>Max</label>
-                            <input type="number" class="form-control" placeholder="&#8369 max price"> {{--max price in db?--}}
-                          </div>
-                          </div>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label>Min</label>
+                                <input type="number" class="form-control" id="" placeholder="&#8369 0">
+                              </div>
+                              <div class="form-group col-md-6 text-right">
+                                <label>Max</label>
+                                <input type="number" class="form-control" placeholder="&#8369 max price"> {{--max price in db?--}}
+                              </div>
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -336,6 +338,7 @@
 
           </div>
         </div>
+        </form>
 
         <div class="right">
             <div class="row justify-content-start" style="margin-bottom: 5%;">

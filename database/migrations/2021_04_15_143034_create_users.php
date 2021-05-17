@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUsers extends Migration
@@ -22,11 +23,14 @@ class CreateUsers extends Migration
             $table->rememberToken();
             $table->timestamp('logged_in')->nullable();
             $table->timestamp('logged_out')->nullable();
+            $table->boolean('is_online')->default(0);
+            $table->timestamp('last_activity')->nullable();
+            $table->rememberToken();
         });
 
         DB::table('users')->insert(
             array(
-                ['name' => 'Gabriela',
+                ['name' => 'Josh',
                 'email' => "admin@gmail.com",
                 'password' => bcrypt('p@ssw0rd')
                 ]
