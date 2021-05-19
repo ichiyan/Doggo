@@ -72,6 +72,7 @@ class ShopForm extends Component
         ]);
 
         $dog->is_Posted = 1;
+        $dog->save();
 
         foreach ($validatedData['photos'] as $photo) {
             $location = $photo->store('posts');

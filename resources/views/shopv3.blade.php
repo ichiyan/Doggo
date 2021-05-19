@@ -410,9 +410,6 @@
         </div>
     </div>
 </section>
-<script>
-    $('.ui.dropdown').dropdown();
-</script>
 
 @endsection
 

@@ -1,27 +1,41 @@
-<div class="card">
-    @if (session()->has('post_added'))
-        <div class="alert alert-success" role="alert">
-            {{ session('post_added') }}
+@if (session()->has('post_added'))
+<div aria-live="polite" aria-atomic="true" style="position: absolute; min-height: 200px;">
+    <!-- Position it -->
+    <div style="position: absolute; top: 0; right: 0;">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="toast-body">
+            Hello, world! This is a toast message.
+            </div>
         </div>
-    @endif
-    <div class="card-body">
-        <div class="row justify-content-center" >
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-header">
-                    Sell a dog
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Post</h5>
-                  <form wire:submit.prevent="submitForm">
+    </div>
+</div>
+@endif
 
+<div class="row justify-content-center" >
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header ">
+                Sell a dog
+            </div>
+
+            <div class="card-content p-5">
+                <form wire:submit.prevent="submitForm">
                     <fieldset class="form-group">
 
                         <input type="hidden" name="post-type" value=1>
 
-                        <div class="form-group row">
-                            <label for="registered_number" class="col-sm-2 col-form-label">DRN *</label>
-                            <div class="col-sm-10">
+                        <div class="form-group">
+                            {{-- <label for="registered_number" class="col-sm-2 col-form-label">DRN *</label> --}}
+                            <label for="registered_number">DRN *</label>
+                            <div>
                                 <input wire:model.lazy="registered_number" class="form-control" type="text" id="registered_number" name="registered_number" placeholder="Dog's Registered Number">
                                 @error('registered_number')<span class="error">{{$message}}</span>@enderror
                                 @if (session()->has('registered_number'))
@@ -32,26 +46,29 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="post_title" class="col-sm-2 col-form-label">Title</label>
-                            <div class="col-sm-10">
+                        <div class="form-group">
+                            {{-- <label for="post_title" class="col-sm-2 col-form-label">Title</label> --}}
+                            <label for="post_title">Title</label>
+                            <div>
                                 <input wire:model.lazy="post_title" class="form-control" type="text" id="post_title" name="post_title" placeholder="Post Title...">
                                 @error('post_title')<span class="error">{{$message}}</span>@enderror
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="post_description" class="col-sm-2 col-form-label">Description</label>
-                            <div class="col-sm-10">
+                        <div class="form-group">
+                            {{-- <label for="post_description" class="col-sm-2 col-form-label">Description</label> --}}
+                            <label for="post_description">Description</label>
+                            <div>
                                 <textarea wire:model.lazy="post_description" class="form-control" id="post_description" name="post_description"
-                                 placeholder="Write something.." style="height:220px; width: 500px;"></textarea>
-                                 @error('post_description')<span class="error">{{$message}}</span>@enderror
+                                    placeholder="Write something.." style="height:220px; width: 500px;"></textarea>
+                                    @error('post_description')<span class="error">{{$message}}</span>@enderror
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="price" class="col-sm-2 col-form-label">Price</label>
-                            <div class="col-sm-10">
+                        <div class="form-group">
+                            {{-- <label for="price" class="col-sm-2 col-form-label">Price</label> --}}
+                            <label for="price">Price</label>
+                            <div>
                                 <input wire:model.lazy="price" class="form-control" type="text" id="price" step="any" min="1" maxlength="12" name="price" placeholder="Price..">
                                 @error('price')<span class="error">{{$message}}</span>@enderror
                             </div>
@@ -63,15 +80,17 @@
                                 <input type="file" id="images" name="file" placeholder="Images...">
                             </div>
                         </div> --}}
-                        <div class="form-group row">
-                            <label for="images" class="col-sm-2 col-form-label">Images</label>
-                            <div class="col-sm-10">
+                        <div class="form-group">
+                            {{-- <label for="images" class="col-sm-2 col-form-label">Images</label> --}}
+                            <label for="images">Images</label>
+                            <div>
                                 <input wire:model="photos" type="file" id="images" name="photos" placeholder="Images..." multiple>
                                 <br>@error('photos') <span class="error">{{ $message }}</span> @enderror
                                 <div wire:loading wire:target="photo">Uploading...</div>
                             </div>
                             @if ($photos)
-                            <div class="col-sm-3 col-form-label"><b>Photo Preview</b></div>
+                            {{-- <div class="col-sm-3 col-form-label"><b>Photo Preview</b></div> --}}
+                            <div class="form-group"><b>Photo Preview</b></div>
                             <div class="previews" style="display: flex; justify-content: center; width: 700px; flex-wrap: wrap; align-items: center; align-content: flex-start;">
                                 @foreach ($photos as $image)
 
@@ -82,14 +101,13 @@
                         </div>
                     </fieldset>
 
-                    <div class="footer justify-content-center">
+                    <div class="footer row justify-content-end">
                         <input type="submit" value="Submit Post" class="btn btn-primary">
                     </div>
-
-                </div>
-              </div>
+                </form>
             </div>
 
+            </div>
         </div>
     </div>
 

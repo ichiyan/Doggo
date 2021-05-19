@@ -20,7 +20,6 @@ class CreateUsers extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
             $table->timestamp('logged_in')->nullable();
             $table->timestamp('logged_out')->nullable();
             $table->boolean('is_online')->default(0);

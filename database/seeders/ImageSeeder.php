@@ -21,7 +21,7 @@ class ImageSeeder extends Seeder
         foreach($posts as $post) {
             DB::table('images')->insert([
                 'post_id' => $post->id,
-                'image_location' => "/posts/default-dog-pic.jpeg",
+                'image_location' => "posts/default-dog-pic.jpeg",
                 'description' => "A picture about the dog being posted",
             ]);
         }

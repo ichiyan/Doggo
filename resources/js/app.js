@@ -5,6 +5,10 @@ require('alpinejs');
 import Vue from 'vue';
 window.Vue = Vue;
 
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
 import CardPost from './components/CardPost.vue'
 import SearchPost from './components/SearchPost.vue'
 import FilterPost from './components/FilterPost.vue'
