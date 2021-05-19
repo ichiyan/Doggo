@@ -47,6 +47,7 @@ Route::post('shop/{post_id}/report', [PostController::class, 'report'])->name('r
 Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
 Route::resource('shop', PostController::class);
 
+Route::patch('image/{imgId}/edit', [PostController::class, 'editImage'])->name('editImage');
 
 Route::get('admin/dashboard', function() {
     return view('admin.dashboard');

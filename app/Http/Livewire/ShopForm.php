@@ -3,12 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Dog;
-use App\Models\DogLitter;
 use App\Models\Image;
 use App\Models\Post;
 use App\Rules\UniquePost;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

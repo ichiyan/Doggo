@@ -158,7 +158,10 @@
         margin-top: 100px;
     }
 
+
+
 </style>
+@livewireStyles
 @endsection
 
 @section('main')
@@ -185,34 +188,15 @@
                     </div>
                     <div class="post-body">
                         <div class="album-space">
-                            <img src="{{ url('storage/'.$post->images[0]) }}"  data-toggle="modal" data-target="#image-0"  alt="main pic" class="album main-pic">
-                            <div class="modal fade" id="image-0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 500px; width: 500px;">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <img src="{{ url('storage/'.$post->images[0]) }}" alt="dog image" style="height: 100%; width: 100%;">
-                                    </div>
-                                </div>
-                            </div>`
+                            <img src="{{ url('storage/'.$post->images[0]->image_location ) }}"  data-toggle="modal" data-target="#image-0"  alt="main pic" class="album main-pic">
+                            <livewire:post-image :nthImage="0" :postImg="$post->images[0]" />
+
                             <div class="album">
                                 @foreach ($post->images as $key => $image)
                                     @if ($key != 0)
-                                        <img src="{{ url('storage/'.$image) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic" style="margin-bottom: 10px;">
+                                        <img src="{{ url('storage/'.$image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic" >
                                         <!-- Modal -->
-                                        <div class="modal fade" id="image-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 500px; width: 500px;">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <img src="{{ url('storage/'.$image) }}" alt="dog image" style="height: 100%; width: 100%;">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" />
                                     @endif
                                 @endforeach
                             </div>
@@ -340,4 +324,6 @@
             </div>
         </div>
     </div>
+
+@livewireScripts
 @endsection

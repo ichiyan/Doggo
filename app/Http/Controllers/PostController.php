@@ -130,10 +130,9 @@ class PostController extends Controller
         $user->email = User::findOrFail($user->user_id)->email;
         $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
-        $post->images = Image::where('post_id', $post->id)->limit(5)->pluck('image_location');
+        $post->images = Image::where('post_id', $post->id)->limit(5)->get();
 
-
-    return view('post', compact('post', 'user', 'dog') );
+        return view('post', compact('post', 'user', 'dog') );
     }
 
     /**
@@ -245,5 +244,14 @@ class PostController extends Controller
         }
 
         return $filters;
+    }
+
+    public function editImage($imgId, Request $request) {
+        if ($request->has('description')) {
+            $img = Image::find($imgId);
+            $img->description = $request->input('description');
+            $img->save();
+        }
+
     }
 }
