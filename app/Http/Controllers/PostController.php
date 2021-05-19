@@ -177,28 +177,32 @@ class PostController extends Controller
     }
 
     public function report($post_id, Request $request) {
-        $post = Post::find($post_id);
-        if ($post != NULL) {
-            $path = '';
-            if($request->input('report_image') != NULL) {
-                // dd($request->input('report_image') != NULL, $request->input('report_image'), 'agfg');
-                // $validated = $request->validateWithBag('image',[
-                //     'report_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
-                //     ]);
-                // fix validation
-                $path = $request->file('report_image')->store('reports');
-            }
+        if (Auth::check()) {
+            $post = Post::find($post_id);
+            if ($post != NULL) {
+                $path = '';
+                if($request->input('report_image') != NULL) {
+                    // dd($request->input('report_image') != NULL, $request->input('report_image'), 'agfg');
+                    // $validated = $request->validateWithBag('image',[
+                    //     'report_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+                    //     ]);
+                    // fix validation
+                    $path = $request->file('report_image')->store('reports');
+                }
 
-            $report = Report::create([
-                'post_id' => $post->id,
-                'user_profile_id' => UserProfile::where('user_id', Auth::id())->first()->id,
-                'reason' => $request->input('reason'),
-                'image' => $path,
-            ]);
+                $report = Report::create([
+                    'post_id' => $post->id,
+                    'user_profile_id' => UserProfile::where('user_id', Auth::id())->first()->id,
+                    'reason' => $request->input('reason'),
+                    'image' => $path,
+                ]);
 
-        };
+            };
+            return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+        }
 
-        return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+        // return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+        return back();
     }
 
     public function print($post_id) {
