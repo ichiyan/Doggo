@@ -12,6 +12,7 @@ class Dog extends Model
     protected $fillable = [
         'registered_number', 'dog_detail_id',
         'dog_owner_id', 'dog_litter_id', 'is_Posted',
+        'price',
     ];
 
     public function siblings() {

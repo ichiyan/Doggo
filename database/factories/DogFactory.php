@@ -37,6 +37,7 @@ class DogFactory extends Factory
 
         return [
             'registered_number' => $this->faker->swiftBicNumber(),
+            'price' => $this->faker->randomNumber(5),
             'dog_owner_id' => $user,
             'dog_detail_id' => DogDetail::factory(1)->create()[0]->id,
             'dog_litter_id' => DogLitter::factory(1)->create()[0]->id,
