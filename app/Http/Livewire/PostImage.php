@@ -28,7 +28,7 @@ class PostImage extends Component
     }
 
     public function canEdit() {
-        return $this->post->user_id == Auth::id();
+        // return $this->post->user_id == Auth::id();
     }
 
     public function render()

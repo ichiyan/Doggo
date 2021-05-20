@@ -383,7 +383,7 @@
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{ url('storage/'.$post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px;">
+                                    <img src="{{ url('storage/'.$post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px">
                                     <div class="options">
                                     <a href=""><i class="bx bx-md bxs-heart-circle  heart"></i></a>
                                     <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bx-md bxs-info-circle  more-info"></i></a>
@@ -395,7 +395,7 @@
                                         {{ $post->dog->breed }} | {{ $post->dog->age }} |
                                     </span>
                                     {{-- add location --}}
-                                    <span class="badge badge-primary">{{$post->interests}} Interested</span>
+                                    <span class="badge badge-info">{{$post->interests}} Interested</span>
                                     <p>{{ $post->post_description }}</p>
                                 </div>
                             </div>
