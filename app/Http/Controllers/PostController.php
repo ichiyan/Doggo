@@ -67,8 +67,13 @@ class PostController extends Controller
      */
     public function create()
     {
+        $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
 
-        return view('form')->with('dog', session()->get('dog'));
+        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+            return view('form')->with('dog', session()->get('dog'));
+        }
+
+        return back()->withErrors(['Only PCCI members are allowed to sell.']);
     }
 
     /**
@@ -79,13 +84,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // Lacking Validation $request->validate([attr.s])
-        // $post_type = PostType::create(['post_type_name' => $request->input('post-type')]);
-        // PostType::create(['post_type_name' => $request->input('post-type')]);
+        // ATTENTION: This function is not used instead, the app/Http/Livewire/ShopForm is used to process form submit
         $userProfile = UserProfile::where('user_id', Auth::id())->get('id');
-        // for registered dog being posted results to Dog litter being created
-        // unless able to determine which dog litter it came from.
-        // can't access dog to update dog_litter_id (FK)
         $dlID = DogLitter::create(['population' => 1])->id;
 
         $dog = Dog::where('registered_number', request()->session()->get('DRN'))->first();
@@ -93,8 +93,8 @@ class PostController extends Controller
         $dog->save();
 
         $post = Post::create([
+            'user_id' => Auth::id(),
             'dog_litter_id' => $dlID,
-            'user_profile_id' => $userProfile,
             'post_type_id' => 1,
             'post_title' => $request->input('post-title'),
             'price' => $request->input('price'),
@@ -181,7 +181,7 @@ class PostController extends Controller
             $post = Post::find($post_id);
             if ($post != NULL) {
                 $path = '';
-                if($request->input('report_image') != NULL) {
+                if($request->file('report_image') != NULL) {
                     // dd($request->input('report_image') != NULL, $request->input('report_image'), 'agfg');
                     // $validated = $request->validateWithBag('image',[
                     //     'report_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
@@ -189,7 +189,6 @@ class PostController extends Controller
                     // fix validation
                     $path = $request->file('report_image')->store('reports');
                 }
-
                 $report = Report::create([
                     'post_id' => $post->id,
                     'user_profile_id' => UserProfile::where('user_id', Auth::id())->first()->id,

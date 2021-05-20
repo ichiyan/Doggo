@@ -30,9 +30,10 @@ class CreateUserProfilesTable extends Migration
             $table->string('contact_number', 30);
             $table->foreignId('user_id')->constrained('users', 'id');
             $table->boolean('is_admin')->default(false);
-            $table->foreignId('pcci_member_id')->constrained('pcci_members', 'id')->nullable();
+            $table->foreignId('pcci_member_id')->nullable()->constrained('pcci_members', 'id');
             $table->timestamps();
         });
+
     }
 
     /**

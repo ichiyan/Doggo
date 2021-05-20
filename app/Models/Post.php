@@ -7,13 +7,14 @@ use App\Utilities\FilterBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
     use HasFactory;
     //protected $primaryKey = 'post_id';
     protected $table = 'posts';
-    protected $fillable = [
+    protected $fillable = [ 'user_id',
         'dog_litter_id', 'post_type_id',
         'post_title', 'post_description',
         'price', 'status', 'interests',

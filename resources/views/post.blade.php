@@ -196,7 +196,7 @@
                     <div class="post-body">
                         <div class="album-space">
                             <img src="{{ url('storage/'.$post->images[0]->image_location ) }}"  data-toggle="modal" data-target="#image-0"  alt="main pic" class="album main-pic">
-                            <livewire:post-image :nthImage="0" :postImg="$post->images[0]" />
+                            <livewire:post-image :nthImage="0" :postImg="$post->images[0]" :post="$post" />
 
                             <div class="album">
                                 @foreach ($post->images as $key => $image)

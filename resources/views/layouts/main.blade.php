@@ -136,7 +136,7 @@
         @endif
 
         @if ($errors->any())
-            toastr.error("{{ implode('', $errors->all('<div>:message</div>')) }}")
+            toastr.error("{{ implode('', $errors->all(':message')) }}")
         @endif
     </script>
 

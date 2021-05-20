@@ -4,12 +4,15 @@ namespace App\Http\Livewire;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class PostImage extends Component
 {
     public $nthImage, $description, $image, $image_id, $created_at;
+    public $ownerId;
+    public $post;
 
 
     public function mount($postImg)
@@ -22,6 +25,10 @@ class PostImage extends Component
 
     public function submitForm(Request $request) {
         $dbImage = Image::where('id', $this->image_id)->update(['description' => $this->description]);
+    }
+
+    public function canEdit() {
+        return $this->post->user_id == Auth::id();
     }
 
     public function render()

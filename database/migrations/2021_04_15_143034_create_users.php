@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -26,15 +27,6 @@ class CreateUsers extends Migration
             $table->timestamp('last_activity')->nullable();
             $table->rememberToken();
         });
-
-        DB::table('users')->insert(
-            array(
-                ['name' => 'Josh',
-                'email' => "admin@gmail.com",
-                'password' => bcrypt('p@ssw0rd')
-                ]
-            )
-        );
 
     }
 

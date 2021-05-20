@@ -7,13 +7,14 @@ use App\Models\Image;
 use App\Models\Post;
 use App\Rules\UniquePost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class ShopForm extends Component
 {
     use WithFileUploads;
-    public $registered_number, $post_type, $post_title, $post_description, $price;
+    public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
     public $photos;
     //new CreateForm
 
@@ -62,8 +63,8 @@ class ShopForm extends Component
         $validatedData = $this->validate();
 
         $dog = Dog::where('registered_number', $validatedData['registered_number'])->first();
-
         $post = Post::create([
+            'user_id' => Auth::id(),
             'post_type_id' => 1,
             'post_title' => $validatedData['post_title'],
             'dog_litter_id' => $dog->dog_litter_id,

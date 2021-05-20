@@ -5,6 +5,8 @@ namespace Database\Factories;
 use App\Models\Dog;
 use App\Models\Post;
 use App\Models\PostType;
+use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
@@ -31,6 +33,7 @@ class PostFactory extends Factory
         return [
             'dog_litter_id' => $dog,
             'post_type_id' => PostType::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
             'post_title' => "Post " . $dog,
             'post_description' => $this->faker->text(50),
             'price' => $this->faker->randomNumber(5),

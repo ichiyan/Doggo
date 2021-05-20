@@ -21,24 +21,26 @@
                         <div class="card-content p-2">
                             {{-- livewire --}}
                             <div class="form-group text-nowrap"><p class="collapse show hide"><b>Description</b>: <br>{{$description}}</p></div>
-                            <form wire:submit.prevent="submitForm" class="collapse hide">
-                                <textarea class="form-control" wire:model.defer="description" name="image_description" cols="30" rows="10"> {{$description}}</textarea>
+                                <form wire:submit.prevent="submitForm" class="collapse hide">
+                                    <textarea class="form-control" wire:model.defer="description" name="image_description" cols="30" rows="10"> {{$description}}</textarea>
 
-                                <div class="card-footer collapse hide">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <button type="button" class="btn btn-primary" wire:click="submitForm"> Done Editing</button>
-                                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target=".hide">Cancel</button>
+                                    <div class="card-footer collapse hide">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-primary" wire:click="submitForm"> Done Editing</button>
+                                                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target=".hide">Cancel</button>
+                                            </div>
                                         </div>
                                     </div>
+                                </form>
+                        </div>
+                        @if ($this->canEdit())
+                            <div class="row collapse show hide">
+                                <div class="col ml-3 ">
+                                    <button type="button" data-toggle="collapse" data-target=".hide" class="btn btn-light" style="border: 1px solid black;">Edit</button>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="row collapse show hide">
-                            <div class="col ml-3 ">
-                                <button type="button" data-toggle="collapse" data-target=".hide" class="btn btn-light" style="border: 1px solid black;">Edit</button>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
