@@ -27,11 +27,11 @@
     <img class="shop-shape-top-right-over" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right2.svg')}}" />
     <img class="shop-shape-top-right-under" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right-blue2.svg')}}" />
 </div>
-
 <section id="shop-posts" class="shop-posts">
     <div class="container" data-aos="fade-up">
 
-        <div class="filter" style="float: left; width: 25%; height: 100vw; margin-right:2%; margin-top:5%;">
+        <form action="">
+          <div class="filter" style="float: left; width: 25%; height: 100vw; margin-right:2%; margin-top:5%;">
             <h1><small>Filter</small></h1>
 
             <div class="accordion" id="accordionExample">
@@ -48,8 +48,9 @@
                         <strong>Search for specific breeds.</strong>
                     </p>
                     <div class="form-group">
-                        <select id="multiple-select" class="ui fluid search dropdown" multiple name="">
+                        <select id="multiple-select" class="ui fluid search dropdown" multiple name="breed">
                             {{--options should be fetched from db--}}
+                            {{-- Make table for breeds --}}
                             <option value="1">Siberian Husky (42)</option>
                             <option value="2">Welsh Corgi (42)</option>
                             <option value="3">Shiba Inu (42)</option>
@@ -248,16 +249,16 @@
                   <div class="accordion-body">
                       <div class="filter-content">
                           <div class="card-body">
-                          <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label>Min</label>
-                            <input type="number" class="form-control" id="" placeholder="&#8369 0">
-                          </div>
-                          <div class="form-group col-md-6 text-right">
-                            <label>Max</label>
-                            <input type="number" class="form-control" placeholder="&#8369 max price"> {{--max price in db?--}}
-                          </div>
-                          </div>
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label>Min</label>
+                                <input type="number" class="form-control" id="" placeholder="&#8369 0">
+                              </div>
+                              <div class="form-group col-md-6 text-right">
+                                <label>Max</label>
+                                <input type="number" class="form-control" placeholder="&#8369 max price"> {{--max price in db?--}}
+                              </div>
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -336,6 +337,7 @@
 
           </div>
         </div>
+        </form>
 
         <div class="right">
             <div class="row justify-content-start" style="margin-bottom: 5%;">
@@ -344,7 +346,7 @@
                         @csrf
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for listing..."
-                                aria-label="Search" aria-describedby="basic-addon2" name="search-post">
+                                aria-label="Search" aria-describedby="basic-addon2" name="search-post" value="{{ request('search-post') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
@@ -381,7 +383,7 @@
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{asset('images/default-dog-pic.jpg')}}" class="img-fluid" alt="">
+                                    <img src="{{ url('storage/'.$post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px;">
                                     <div class="options">
                                     <a href=""><i class="bx bxs-heart-circle  heart"></i></a>
                                     <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bxs-info-circle  more-info"></i></a>
@@ -407,10 +409,6 @@
         </div>
     </div>
 </section>
-<script>
-    $('.ui.dropdown').dropdown();
-</script>
-
 @endsection
 
 

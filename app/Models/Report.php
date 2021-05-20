@@ -14,9 +14,13 @@ class Report extends Model
         'post_id', 'user_profile_id',
         'reason', 'image',
     ];
-    
-    public function reports() {
+
+    public function post() {
         return $this->belongsTo(Post::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(UserProfile::class);
     }
 
 }

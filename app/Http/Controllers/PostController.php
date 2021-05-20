@@ -67,8 +67,13 @@ class PostController extends Controller
      */
     public function create()
     {
+        $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
 
-        return view('form')->with('dog', session()->get('dog'));
+        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+            return view('form')->with('dog', session()->get('dog'));
+        }
+
+        return back()->withErrors(['Only PCCI members are allowed to sell.']);
     }
 
     /**
@@ -79,13 +84,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // Lacking Validation $request->validate([attr.s])
-        // $post_type = PostType::create(['post_type_name' => $request->input('post-type')]);
-        // PostType::create(['post_type_name' => $request->input('post-type')]);
+        // ATTENTION: This function is not used instead, the app/Http/Livewire/ShopForm is used to process form submit
         $userProfile = UserProfile::where('user_id', Auth::id())->get('id');
-        // for registered dog being posted results to Dog litter being created
-        // unless able to determine which dog litter it came from.
-        // can't access dog to update dog_litter_id (FK)
         $dlID = DogLitter::create(['population' => 1])->id;
 
         $dog = Dog::where('registered_number', request()->session()->get('DRN'))->first();
@@ -93,8 +93,8 @@ class PostController extends Controller
         $dog->save();
 
         $post = Post::create([
+            'user_id' => Auth::id(),
             'dog_litter_id' => $dlID,
-            'user_profile_id' => $userProfile,
             'post_type_id' => 1,
             'post_title' => $request->input('post-title'),
             'price' => $request->input('price'),
@@ -130,10 +130,7 @@ class PostController extends Controller
         $user->email = User::findOrFail($user->user_id)->email;
         $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
-        $post->image = Image::where('post_id', $post->id)->first();
-        // Post: post_title, post_description, price, status, interests, dog-litter_id
-        // Dog_detail: first_name, kennel_name, birthdate, gender, breed
-        // Dog:dog_detail_id
+        $post->images = Image::where('post_id', $post->id)->limit(5)->get();
 
         return view('post', compact('post', 'user', 'dog') );
     }
@@ -179,20 +176,40 @@ class PostController extends Controller
         return $result;
     }
 
-    public function report(Request $request) {
-        if ($request->has('post_id') && $request->has('user_profile_id')) {
+    public function report($post_id, Request $request) {
+        if (Auth::check()) {
+            $post = Post::find($post_id);
+            if ($post != NULL) {
+                $path = '';
+                if($request->file('report_image') != NULL) {
+                    // dd($request->input('report_image') != NULL, $request->input('report_image'), 'agfg');
+                    // $validated = $request->validateWithBag('image',[
+                    //     'report_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+                    //     ]);
+                    // fix validation
+                    $path = $request->file('report_image')->store('reports');
+                }
+                $report = Report::create([
+                    'post_id' => $post->id,
+                    'user_profile_id' => UserProfile::where('user_id', Auth::id())->first()->id,
+                    'reason' => $request->input('reason'),
+                    'image' => $path,
+                ]);
 
-            $path = $request->file('image')->store('reports');
+            };
+            return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+        }
 
-            Report::create([
-                'post_id' => $request->input('post_id'),
-                'user_profile_id' => $request->input('user_profile_id'),
-                'reason' => $request->input('reason'),
-                'image' => $path,
-            ]);
-        };
+        // return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+        return back();
+    }
 
-        return back()->with('message', 'Report created');
+    public function print($post_id) {
+        $post = Post::find($post_id);
+        $post->print_date = now()->toFormattedDateString();
+        // print_date,
+
+        return view('print', compact('post'));
     }
 
     public function validateImage($request) {
@@ -230,5 +247,14 @@ class PostController extends Controller
         }
 
         return $filters;
+    }
+
+    public function editImage($imgId, Request $request) {
+        if ($request->has('description')) {
+            $img = Image::find($imgId);
+            $img->description = $request->input('description');
+            $img->save();
+        }
+
     }
 }

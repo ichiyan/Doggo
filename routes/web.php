@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +43,22 @@ Route::get('/form', function() {
 
 // Route::resource('shop', PostController::class)->middleware(['auth']);
 
+Route::post('shop/{post_id}/report', [PostController::class, 'report'])->name('report_post');
+Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
 Route::resource('shop', PostController::class);
+
+Route::patch('image/{imgId}/edit', [PostController::class, 'editImage'])->name('editImage');
+
+Route::get('admin/dashboard', function() {
+    return view('admin.dashboard');
+});
+
+Route::get('admin/logs', [AdminController::class, 'logs']);
+
+
+Route::get('modal', function () {
+    return view('modal');
+});
 
 
 Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');

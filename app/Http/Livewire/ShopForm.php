@@ -3,27 +3,26 @@
 namespace App\Http\Livewire;
 
 use App\Models\Dog;
-use App\Models\DogLitter;
 use App\Models\Image;
 use App\Models\Post;
 use App\Rules\UniquePost;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class ShopForm extends Component
 {
     use WithFileUploads;
-    public $registered_number, $post_type, $post_title, $post_description, $price;
+    public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
     public $photos;
     //new CreateForm
 
     // https://laravel-livewire.com/docs/2.x/input-validation
-    // protected $messages = [
-    //     'email.required' => 'The Email Address cannot be empty.',
-    //     'email.email' => 'The Email Address format is not valid.',
-    // ];
+    protected $messages = [
+        // 'email.required' => 'The Email Address cannot be empty.',
+        'photos.*' => 'Photos must not be empty and should be less than 6.',
+    ];
 
     protected $validationAttributes = [
         'post_title' => 'Post Title',
@@ -31,6 +30,7 @@ class ShopForm extends Component
         'post_description' => 'Description',
         'price' => 'Price',
         'photos' => 'Photos',
+        'photos.*' => 'Photos',
     ];
 
     protected function rules() {
@@ -63,8 +63,8 @@ class ShopForm extends Component
         $validatedData = $this->validate();
 
         $dog = Dog::where('registered_number', $validatedData['registered_number'])->first();
-
         $post = Post::create([
+            'user_id' => Auth::id(),
             'post_type_id' => 1,
             'post_title' => $validatedData['post_title'],
             'dog_litter_id' => $dog->dog_litter_id,
@@ -74,10 +74,11 @@ class ShopForm extends Component
         ]);
 
         $dog->is_Posted = 1;
+        $dog->save();
 
         foreach ($validatedData['photos'] as $photo) {
             $location = $photo->store('posts');
-            Image::create(['post_id' => $post->id, 'image_location' => $location, 'description' => 'to be filled']);
+            Image::create(['post_id' => $post->id, 'image_location' => $location, 'description' => '']);
         }
 
         $this->reset();

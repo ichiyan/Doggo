@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/transition.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/search.min.css">
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
         <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
@@ -44,7 +45,7 @@
         <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
         {{-- @livewireStyles --}}
         <!-- Template Main CSS File -->
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--  Main CSS File -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
         {{-- <link rel="stylesheet" href="{{asset('css/heroStyle.css')}}"> --}}
@@ -105,25 +106,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
     {{-- <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script> --}}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> --}}
     <script src="{{asset('vendor/aos/aos.js')}}"></script>
     <script src="{{asset('vendor/bootstrap-5.0.0/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
     <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
     <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
 
+    {{-- For Modal Purposes --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/dropdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/transition.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/search.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Template Main JS File -->
     <script src="{{asset('js/main.js')}}"></script>
 
-</body>
     <script>
         $('.ui.dropdown').dropdown();
+
+        @if (Session::has('post_added'))
+            toastr.success("{{ Session::get('post_added')}}")
+        @endif
+
+        @if ($errors->any())
+            toastr.error("{{ implode('', $errors->all(':message')) }}")
+        @endif
     </script>
 
-    </body>
+</body>
 </html>

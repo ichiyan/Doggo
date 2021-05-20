@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Post::factory(10)->create();
         \App\Models\PostTag::factory(10)->create();
         $this->call([ImageSeeder::class]);
+        $this->call([UserProfileSeeder::class]);
+
     }
 }
