@@ -30,7 +30,7 @@
 <section id="shop-posts" class="shop-posts">
     <div class="container" data-aos="fade-up">
 
-        <form method="get" action="{{ route('shop.index') }}">
+        <form action="">
           <div class="filter" style="float: left; width: 25%; height: 100vw; margin-right:2%; margin-top:5%;">
             <h1><small>Filter</small></h1>
 

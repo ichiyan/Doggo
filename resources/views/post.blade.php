@@ -173,7 +173,7 @@
     <div class="content">
 
         <ul class="breadcrumb">
-            <li><a href="{{route('shop.index')}}">buy/sell</a></li>
+            <li><a href="{{route('shop.index')}}">Shop</a></li>
             <li>{{ $post->post_title }}</li>
         </ul>
         <div>
@@ -195,13 +195,9 @@
                     </div>
                     <div class="post-body">
                         <div class="album-space">
-<<<<<<< HEAD
-                            <img src="{{$post->image->image_location}}" alt="main pic" class="album main-pic">
-=======
                             <img src="{{ url('storage/'.$post->images[0]->image_location ) }}"  data-toggle="modal" data-target="#image-0"  alt="main pic" class="album main-pic">
                             <livewire:post-image :nthImage="0" :postImg="$post->images[0]" :post="$post" />
 
->>>>>>> c7503fa6553756ae2b2706d8dd86f01b4cff39a0
                             <div class="album">
                                 @foreach ($post->images as $key => $image)
                                     @if ($key != 0)
