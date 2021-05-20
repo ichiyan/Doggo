@@ -134,7 +134,7 @@ class PostController extends Controller
         $dog->age = $this->getMonths($dog->birthdate);
         $post->images = Image::where('post_id', $post->id)->limit(5)->get();
 
-        return view('post', compact('post', 'user', 'dog') );
+        return view('postv3', compact('post', 'user', 'dog') );
     }
 
     /**

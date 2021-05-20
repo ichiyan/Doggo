@@ -386,6 +386,58 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 15px 0;
+    /* background: #012970; */
+    min-height: 40px;
+    margin-top: 14%;
+    color: #66518b;
+  }
+
+  @media (max-width: 992px) {
+    .breadcrumbs {
+      margin-top: 57px;
+    }
+  }
+
+  .breadcrumbs h2 {
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .breadcrumbs ol a {
+    color: #66518b;
+    transition: 0.3s;
+  }
+
+  .breadcrumbs ol a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs ol li + li {
+    padding-left: 10px;
+  }
+
+  .breadcrumbs ol li + li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #8894f6;
+    content: "/";
+  }
+
+
+/*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 
@@ -1303,4 +1355,76 @@ a.ui.active.label:hover, a.ui.labels .active.label:hover {
 }
 
 
+/*--------------------------------------------------------------
+# Post Details
+--------------------------------------------------------------*/
+.post-details {
+    padding-top: 40px;
+  }
 
+  .post-details .badge-primary {
+    background-color: #7ccfcf !important;
+  }
+
+  .post-details .post-details-slider img {
+    width: 100%;
+  }
+
+  .post-details .post-details-slider .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .post-details .post-details-slider .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    opacity: 1;
+    border: 1px solid #4154f1;
+  }
+
+  .post-details .post-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #4154f1;
+  }
+
+  .post-details .post-info {
+    padding: 30px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  }
+
+  .post-details .post-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .post-details .post-details-dropdown{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .post-details .post-info ul {
+    list-style: none;
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .post-details .post-info ul li + li {
+    margin-top: 10px;
+  }
+
+  .post-details .post-description {
+    padding-top: 30px;
+  }
+
+  .post-details .post-description h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .post-details .post-description p {
+    padding: 0;
+  }

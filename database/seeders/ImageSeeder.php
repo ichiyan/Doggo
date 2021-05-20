@@ -24,6 +24,16 @@ class ImageSeeder extends Seeder
                 'image_location' => "posts/default-dog-pic.jpg",
                 'description' => "A picture about the dog being posted",
             ]);
+            DB::table('images')->insert([
+                'post_id' => $post->id,
+                'image_location' => "posts/default-dog-pic.jpg",
+                'description' => "A picture about the dog being posted",
+            ]);
+            DB::table('images')->insert([
+                'post_id' => $post->id,
+                'image_location' => "posts/default-dog-pic.jpg",
+                'description' => "A picture about the dog being posted",
+            ]);
         }
     }
 }
