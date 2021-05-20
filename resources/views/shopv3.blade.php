@@ -344,15 +344,9 @@
                 <div class="col-4">
                     <form action="{{ route('shop.index') }}" method="get" role="search" class="" style="display: block">
                         @csrf
-<<<<<<< Updated upstream
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for listing..."
                                 aria-label="Search" aria-describedby="basic-addon2" name="search-post" value="{{ request('search-post') }}">
-=======
-                        <div class="input-group input-group-mb" style="line-height: 1em">
-                            <input type="text" class="form-control bg-light border-0" placeholder="Search for post title..."
-                                aria-label="Search" aria-describedby="basic-addon2" name="search-post">
->>>>>>> Stashed changes
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
