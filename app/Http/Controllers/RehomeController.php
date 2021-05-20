@@ -25,40 +25,28 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class PostController extends Controller
+class RehomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    //only used when login/register is implemented
-    // public function __construct() {
-    //     $this->middleware('auth');
-    //     $this->middleware('log');
-    // }
+    public function index()
+    {
+        //
+        // $search = $request->input('search-post');
+        // $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
 
-    public function index(Request $request) {
-        // if ($request->has('FilterForm')) {
-        //     $filters = $this->getFilters(collect($request->input()));
+        $posts = Post::where('post_type_id', 3)->paginate(9);
 
-        //     $search = $request->input('search-post');
-        //     $posts = DB::table('posts')->where('posts.post_title', 'LIKE', "%{$search}%")
-        //         ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-        //         ->whereIn('post_tag.tag_id', $filters)
-        //         ->join('images', 'posts.id', '=', 'images.post_id')
-        //         ->select('posts.*', 'images.image_location as image', 'post_tag.tag_id')
-        //         ->paginate(9);
+        foreach ($posts as $post) {
+            $post->dog = $post->getDog();
+            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
+            $post->dog->age = $this->getMonths($post->dog->birthdate);
+        }
 
-        // } else {
-        //     $search = $request->input('search-post');
-        //     $posts = $this->getPosts($search ?? '', $filters ?? []);
-        // }
-
-        $search = $request->input('search-post');
-        $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
-//dd($request);
-        return view('shopv3', compact('posts') );
+        return view('rehome', compact('posts') );
     }
 
     /**
@@ -68,13 +56,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
-
-        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
-            return view('form')->with('dog', session()->get('dog'));
-        }
-
-        return back()->withErrors(['Only PCCI members are allowed to sell.']);
+        //
     }
 
     /**
@@ -97,7 +79,7 @@ class PostController extends Controller
         $post = Post::create([
             'user_id' => Auth::id(),
             'dog_litter_id' => $dlID,
-            'post_type_id' => 1,
+            'post_type_id' => 3,
             'post_title' => $request->input('post-title'),
             'price' => $request->input('price'),
             'post_description' => $request->input('description'),
@@ -114,7 +96,7 @@ class PostController extends Controller
             ]);
         }
 
-        return redirect()->route('shop.index');
+        return redirect()->route('rehome.index');
     }
 
     /**
@@ -125,6 +107,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        //
         $post = Post::findOrFail($id);
         //find dog with dog_litter_id from post
         $dog = Dog::where('dog_litter_id', $post->dog_litter_id)->first();
@@ -226,7 +209,7 @@ class PostController extends Controller
     }
 
     public function getPosts($search, $filters) {
-        $posts = Post::where('post_type_id', 1)
+        $posts = Post::where('post_type_id', 3)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
                     ->paginate(9);
 

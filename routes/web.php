@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostController2;
 use App\Http\Controllers\CreatePostController;
+use App\Http\Controllers\RehomeController;
+use App\Http\Controllers\StudServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +48,8 @@ Route::get('/form', function() {
 Route::post('shop/{post_id}/report', [PostController::class, 'report'])->name('report_post');
 Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
 Route::resource('shop', PostController::class);
-Route::resource('rehome', PostController::class);
-Route::resource('stud_service', PostController::class);
+Route::resource('rehome', RehomeController::class);
+Route::resource('stud_service', StudServiceController::class);
 
 Route::patch('image/{imgId}/edit', [PostController::class, 'editImage'])->name('editImage');
 

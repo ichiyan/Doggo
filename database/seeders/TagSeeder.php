@@ -18,9 +18,13 @@ class TagSeeder extends Seeder
         $array = [ 'Shiba Inu', 'Chihuahua', 'Shih Tzu', 'German Shepherd', 'Bulldog', 'Terrier',
                     'Calabarzon', 'West Visayas', 'Central Visayas', 'Soccskargen',
                     'Male', 'Female', 'Small', 'Medium', 'Large', 'Extra Large', ];
+        $categories = [ 'Breed', 'Breed', 'Breed', 'Breed', 'Breed', 'Breed',
+                    'Location', 'Location', 'Location', 'Location',
+                    'Gender', 'Gender', 'Size', 'Size', 'Size', 'Size', ];
 
-        foreach($array as $tag) {
-            DB::table('tags')->insert(['tag_name' => $tag]);
+        foreach($array as $key => $tag) {
+            DB::table('tags')->insert(['tag_name' => $tag, 'tag_category' => $categories[$key]]);
         }
+
     }
 }

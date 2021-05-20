@@ -16,6 +16,7 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('tag_name', 500);
+            $table->string('tag_category', 500)->default('Other');
         });
     }
 

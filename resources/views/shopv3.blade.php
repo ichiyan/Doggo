@@ -51,15 +51,15 @@
                         <select id="multiple-select" class="ui fluid search dropdown" multiple name="breed">
                             {{--options should be fetched from db--}}
                             {{-- Make table for breeds --}}
-                            <option value="1">Siberian Husky (42)</option>
-                            <option value="2">Welsh Corgi (42)</option>
-                            <option value="3">Shiba Inu (42)</option>
-                            <option value="4">Samoyed (42)</option>
-                            <option value="5">Golden Retriever (42)</option>
-                            <option value="6">Border Collie (42)</option>
-                            <option value="7">Bernese Mountain Dog (42)</option>
-                            <option value="8">Sheltie (42)</option>
-                            <option value="9">Alaskan Malamute (42)</option>
+                            <option value="Shiba Inu">Shiba Inu (42)</option>
+                            <option value="Chihuahua">Chihuahua (42)</option>
+                            <option value="Shih Tzu">Shih Tzu (42)</option>
+                            <option value="German Shepherd">German Shepherd (42)</option>
+                            <option value="Bulldog">Bulldog (42)</option>
+                            <option value="Terrier">Terrier (42)</option>
+                            <option value="Bernese Mountain Dog">Bernese Mountain Dog (42)</option>
+                            <option value="Sheltie">Sheltie (42)</option>
+                            <option value="Alaskan Malamute">Alaskan Malamute (42)</option>
                         </select>
                     </div>
                     <p>
@@ -67,70 +67,70 @@
                     </p>
                     {{--refer to PCCI recognized breeds indicated on their website--}}
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="Sheep and Cattle" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                           Sheep and Cattle
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Pincher and Schnauzer" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Pincher and Schnauzer
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Terriers" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Terriers
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Dachshunds" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Dachshunds
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Spitz & Primitive Types" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Spitz & Primitive Types
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Scent Hounds" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Scent Hounds
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Pointing Dogs" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Pointing Dogs
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Retrievers-Water Dogs" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Retrievers-Water Dogs
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Companion and Toy Dogs" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Companion and Toy Dogs
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <input class="form-check-input" type="checkbox" value="Sighthounds" id="flexCheckChecked">
                         <label class="form-check-label" for="flexCheckChecked">
                           Sighthounds
                         </label>
@@ -149,21 +149,21 @@
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                 <div class="accordion-body">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                           Puppy (1-7 mos)
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="8" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                           Junior (8 mos - 2 yrs)
                         </label>
                         <span class="float-right badge badge-pill badge-light">42</span>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="36" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                           Adult (3 yrs and above)
                         </label>
@@ -182,28 +182,28 @@
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
                   <div class="accordion-body">
                       <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" value="Small" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
                             Small (0-25 lbs)
                           </label>
                           <span class="float-right badge badge-pill badge-light">42</span>
                       </div>
                       <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" value="Medium" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
                             Medium (26-60 lbs)
                           </label>
                           <span class="float-right badge badge-pill badge-light">42</span>
                       </div>
                       <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" value="Large" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
                             Large (61-100 lbs)
                           </label>
                           <span class="float-right badge badge-pill badge-light">42</span>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="Extra Large" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             Extra Large (101 lbs or more)
                         </label>
@@ -222,14 +222,14 @@
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
                   <div class="accordion-body">
                       <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" value="Male" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
                             Male
                           </label>
                           <span class="float-right badge badge-pill badge-light">42</span>
                       </div>
                       <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" value="Female" id="flexCheckDefault">
                           <label class="form-check-label" for="flexCheckDefault">
                             Female
                           </label>
