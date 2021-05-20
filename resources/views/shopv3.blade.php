@@ -27,7 +27,6 @@
     <img class="shop-shape-top-right-over" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right2.svg')}}" />
     <img class="shop-shape-top-right-under" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right-blue2.svg')}}" />
 </div>
-
 <section id="shop-posts" class="shop-posts">
     <div class="container" data-aos="fade-up">
 
@@ -347,7 +346,7 @@
                         @csrf
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for listing..."
-                                aria-label="Search" aria-describedby="basic-addon2" name="search-post">
+                                aria-label="Search" aria-describedby="basic-addon2" name="search-post" value="{{ request('search-post') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
@@ -384,7 +383,7 @@
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{asset('images/default-dog-pic.jpg')}}" class="img-fluid" alt="">
+                                    <img src="{{ url('storage/'.$post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px;">
                                     <div class="options">
                                     <a href=""><i class="bx bxs-heart-circle  heart"></i></a>
                                     <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bxs-info-circle  more-info"></i></a>
@@ -410,7 +409,6 @@
         </div>
     </div>
 </section>
-
 @endsection
 
 

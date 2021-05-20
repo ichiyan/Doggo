@@ -190,8 +190,6 @@
     }
   });
 
-    //   bootstrap toast
-    // $('.toast').toast({})
 
   /**
    * Initiate gallery lightbox

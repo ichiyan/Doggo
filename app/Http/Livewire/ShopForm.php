@@ -18,10 +18,10 @@ class ShopForm extends Component
     //new CreateForm
 
     // https://laravel-livewire.com/docs/2.x/input-validation
-    // protected $messages = [
-    //     'email.required' => 'The Email Address cannot be empty.',
-    //     'email.email' => 'The Email Address format is not valid.',
-    // ];
+    protected $messages = [
+        // 'email.required' => 'The Email Address cannot be empty.',
+        'photos.*' => 'Photos must not be empty and should be less than 6.',
+    ];
 
     protected $validationAttributes = [
         'post_title' => 'Post Title',
@@ -29,6 +29,7 @@ class ShopForm extends Component
         'post_description' => 'Description',
         'price' => 'Price',
         'photos' => 'Photos',
+        'photos.*' => 'Photos',
     ];
 
     protected function rules() {
@@ -76,7 +77,7 @@ class ShopForm extends Component
 
         foreach ($validatedData['photos'] as $photo) {
             $location = $photo->store('posts');
-            Image::create(['post_id' => $post->id, 'image_location' => $location, 'description' => 'to be filled']);
+            Image::create(['post_id' => $post->id, 'image_location' => $location, 'description' => '']);
         }
 
         $this->reset();

@@ -19,6 +19,10 @@ class Post extends Model
         'price', 'status', 'interests',
     ];
 
+    public function getImage() {
+        return Image::where('post_id', $this->id)->pluck('image_location')[0];
+    }
+
     public function getDogLitter() {
         $dog_litter = DogLitter::find($this->dog_litter_id);
     }
