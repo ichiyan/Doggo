@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+use App\Models\Post;
+use App\Models\PostRegular;
+use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostRegularFactory extends Factory

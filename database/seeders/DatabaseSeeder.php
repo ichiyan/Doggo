@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([TagSeeder::class, PostTypeSeeder::class]);
         \App\Models\Post::factory(10)->create();
         \App\Models\PostTag::factory(10)->create();
+        \App\Models\PostRegular::factory(10)->create();
         $this->call([ImageSeeder::class]);
         $this->call([UserProfileSeeder::class]);
 
