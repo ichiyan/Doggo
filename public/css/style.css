@@ -1188,15 +1188,18 @@ section {
 .ui.button{
     cursor: pointer;
     display: inline-block;
-    min-height: 1em;
+    /* min-height: 1em; */
+    height: calc(2.25rem + 2px);
     outline: 0;
     vertical-align: baseline;
-    background: #e0e1e2 none;
+    background: #927aca none;
     color: rgba(0,0,0,.6);
     margin: 0 .25em 0 0;
-    padding: .78571429em 1.5em .78571429em;
+    /* padding: .78571429em 1.5em .78571429em; */
+    padding: .375rem .75rem;
     font-weight: 600;
-    line-height: 1em;
+    /* line-height: 1em; */
+    line-height: 1.5;
     font-style: normal;
     text-align: center;
     border-radius: .28571429rem;
@@ -1256,6 +1259,10 @@ a.ui.active.label:hover, a.ui.labels .active.label:hover {
     border-radius: .28571429rem;
     -webkit-transition: background .1s ease;
     transition: background .1s ease;
+}
+
+.sort-text, .sort-icon {
+    color: white;
 }
 
 .accordion-button:not(.collapsed){

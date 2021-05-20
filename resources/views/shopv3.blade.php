@@ -25,7 +25,7 @@
 
 <div class="shop-shapes-wrapper">
     <img class="shop-shape-top-right-over" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right2.svg')}}" />
-    <img class="shop-shape-top-right-under" data-aos="fade-left" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right-blue2.svg')}}" />
+    <img class="shop-shape-top-right-under" data-aos="fade-left" data-aos-delay="400" data-aos-duration="1000" src="{{asset('images/shop-shape-top-right-blue2.svg')}}" />
 </div>
 <section id="shop-posts" class="shop-posts">
     <div class="container" data-aos="fade-up">
@@ -45,7 +45,7 @@
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
                 <div class="accordion-body">
                     <p>
-                        <strong>Search for specific breeds.</strong>
+                        <strong>Search for specific PCCI recognized breeds.</strong>
                     </p>
                     <div class="form-group">
                         <select id="multiple-select" class="ui fluid search dropdown" multiple name="breed">
@@ -330,7 +330,7 @@
                 <div class="col-8">
                     <input type='submit' name="FilterForm" class="btn apply" value='Apply Filters'>
                 </div>
-                <div class="col-4">
+                <div class="col-4 align-self-end text-right">
                     <input type='submit' name="FilterForm" class="btn btn-link" value='Reset'>
                 </div>
             </div>
@@ -357,8 +357,8 @@
                 </div>
                 <div class="col-4 text-left">
                     <div class="ui floating labeled icon dropdown button">
-                        <i class="bx bx-sort"></i>
-                        <span class="text">Sort by</span>
+                        <i class="bx bx-sort sort-icon"></i>
+                        <span class="text sort-text">Sort by</span>
                         {{-- should we include pa sort by nearest location? --}}
                         <div class="menu">
                             <div class="item">
@@ -385,8 +385,8 @@
                                 <div class="post-img">
                                     <img src="{{ url('storage/'.$post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px;">
                                     <div class="options">
-                                    <a href=""><i class="bx bxs-heart-circle  heart"></i></a>
-                                    <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bxs-info-circle  more-info"></i></a>
+                                    <a href=""><i class="bx bx-md bxs-heart-circle  heart"></i></a>
+                                    <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bx-md bxs-info-circle  more-info"></i></a>
                                     </div>
                                 </div>
                                 <div class="post-info">
