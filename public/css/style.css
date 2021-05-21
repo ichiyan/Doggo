@@ -119,6 +119,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #e9e9e9;
 }
 
+.dropdown-item.active, .dropdown-item:active{
+    background-color: #7861ad;
+    color: #fff;
+}
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -1482,3 +1486,4 @@ a.ui.active.label:hover, a.ui.labels .active.label:hover {
   .post-details .post-description p {
     padding: 0;
   }
+

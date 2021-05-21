@@ -11,6 +11,7 @@ use App\Models\PostTag;
 use App\Models\PostType;
 use App\Models\PostRegular;
 use App\Models\Report;
+use App\Models\ReportFile;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\User_detail;
@@ -183,19 +184,32 @@ class PostController extends Controller
             $post = Post::find($post_id);
             if ($post != NULL) {
                 $path = '';
-                if($request->file('report_image') != NULL) {
+                if($request->hasFile('report_files')) {
                     // dd($request->input('report_image') != NULL, $request->input('report_image'), 'agfg');
                     // $validated = $request->validateWithBag('image',[
                     //     'report_image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
                     //     ]);
                     // fix validation
-                    $path = $request->file('report_image')->store('reports');
+                    // $path = $request->file('report_image')->store('reports');
+
+                    foreach($request->file('report_files') as $file){
+                        $filenameWithExt = $file->getClientOriginalName();
+                        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                        $extension = $file->getClientOriginalExtension();
+                        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                        $path = $file->storeAs('reports', $fileNameToStore);
+
+                        $report_file = new ReportFile();
+                        $report_file->filenames = $fileNameToStore;
+                        $report_file->post_id = $post->id;
+                        $report_file->save();
+                    }
+
                 }
                 $report = Report::create([
                     'post_id' => $post->id,
                     'user_profile_id' => UserProfile::where('user_id', Auth::id())->first()->id,
                     'reason' => $request->input('reason'),
-                    'image' => $path,
                 ]);
 
             };

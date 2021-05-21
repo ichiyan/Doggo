@@ -287,7 +287,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade report-post-modal" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="report">
             <form action="{{ route('report_post', ['post_id' => $post->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -301,7 +301,7 @@
                     <div class="modal-body">
                         <textarea name="reason" cols="55" rows="10" placeholder="Reason for report"></textarea>
                         <input type="file" name="report_image" onchange="previewImage()">
-                        <img class="img-thumbnail" id="preview" style="height: 150px; width: 150px;">
+                        <img class="img-thumbnail" id="preview">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit Report</button>
@@ -310,7 +310,6 @@
             </form>
         </div>
     </div>
-
 
     <script>
         function previewImage(){

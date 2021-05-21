@@ -12,7 +12,7 @@ class Report extends Model
     protected $table = 'reports';
     protected $fillable = [
         'post_id', 'user_profile_id',
-        'reason', 'image',
+        'reason',
     ];
 
     public function post() {
@@ -22,5 +22,9 @@ class Report extends Model
     public function user() {
         return $this->belongsTo(UserProfile::class);
     }
+
+    // public function reportfiles() {
+    //     return $this->hasMany(ReportFile::class);
+    // }
 
 }

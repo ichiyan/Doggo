@@ -77,6 +77,7 @@
                                 <li><strong>Breed</strong>: {{$dog->breed}}</li>
                                 <li><strong>Age</strong>: {{$dog->age}} Months</li>
                                 <li><strong>Gender</strong>: {{$dog->gender}}</li>
+                                {{--add size--}}
                                 <li><strong>Description</strong>: {{ $post->post_description }}</li>
                             </ul>
 
@@ -89,10 +90,10 @@
               <div class="post-info h-100">
                 <h3>Advertiser Details</h3>
                 <ul>
-                  <li><strong>Name</strong>: {{ $user->address }}</li>
+                  <li><strong>Name</strong>: {{ $user->name }}</li>
                   <li><strong>Account</strong>: PCCI member</li>
                   <li><strong>Contact Number</strong>: </li>
-                  <li><strong>Email Address</strong>: {{$user->email}}</li>
+                  <li><strong>Email Address</strong>: <a href="mailto:{{$user->email}}">{{$user->email}}</a></li>
                   <li><strong>Address</strong>: {{$user->address}}</li>
                 </ul>
                 <div class="row justify-content-around">
@@ -131,9 +132,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <textarea name="reason" cols="55" rows="10" placeholder="Reason for report"></textarea>
-                        <input type="file" name="report_image" onchange="previewImage()">
-                        <img class="img-thumbnail" id="preview" style="height: 150px; width: 150px;">
+                        <textarea name="reason" cols="55" rows="10" placeholder="Reason for report" required></textarea>
+                        <input id="input-files" type="file" name="report_files[]" multiple onchange="previewImage()">
+                        <div id="preview"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit Report</button>
@@ -143,5 +144,29 @@
         </div>
     </div>
 
+    <script>
+        function previewImage(){
+            var preview = document.querySelector('#preview');
+            var files = document.querySelector('#input-files').files;
+
+            function readAndPreview(file) {
+                if( /\.(jpe?g|png|gif)$/i.test(file.name) ){
+                    var reader = new FileReader();
+                    reader.addEventListener("load", function(){
+                        var image = new Image();
+                        image.height = 150;
+                        image.title = file.name;
+                        image.src = this.result;
+                        image.style.padding = "5px";
+                        preview.appendChild(image);
+                    }, false);
+                    reader.readAsDataURL(file);
+                }
+            }
+            if(files){
+                [].forEach.call(files, readAndPreview);
+            }
+        }
+    </script>
 
 @endsection
