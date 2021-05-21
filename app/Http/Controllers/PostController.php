@@ -213,7 +213,7 @@ class PostController extends Controller
                 ]);
 
             };
-            return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
+            return redirect()->action([PostController::class, 'show'], ['shop' => $post->id])->with('alert', 'Report has been submitted successfully.');
         }
 
         // return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
