@@ -95,15 +95,18 @@
                   <li><strong>Email Address</strong>: {{$user->email}}</li>
                   <li><strong>Address</strong>: {{$user->address}}</li>
                 </ul>
-                <div class="adv-btn-block">
-                    <div class="btn btn-outline-dark w-50">
-                        <i class="fa fa-comments" aria-hidden="true"></i>
-                        Message
+                <div class="row justify-content-around">
+                    <div class="col-6">
+                        <div class="btn cust-btn-outline-primary">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            Message
+                        </div>
                     </div>
-
-                    <div class="btn btn-outline-dark">
-                        <i class="fa fa-calendar-check" aria-hidden="true"></i>
-                        Send a Reservation
+                    <div class="col-6">
+                        <div class="btn cust-btn-outline-primary">
+                            <i class="fa fa-calendar-check" aria-hidden="true"></i>
+                            Reserve
+                        </div>
                     </div>
                 </div>
               </div>
@@ -115,5 +118,30 @@
     </div><!-- End Post Details Section -->
 
     </section>
+
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="report">
+            <form action="{{ route('report_post', ['post_id' => $post->id]) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Report post</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="reason" cols="55" rows="10" placeholder="Reason for report"></textarea>
+                        <input type="file" name="report_image" onchange="previewImage()">
+                        <img class="img-thumbnail" id="preview" style="height: 150px; width: 150px;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 
 @endsection
