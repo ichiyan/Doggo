@@ -327,11 +327,11 @@
             </div>
 
             <div class="row justify-content-between" style="padding-top: 5%">
-                <div class="col-8">
-                    <input type='submit' name="FilterForm" class="btn apply" value='Apply Filters'>
+                <div class="col-6">
+                    <input type='submit' name="FilterForm" class="btn cust-btn-primary" value='Apply Filters' style="width: 140px">
                 </div>
-                <div class="col-4 align-self-end text-right">
-                    <input type='submit' name="FilterForm" class="btn btn-link" value='Reset'>
+                <div class="col-6 align-self-end text-right">
+                    <input type='submit' name="FilterForm" class="btn cust-btn-outline-danger" value='Reset' style="width: 140px;">
                 </div>
             </div>
 
@@ -348,7 +348,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for listing..."
                                 aria-label="Search" aria-describedby="basic-addon2" name="search-post" value="{{ request('search-post') }}">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn cust-btn-light" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>

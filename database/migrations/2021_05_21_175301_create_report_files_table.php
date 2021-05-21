@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReport extends Migration
+class CreateReportFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateReport extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('report_files', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id')->constrained('posts', 'id');
-            $table->foreignId('user_profile_id')->constrained('user_profiles', 'id');
-            $table->string('reason', 1000);
+            $table->string('filenames');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateReport extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('report_files');
     }
 }
