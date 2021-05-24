@@ -124,6 +124,27 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
+
+/*--------------------------------------------------------------
+# Custom Forms
+--------------------------------------------------------------*/
+
+.error {
+    color: red;
+}
+
+.success-field {
+    border: 1px solid greenyellow;
+}
+
+.error-field {
+    border: 1px solid
+}
+
+.col-form-label {
+    text-align: right;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -1412,6 +1433,13 @@ a.ui.active.label:hover, a.ui.labels .active.label:hover {
     color: #fff;
 } */
 
+.filter {
+    float: left;
+    width: 25%;
+    height: 100vw;
+    margin-right:2%;
+    margin-top:5%;
+}
 
 /*--------------------------------------------------------------
 # Post Details
@@ -1487,3 +1515,152 @@ a.ui.active.label:hover, a.ui.labels .active.label:hover {
     padding: 0;
   }
 
+/*--------------------------------------------------------------
+# Shop Create Post Form
+--------------------------------------------------------------*/
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .container-new-post100 {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+  }
+
+
+  .wrap-new-post100 {
+    width: 670px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  }
+
+  .new-post100-form-title {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+
+    /* background-image: url("../images/main-image-shop-form.png"); */
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+
+    background-color: #ffc6c2;
+
+    padding: 70px 15px 140px 15px;
+  }
+
+  .new-post100-form-title-1 {
+    font-family: "Poppins";
+    font-size: 30px;
+    color: #7861ad;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .new-post100-form-title::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(54,84,99,0.6); */
+  }
+
+
+  .new-post100-form-title:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../images/shop-post-shape.svg') no-repeat center bottom;
+    background-size: contain;
+    z-index: 2;
+  }
+
+.new-post100-form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px 50px 50px;
+}
+
+/*--------------------------------------------------------------
+# Seller profile
+--------------------------------------------------------------*/
+
+.main-body {
+    padding: 15px;
+}
+.card {
+    padding: 30px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+.user-info{
+    float: left;
+    width: 25%;
+    height: 100vw;
+    margin-right:2%;
+    margin-top:10%;
+}

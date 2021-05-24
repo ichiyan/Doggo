@@ -59,7 +59,7 @@ class PostController extends Controller
         $search = $request->input('search-post');
         $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
 //dd($request);
-        return view('shopv3', compact('posts') );
+        return view('shop.shopv3', compact('posts') );
     }
 
     /**
@@ -77,6 +77,10 @@ class PostController extends Controller
                 return view('form')->with('dog', session()->get('dog'));
             }
             $error = 'Only PCCI members are allowed to sell.';
+        $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
+
+        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+            return view('shop.shop_new_post')->with('dog', session()->get('dog'));
         }
         return back()->withErrors([$error]);
     }
@@ -138,7 +142,7 @@ class PostController extends Controller
         $dog->age = $this->getMonths($dog->birthdate);
         $post->images = Image::where('post_id', $post->id)->limit(5)->get();
 
-        return view('postv3', compact('post', 'user', 'dog') );
+        return view('shop.postv3', compact('post', 'user', 'dog') );
     }
 
     /**
@@ -216,10 +220,9 @@ class PostController extends Controller
                 ]);
 
             };
-            return redirect()->action([PostController::class, 'show'], ['shop' => $post->id])->with('alert', 'Report has been submitted successfully.');
+            return redirect()->action([PostController::class, 'show'], ['shop' => $post->id])->with('report_submitted', 'Successfully submitted report.');
+            // return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
         }
-
-        // return redirect()->action([PostController::class, 'show'], ['shop' => $post->id]);
         return back();
     }
 

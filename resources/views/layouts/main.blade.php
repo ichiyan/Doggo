@@ -32,7 +32,6 @@
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> --}}
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 
         <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
@@ -45,12 +44,11 @@
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
         <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-        {{-- @livewireStyles --}}
+        @livewireStyles
         <!-- Template Main CSS File -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--  Main CSS File -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
-        {{-- <link rel="stylesheet" href="{{asset('css/heroStyle.css')}}"> --}}
 
 
     </head>
@@ -104,7 +102,7 @@
     </div>
 
 
-    {{-- @livewireScripts --}}
+    @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Vendor JS Files -->
     {{-- <script src=" {{ asset('vendor/jquery/jquery.min.js') }}"></script> --}}
@@ -126,7 +124,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/components/search.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> --}}
 
 
     <!-- Template Main JS File -->
@@ -136,8 +133,19 @@
         $('.ui.dropdown').dropdown();
 
         @if (Session::has('post_added'))
+            toastr.options = {
+                "positionClass": "toast-top-center",
+            }
             toastr.success("{{ Session::get('post_added')}}")
         @endif
+
+        @if (Session::has('report_submitted'))
+            toastr.options = {
+                "positionClass": "toast-top-center",
+            }
+            toastr.success("{{ Session::get('report_submitted')}}")
+        @endif
+
 
         @if ($errors->any())
             toastr.error("{{ implode('', $errors->all(':message')) }}")

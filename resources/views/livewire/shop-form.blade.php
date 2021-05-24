@@ -9,7 +9,7 @@
 
                 <div class="card-content p-5">
                     <form wire:submit.prevent="submitForm">
-                        <fieldset class="form-group">
+                        <fieldset>
 
                             <input type="hidden" name="post-type" value=1>
 
@@ -55,30 +55,31 @@
                                 </div>
                             </div>
 
-                        {{-- <div class="form-group row">
-                            <label for="images" class="col-sm-2 col-form-label">Images</label>
-                            <div class="col-sm-10">
-                                <input type="file" id="images" name="file" placeholder="Images...">
-                            </div>
-                        </div> --}}
-                        <div class="form-group row">
-                            <label for="images" class="col-sm-2 col-form-label">Images</label>
-                            <div class="col-sm-10">
-                                <input wire:model="photos" type="file" id="images" name="photos" placeholder="Images..." multiple>
-                                <br>@error('photos') <span class="error">{{ $message }}</span> @enderror
-                                <div wire:loading wire:target="image">Uploading...</div>
-                            </div>
-                            @if ($photos ?? '')
-                                <div class="col-sm-3 col-form-label"><b>Photo Preview:</b></div>
-                                <div class="previews" style="display: flex; justify-content: center; width: 700px; flex-wrap: wrap; align-items: center; align-content: flex-start;">
-                                    @foreach ($photos ?? '' as $image)
-
+                            {{-- <div class="form-group row">
+                                <label for="images" class="col-sm-2 col-form-label">Images</label>
+                                <div class="col-sm-10">
+                                    <input type="file" id="images" name="file" placeholder="Images...">
+                                </div>
+                            </div> --}}
+                            <div class="form-group">
+                                {{-- <label for="images" class="col-sm-2 col-form-label">Images</label> --}}
+                                <label for="images">Images</label>
+                                <div>
+                                    <input wire:model="photos" type="file" id="images" name="photos" placeholder="Images..." multiple>
+                                    <br>@error('photos') <span class="error">{{ $message }}</span> @enderror
+                                    <div wire:loading wire:target="photo">Uploading...</div>
+                                </div>
+                                @if ($photos)
+                                {{-- <div class="col-sm-3 col-form-label"><b>Photo Preview</b></div> --}}
+                                <div class="form-group"><b>Photo Preview:</b></div>
+                                <div class="previews form-group" style=" display: flex; justify-content: start; width: 650px; flex-wrap: wrap; align-items: center; align-content: flex-start;">
+                                    @foreach ($photos as $image)
                                         <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail" style="height: 150px; width: 150px;">
                                     @endforeach
                                 </div>
-                            @endif
-                        </div>
-                    </fieldset>
+                                @endif
+                            </div>
+                        </fieldset>
 
                         <div class="footer row justify-content-end">
                             <input type="submit" value="Submit Post" class="btn btn-primary">

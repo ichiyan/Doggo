@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController2;
 use App\Http\Controllers\CreatePostController;
 use App\Http\Controllers\RehomeController;
 use App\Http\Controllers\StudServiceController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,14 +40,28 @@ Route::get('/home', function() {
     return view('home');
 });
 
-Route::get('/form', function() {
-    return view('form');
-})->name('createForm');
+Route::get('/create', function() {
+    return view('shop.create_post');
+});
+
+//test
+Route::get('/profile', function() {
+    return view('profile');
+});
+
+// Route::get('/form', function() {
+//     return view('form');
+// })->name('createForm');
 
 // Route::resource('shop', PostController::class)->middleware(['auth']);
 
 Route::post('shop/{post_id}/report', [PostController::class, 'report'])->name('report_post');
 Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
+Route::get('user/{user_id}/profile/all', [ProfileController::class, 'showAll'])->name('profile_all');
+Route::get('user/{user_id}/profile/shop', [ProfileController::class, 'showShop'])->name('profile_shop');
+Route::get('user/{user_id}/profile/stud', [ProfileController::class, 'showStud'])->name('profile_stud');
+Route::get('user/{user_id}/profile/rehome', [ProfileController::class, 'showRehome'])->name('profile_rehome');
+
 Route::resource('shop', PostController::class);
 Route::resource('rehome', RehomeController::class);
 Route::resource('stud_service', StudServiceController::class);
