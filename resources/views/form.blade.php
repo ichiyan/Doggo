@@ -43,7 +43,10 @@
 <body>
     <livewire:shop-form/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <!-- @include('livewire.shop-form') -->
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     @livewireScripts

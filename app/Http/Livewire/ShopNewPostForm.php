@@ -16,7 +16,7 @@ class ShopNewPostForm extends Component
 
     use WithFileUploads;
     public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
-    public $photos;
+    public $photos = '';
     //new CreateForm
 
     // https://laravel-livewire.com/docs/2.x/input-validation
@@ -101,6 +101,6 @@ class ShopNewPostForm extends Component
     }
     public function render()
     {
-        return view('livewire.shop-new-post-form');
+        return view('livewire.shop-new-post-form', ['photos' => $this->photos]);
     }
 }

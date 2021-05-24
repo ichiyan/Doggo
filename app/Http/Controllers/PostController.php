@@ -69,20 +69,21 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('form')->with('dog', session()->get('dog'));
+        return view('shop.shop_new_post')->with('dog', session()->get('dog'));
         $error = 'Log in first';
         if (Auth::check()) {
-            $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
-            if ($userProf->is_admin || $userProf->pcci_member_id != null) {
-                return view('form')->with('dog', session()->get('dog'));
-            }
-            $error = 'Only PCCI members are allowed to sell.';
-        $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
+                $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
+                if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+                    return view('shop.shop_new_post')->with('dog', session()->get('dog'));
+                }
+                $error = 'Only PCCI members are allowed to sell.';
+                $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
 
-        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
-            return view('shop.shop_new_post')->with('dog', session()->get('dog'));
+                if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+                 return view('shop.shop_new_post')->with('dog', session()->get('dog'));
+                }
+                return back()->withErrors([$error]);
         }
-        return back()->withErrors([$error]);
     }
 
     /**

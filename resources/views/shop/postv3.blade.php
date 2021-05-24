@@ -30,9 +30,7 @@
 
                                     @foreach ($post->images as $key => $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ url('storage/'.$image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
-                                            <!-- Modal -->
-                                            <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" />
+                                            <img src="{{ url($image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
                                         </div>
                                     @endforeach
 
@@ -145,6 +143,11 @@
             </form>
         </div>
     </div>
+
+    @foreach ($post->images as $key => $image)
+        <!-- Modal -->
+        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" />
+    @endforeach
 
     <script>
         function previewImage(){
