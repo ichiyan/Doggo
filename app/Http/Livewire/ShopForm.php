@@ -15,8 +15,7 @@ class ShopForm extends Component
 {
     use WithFileUploads;
     public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
-    public $photos;
-    //new CreateForm
+    public $photos = '';
 
     // https://laravel-livewire.com/docs/2.x/input-validation
     protected $messages = [
@@ -88,6 +87,6 @@ class ShopForm extends Component
 
     public function render()
     {
-        return view('livewire.shop-form');
+        return view('livewire.shop-form', ['photos' => $this->photos]);
     }
 }

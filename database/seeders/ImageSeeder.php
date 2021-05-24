@@ -21,17 +21,17 @@ class ImageSeeder extends Seeder
         foreach($posts as $post) {
             DB::table('images')->insert([
                 'post_id' => $post->id,
-                'image_location' => "posts/default-dog-pic.jpg",
+                'image_location' => "storage/posts/default-dog-pic.jpg",
                 'description' => "A picture about the dog being posted",
             ]);
             DB::table('images')->insert([
                 'post_id' => $post->id,
-                'image_location' => "posts/default-dog-pic.jpg",
+                'image_location' => "storage/posts/default-dog-pic.jpg",
                 'description' => "A picture about the dog being posted",
             ]);
             DB::table('images')->insert([
                 'post_id' => $post->id,
-                'image_location' => "posts/default-dog-pic.jpg",
+                'image_location' => "storage/posts/default-dog-pic.jpg",
                 'description' => "A picture about the dog being posted",
             ]);
         }

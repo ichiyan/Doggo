@@ -11,7 +11,7 @@
             <div class="row mt-2" >
                 <div class="col">
                     <div class="row">
-                        <img src="{{ url('storage/'.$image) }}" alt="dog image" style="min-height: 500px; width: 100%;">
+                        <img src="{{ url($image) }}" alt="dog image" style="min-height: 500px; width: 100%;">
                     </div>
 
                 </div>

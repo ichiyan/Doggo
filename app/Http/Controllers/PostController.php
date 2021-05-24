@@ -69,13 +69,16 @@ class PostController extends Controller
      */
     public function create()
     {
-        $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
-
-        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
-            return view('form')->with('dog', session()->get('dog'));
+        return view('form')->with('dog', session()->get('dog'));
+        $error = 'Log in first';
+        if (Auth::check()) {
+            $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
+            if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+                return view('form')->with('dog', session()->get('dog'));
+            }
+            $error = 'Only PCCI members are allowed to sell.';
         }
-
-        return back()->withErrors(['Only PCCI members are allowed to sell.']);
+        return back()->withErrors([$error]);
     }
 
     /**

@@ -383,7 +383,7 @@
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{ url('storage/'.$post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px">
+                                    <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options">
                                     <a href=""><i class="bx bx-md bxs-heart-circle  heart"></i></a>
                                     <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bx-md bxs-info-circle  more-info"></i></a>
