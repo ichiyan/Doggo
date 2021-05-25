@@ -70,7 +70,7 @@ class PostController extends Controller
 
         // $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
         //dd($posts);
-        
+
         return view('shop.shopv3', compact('posts') );
     }
 
