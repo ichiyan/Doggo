@@ -1,3 +1,4 @@
+
 @extends('layouts.main')
 
 @section('main')
@@ -16,10 +17,12 @@
                             <p class="text-secondary mb-1">{{ $user->username }}</p>
                             <p class="text-secondary mb-1">{{ $user->created_at }}</p>
                             <p class="text-muted font-size-sm">{{ $user->bio }}</p>
-                            <div class="btn cust-btn-primary">
-                                <i class="fa fa-comments" aria-hidden="true"></i>
-                                Message
-                            </div>
+                            @if ( Auth::user()->id != $user->user_id )
+                                <div class="btn cust-btn-primary">
+                                    <i class="fa fa-comments" aria-hidden="true"></i>
+                                    Message
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -40,15 +43,17 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                         <h6 class="mb-0"><i class="fas fa-phone" style="padding-right: 5px"></i> Number</h6>
                         <br><br>
-                        <span class="text-secondary"></span>
+                        <span class="text-secondary">{{$user->contact_number}}</span>
                     </li>
                 </ul>
-                {{-- <div class="d-flex justify-content-center">
-                    <div class="btn cust-btn-outline-primary">
-                        <i class="fa fa-edit" aria-hidden="true"></i>
-                        Edit Profile
+                @if ( Auth::user()->id == $user->user_id )
+                    <div class="d-flex justify-content-center">
+                        <div class="btn cust-btn-outline-primary">
+                            <i class="fa fa-edit" aria-hidden="true"></i>
+                            Edit Profile
+                        </div>
                     </div>
-                </div> --}}
+                @endif
             </div>
         </div>
 
@@ -98,8 +103,14 @@
                                 <div class="post-img">
                                     <img src="{{ asset('storage/'.$post->getImage()) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px">
                                     <div class="options">
-                                    <a href=""><i class="bx bx-md bxs-heart-circle  heart"></i></a>
-                                    <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bx-md bxs-info-circle  more-info"></i></a>
+                                        @if ( Auth::user()->id != $user->user_id )
+                                            <a href=""><i class="icofont-heart heart"></i></a>
+                                        @endif
+                                            <a href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
+                                        @if ( Auth::user()->id == $user->user_id )
+                                            <a href="" data-toggle="modal" data-target="#deletePostModal"><i class="icofont-ui-delete delete"></i></a>
+                                            <a href=""><i class="icofont-edit edit"></i></a>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="post-info">
@@ -122,10 +133,28 @@
             </div>
         </div>
     </div>
-
-
-
 </section>
 
+<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Post?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Delete" below to delete post.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="">Delete</a>
+                <form id="logout-form" action="" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
