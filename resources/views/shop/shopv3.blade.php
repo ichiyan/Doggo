@@ -398,9 +398,9 @@
                         {{-- </a> --}}
                     </div>
                 @endforeach
-            </div>
-            <div class="d-flex justify-content-center pagination" style="margin-top: 5%">
-                {{ $posts->links() }}
+                <div class="d-flex justify-content-center pagination" style="margin-top: 5%">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </div>
