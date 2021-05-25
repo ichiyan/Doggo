@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
+use stdClass;
 
 class PostImage extends Component
 {
@@ -15,12 +16,13 @@ class PostImage extends Component
     public $post;
 
 
-    public function mount($postImg)
+    public function mount($postImg, $post)
     {
         $this->image = $postImg->image_location;
         $this->description = $postImg->description;
         $this->image_id = $postImg->id;
         $this->created_at = $postImg->created_at;
+        $this->post = $post;
     }
 
     public function submitForm(Request $request) {
@@ -28,7 +30,10 @@ class PostImage extends Component
     }
 
     public function canEdit() {
-        // return $this->post->user_id == Auth::id();
+        if ($this->post != NULL)
+            return $this->post->user_id == Auth::id();
+        else
+            return false;
     }
 
     public function render()

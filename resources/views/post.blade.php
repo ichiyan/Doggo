@@ -203,7 +203,7 @@
                                     @if ($key != 0)
                                         <img src="{{ url($image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
                                         <!-- Modal -->
-                                        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" />
+                                        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" :post="$post" />
                                     @endif
                                 @endforeach
                             </div>

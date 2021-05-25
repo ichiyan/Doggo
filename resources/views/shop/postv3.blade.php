@@ -10,7 +10,7 @@
     <div class="breadcrumbs">
         <div class="container" data-aos="fade-right">
             <ol>
-                <li><a href="{{route('shop.index')}}">buy/sell</a></li>
+                <li><a href="{{route('shop.index')}}"> {{ $name }} </a></li>
                 <li>{{ $post->post_title }}</li>
             </ol>
             <h2>{{ $post->post_title }}</h2>
@@ -146,7 +146,7 @@
 
     @foreach ($post->images as $key => $image)
         <!-- Modal -->
-        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" />
+        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" :post="$post"/>
     @endforeach
 
     <script>

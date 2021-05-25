@@ -7,11 +7,14 @@ use App\Utilities\FilterBuilder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
+    use SoftDeletes;
     use HasFactory;
+
     //protected $primaryKey = 'post_id';
     protected $table = 'posts';
     protected $fillable = [ 'user_id',
@@ -57,6 +60,10 @@ class Post extends Model
 
     public function postedBy() {
         return $this->hasOne(UserProfile::class);
+    }
+
+    public function bookmarked() {
+        return $this->belongsToMany(UserProfile::class);
     }
 
     public function scopeFilterBy($query, $filters) {

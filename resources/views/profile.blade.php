@@ -17,7 +17,7 @@
                             <p class="text-secondary mb-1">{{ $user->username }}</p>
                             <p class="text-secondary mb-1">{{ $user->created_at }}</p>
                             <p class="text-muted font-size-sm">{{ $user->bio }}</p>
-                            @if ( Auth::user()->id != $user->user_id )
+                            @if ( !Auth::check() || Auth::user()->id != $user->user_id )
                                 <div class="btn cust-btn-primary">
                                     <i class="fa fa-comments" aria-hidden="true"></i>
                                     Message
@@ -46,7 +46,7 @@
                         <span class="text-secondary">{{$user->contact_number}}</span>
                     </li>
                 </ul>
-                @if ( Auth::user()->id == $user->user_id )
+                @if ( !Auth::check() || Auth::user()->id == $user->user_id )
                     <div class="d-flex justify-content-center">
                         <div class="btn cust-btn-outline-primary">
                             <i class="fa fa-edit" aria-hidden="true"></i>
@@ -101,14 +101,14 @@
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{ asset('storage/'.$post->getImage()) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px">
+                                    <img src="{{ asset($post->getImage()) }}" class="img-fluid" alt=""  style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options">
-                                        @if ( Auth::user()->id != $user->user_id )
+                                        @if ( !Auth::check() || Auth::user()->id != $user->user_id )
                                             <a href=""><i class="icofont-heart heart"></i></a>
                                         @endif
                                             <a href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
-                                        @if ( Auth::user()->id == $user->user_id )
-                                            <a href="" data-toggle="modal" data-target="#deletePostModal"><i class="icofont-ui-delete delete"></i></a>
+                                        @if ( Auth::check() && Auth::user()->id == $user->user_id )
+                                            <a href="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}"><i class="icofont-ui-delete delete"></i></a>
                                             <a href=""><i class="icofont-edit edit"></i></a>
                                         @endif
                                     </div>
@@ -133,7 +133,7 @@
     </div>
 </section>
 
-<div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+{{-- <div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -146,13 +146,14 @@
             <div class="modal-body">Select "Delete" below to delete post.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="">Delete</a>
-                <form id="logout-form" action="" method="POST" class="d-none">
+                <button class="btn btn-primary" form="logout-form">Delete</button>
+                <form id="logout-form" action="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}" method="POST" class="d-none">
                     @csrf
+                    @method('DELETE')
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
