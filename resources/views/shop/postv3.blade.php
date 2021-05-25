@@ -92,7 +92,7 @@
                 <ul>
                   <li><strong>Name</strong>: {{ $user->name }}</li>
                   <li><strong>Account</strong>: PCCI member</li>
-                  <li><strong>Contact Number</strong>: </li>
+                  <li><strong>Contact Number</strong>: {{ $user->contact_number }}</li>
                   <li><strong>Email Address</strong>: <a href="mailto:{{$user->email}}">{{$user->email}}</a></li>
                   <li><strong>Address</strong>: {{$user->address}}</li>
                 </ul>
