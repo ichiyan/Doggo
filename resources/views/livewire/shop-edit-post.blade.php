@@ -7,7 +7,7 @@
                 </span>
             </div>
 
-            <form class="new-post100-form">
+            <form class="new-post100-form" onkeydown="return event.key != 'Enter';">
                 <fieldset class="form-group" style="width: 100%">
 
                     <input type="hidden" name="post-type" value=1>
@@ -95,7 +95,7 @@
                                         <div class="modal-body">Select "Delete" below to delete image.</div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button class="btn btn-danger" wire:click="deleteImage({{$image->id}}, {{$post_id}})">Delete</button>
+                                            <button class="btn btn-danger" wire:click="deleteImage({{$image->id}}, {{$post_id}})" >Delete</button>
                                         </div>
                                     </div>
                                 </div>
