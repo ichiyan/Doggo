@@ -44,7 +44,7 @@
                         <strong>Search for specific PCCI recognized breeds.</strong>
                     </p>
                     <div class="form-group">
-                        <select id="multiple-select" class="ui fluid search dropdown" multiple name="breed">
+                        <select id="multiple-select" class="ui fluid search dropdown" multiple name="breed[]">
                             {{--options should be fetched from db--}}
                             {{-- Make table for breeds --}}
                             <option value="Shiba Inu">Shiba Inu (42)</option>
@@ -381,7 +381,7 @@
                                 <div class="post-img">
                                     <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options">
-                                    <a href=""><i class="bx bx-md bxs-heart-circle  heart"></i></a>
+                                    <a href="{{ route('bookmark_post',  $post->id) }}"><i class="bx bx-md bxs-heart-circle  heart"></i></a>
                                     <a href="{{ route('shop.show',  $post->id) }}"><i class="bx bx-md bxs-info-circle  more-info"></i></a>
                                     </div>
                                 </div>

@@ -59,6 +59,10 @@ class Post extends Model
         return $this->hasOne(UserProfile::class);
     }
 
+    public function bookmarked() {
+        return $this->belongsToMany(UserProfile::class);
+    }
+
     public function scopeFilterBy($query, $filters) {
         $namespace = 'App\Utilities\PostFilters';
         $filter = new FilterBuilder($query, $filters, $namespace);

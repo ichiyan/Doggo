@@ -117,8 +117,9 @@ class StudServiceController extends Controller
         $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
         $post->images = Image::where('post_id', $post->id)->limit(5)->get();
+        $name = 'Stud Services';
 
-        return view('post', compact('post', 'user', 'dog') );
+        return view('shop.postv3', compact('post', 'user', 'dog', 'name') );
     }
 
     /**

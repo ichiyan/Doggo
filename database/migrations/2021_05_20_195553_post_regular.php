@@ -14,10 +14,10 @@ class PostRegular extends Migration
     public function up()
     {
         //
-        Schema::create('post_regular', function (Blueprint $table) {
+        Schema::create('post_user_profile', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id')->constrained('posts');
-            $table->foreignId('regular_id')->constrained('user_profiles');
+            $table->foreignId('user_profile_id')->constrained('user_profiles');
         });
     }
 
@@ -29,6 +29,6 @@ class PostRegular extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('post_regular');
+        Schema::dropIfExists('post_user_profile');
     }
 }
