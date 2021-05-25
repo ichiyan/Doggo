@@ -10,6 +10,7 @@ use App\Http\Controllers\CreatePostController;
 use App\Http\Controllers\RehomeController;
 use App\Http\Controllers\StudServiceController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +47,9 @@ Route::get('/create', function() {
 
 //test
 Route::get('/profile', function() {
-    return view('profile');
+    if (Auth::check())
+        return view('profile');
+    return back()->with('not_user', 'Log in first');
 });
 
 // Route::get('/form', function() {
