@@ -168,6 +168,8 @@ class ProfileController extends Controller
         deletes user's own post
     */
     public function destroyPost($postId) {
+
+        //hehehello
         $post = Post::find($postId);
         $images = Image::where('post_id', $postId)->pluck('image_location');
 
