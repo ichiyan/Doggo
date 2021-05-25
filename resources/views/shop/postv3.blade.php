@@ -146,7 +146,7 @@
 
     @foreach ($post->images as $key => $image)
         <!-- Modal -->
-        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" />
+        <livewire:post-image :nthImage="$key" :postImg="$post->images[$key]" :post="$post"/>
     @endforeach
 
     <script>

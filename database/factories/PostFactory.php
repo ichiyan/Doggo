@@ -29,8 +29,10 @@ class PostFactory extends Factory
         $dog->is_Posted = true;
         $dog->save();
         $dog = $dog->dog_litter_id;
+        $dogIds = Dog::all('id');
 
         return [
+            'dog_id' => $this->faker->unique()->randomElement($dogIds),
             'dog_litter_id' => $dog,
             'post_type_id' => PostType::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,

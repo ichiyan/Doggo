@@ -167,24 +167,27 @@ class ProfileController extends Controller
     /*
         deletes user's own post
     */
-    public function destroyPost($postId) {
+    public function destroyPost($user_id, $post_id) {
 
         //hehehello
-        $post = Post::find($postId);
-        $images = Image::where('post_id', $postId)->pluck('image_location');
+        $post = Post::find($post_id);
+
+        $images = Image::where('post_id', $post_id)->pluck('image_location');
 
         Storage::delete($images);
-        Image::where('post_id', $postId)->delete();
+        Image::where('post_id', $post_id)->delete();
 
         // can't update a specific dog via dog_litter since there are lots of dogs with the same dog_litter_id
         // line below will update all dog with the dog_litter_id.
         // Dog::where('dog_litter_id', $post->dog_litter_id)->update(['is_Posted' => 0]);
 
         // line below will update all dog with the dog_litter_id and post_type_id;
-        Dog::where('dog_litter_id', $post->dog_litter_id)->where('post_type_id', $post->post_type_id)->update(['is_Posted' => 0]);
+
+        // Dog::where('dog_litter_id', $post->dog_litter_id)->where('post_type_id', $post->post_type_id)->update(['is_Posted' => 0]);
+
         $post->delete();
 
-        return back();
+        return redirect()->back();
     }
 
 

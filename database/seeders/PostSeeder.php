@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dog;
+use App\Models\DogDetail;
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,12 +17,11 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        // Just run the PostFactory.php => gets dummy data
-        // PostSeeder will just modify the existing data
 
         $data = [
             [
                 'user_id' => 1,
+                'dog_id' => 1,
                 'dog_litter_id' => 1,
                 'post_title' => 'Shih Tzu Puppy for Sale',
                 'post_type_id' => 1,
@@ -32,7 +33,8 @@ class PostSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'dog_litter_id' => 1,
+                'dog_id' => 2,
+                'dog_litter_id' => 2,
                 'post_title' => 'Doberman',
                 'post_type_id' => 1,
                 'post_description' => 'Vaccinated, Dewormed, and a champion.',
@@ -43,7 +45,8 @@ class PostSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'dog_litter_id' => 1,
+                'dog_id' => 3,
+                'dog_litter_id' => 3,
                 'post_title' => 'Chao Chao',
                 'post_type_id' => 1,
                 'post_description' => 'Vaccinated, Dewormed, and a teddy bear in the house. A chunky boy that likes to sleep.',
@@ -110,9 +113,22 @@ class PostSeeder extends Seeder
 
         $arr = [];
         $i = 0;
+
         foreach ($data as $pData) {
             $post = Post::create($pData);
+            $dogId = Dog::find($pData['dog_id'])->dog_detail_id;
+            $dogDetail = DogDetail::find($dogId);
 
+            switch ($i) {
+                case 0: $dogDetail->breed = 'Shih Tzu';
+                        break;
+                case 1: $dogDetail->breed = 'Doberman';
+                        break;
+                case 2: $dogDetail->breed = 'Chao chao';
+                        break;
+            }
+
+            $dogDetail->save();
             foreach ($images[$i] as $image) {
                 $image['post_id'] = $post->id;
                 DB::table('images')->insert($image);

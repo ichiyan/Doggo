@@ -65,6 +65,11 @@ Route::get('user/{user_id}/profile/shop', [ProfileController::class, 'showShop']
 Route::get('user/{user_id}/profile/stud', [ProfileController::class, 'showStud'])->name('profile_stud');
 Route::get('user/{user_id}/profile/rehome', [ProfileController::class, 'showRehome'])->name('profile_rehome');
 
+// line below: can use delete but it needs a form to be passed with csrf stuff. hence the Route::get since it's direct but has security issues.
+Route::get('user/{user_id}/profile/{post_id}/delete', [ProfileController::class, 'destroyPost'])->name('profile_delete');
+// Route::delete('user/{user_id}/profile/{post_id}/delete', [ProfileController::class, 'destroyPost'])->name('profile_delete');
+Route::get('user/{user_id}/profile/{post_id}/edit', [ProfileController::class, 'showRehome'])->name('profile_edit');
+
 Route::resource('shop', PostController::class);
 Route::resource('rehome', RehomeController::class);
 Route::resource('stud_service', StudServiceController::class);

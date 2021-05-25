@@ -8,5 +8,4 @@
         <livewire:shop-new-post-form/>
     </section>
 
-
 @endsection
