@@ -57,9 +57,49 @@ class PostController extends Controller
         // }
 
         $search = $request->input('search-post');
-        $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
-//dd($request);
+        $input = $request->all();
+        $posts = Post::where('post_type_id', 1)
+                    ->where('posts.post_title', 'LIKE', "%{$search}%")
+                    ->paginate(9);
+
+        foreach ($posts as $post) {
+            $post->dog = $post->getDog();
+            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
+            $post->dog->age = $this->getMonths($post->dog->birthdate);
+        }
+
+        // $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
+        //dd($posts);
+        
         return view('shop.shopv3', compact('posts') );
+    }
+
+    public function getPosts($search, $filters) {
+        $posts = Post::where('post_type_id', 1)
+                    ->where('posts.post_title', 'LIKE', "%{$search}%")
+                    ->paginate(9);
+
+        foreach ($posts as $post) {
+            $post->dog = $post->getDog();
+            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
+            $post->dog->age = $this->getMonths($post->dog->birthdate);
+        }
+
+        //dd($filters);
+
+        return $posts;
+    }
+
+    public function getFilters($collection) {
+        $filters = [];
+
+        foreach($collection as $key => $value) {
+            if ($value == "on") {
+                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first()->id;
+            }
+        }
+
+        return $filters;
     }
 
     /**
@@ -140,8 +180,9 @@ class PostController extends Controller
         $dog = DogDetail::findOrFail($dog->dog_detail_id);
         $dog->age = $this->getMonths($dog->birthdate);
         $post->images = Image::where('post_id', $post->id)->limit(5)->get();
+        $name = 'Shop';
 
-        return view('shop.postv3', compact('post', 'user', 'dog') );
+        return view('shop.postv3', compact('post', 'user', 'dog', 'name') );
     }
 
     /**
@@ -244,32 +285,6 @@ class PostController extends Controller
         return $bool;
     }
 
-    public function getPosts($search, $filters) {
-        $posts = Post::where('post_type_id', 1)
-                    ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->paginate(9);
-
-        foreach ($posts as $post) {
-            $post->dog = $post->getDog();
-            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
-            $post->dog->age = $this->getMonths($post->dog->birthdate);
-        }
-
-        return $posts;
-    }
-
-    public function getFilters($collection) {
-        $filters = [];
-
-        foreach($collection as $key => $value) {
-            if ($value == "on") {
-                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first()->id;
-            }
-        }
-
-        return $filters;
-    }
-
     public function editImage($imgId, Request $request) {
         if ($request->has('description')) {
             $img = Image::find($imgId);
@@ -277,5 +292,12 @@ class PostController extends Controller
             $img->save();
         }
 
+    }
+
+    public function bookmark($id) {
+        $bookmark = Post::findOrFail($id);
+        $bookmark->bookmarked()->attach(Auth::id());
+
+        return back();
     }
 }
