@@ -79,15 +79,10 @@ class PostController extends Controller
                 $error = 'Only PCCI members are allowed to sell.';
                 $userProf = UserProfile::where('user_id', Auth::id())->get()[0];
 
-<<<<<<< Updated upstream
-            if ($userProf->is_admin || $userProf->pcci_member_id != null) {
-                return view('shop.shop_new_post')->with('dog', session()->get('dog'));
+                if ($userProf->is_admin || $userProf->pcci_member_id != null) {
+                    return view('shop.shop_new_post')->with('dog', session()->get('dog'));
+                }
             }
-=======
-        if ($userProf->is_admin || $userProf->pcci_member_id != null) {
-            return view('shop.shop_new_post')->with('dog', session()->get('dog'));
->>>>>>> Stashed changes
-        }
     }
     /**
      * Store a newly created resource in storage.

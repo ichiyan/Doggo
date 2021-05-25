@@ -11,19 +11,21 @@
         @auth
         <li class="dropdown">
             <a href="#">
-                <span class="nav-link">{{ Auth::user()->name }}</span>
+                <span class="nav-link">{{ Auth::user()->profiles->name }}</span>
                 <img class="img-profile rounded-circle" src="{{asset('images/profile-user.svg')}}">
             </a>
             <ul>
-                <li>
-                    <a class="nav-user-dropdown" href="{{ route('shop.create') }}">
-                        <i class="fas fa-dog fa-sm fa-fw mr-2 text-gray-400"></i>
-                        <span class="badge badge-warning" style="color: black;">Sell a dog</span>
-                    </a>
-                </li>
+                @if ( Auth::user()->profiles->is_admin || Auth::user()->profiles->pcci_member_id != null )
+                    <li>
+                        <a class="nav-user-dropdown" href="{{ route('shop.create') }}">
+                            <i class="fas fa-dog fa-sm fa-fw mr-2 text-gray-400"></i>
+                            <span class="badge badge-warning" style="color: black;">Sell a dog</span>
+                        </a>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                @endif
 
-                <div class="dropdown-divider"></div>
-                <li><a class="nav-user-dropdown" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</a></li>
+                <li><a class="nav-user-dropdown" href="{{ route('profile_all', Auth::user()->id) }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</a></li>
                 <div class="dropdown-divider"></div>
                 <li><a class="nav-user-dropdown" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a></li>
             </ul>
