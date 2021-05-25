@@ -109,7 +109,7 @@
                                             <a href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
                                         @if ( Auth::check() && Auth::user()->id == $user->user_id )
                                             <a href="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}"><i class="icofont-ui-delete delete"></i></a>
-                                            <a href=""><i class="icofont-edit edit"></i></a>
+                                            <a href="{{ route('shop.edit',  $post->id) }}"><i class="icofont-edit edit"></i></a>
                                         @endif
                                     </div>
                                 </div>

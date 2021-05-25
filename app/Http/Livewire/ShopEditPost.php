@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopEditPost extends Component
 {
-    public $post, $post_id, $images;
+    public $post, $post_id, $post_user_id, $images;
 
     use WithFileUploads;
     public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
@@ -53,14 +53,13 @@ class ShopEditPost extends Component
         $this->post_description = $post->post_description;
         $this->price = $post->price;
         $this->images = $post->images;
+        $this->post_user_id = $post->user_id;
     }
 
-    public function deleteImage($id){
-        $image = Image::where('id', $id)->pluck('image_location');
+    public function deleteImage($image_id){
+        $image = Image::where('id', $image_id)->pluck('image_location');
         Storage::delete($image);
-        Image::where('id', $id)->delete();
-
-        return back();
+        Image::where('id', $image_id)->delete();
     }
 
     public function update(Request $request, $id){
@@ -97,6 +96,10 @@ class ShopEditPost extends Component
 
        session()->flash('post_updated', 'Successfully updated post.');
        return redirect()->route('shop.show', [$id]);
+    }
+
+    public function cancel(){
+        return redirect()->back();
     }
 
     public function render()

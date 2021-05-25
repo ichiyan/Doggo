@@ -7,7 +7,7 @@
                 </span>
             </div>
 
-            <form class="new-post100-form" wire:submit.prevent="update({{$post_id}})">
+            <form class="new-post100-form">
                 <fieldset class="form-group" style="width: 100%">
 
                     <input type="hidden" name="post-type" value=1>
@@ -80,6 +80,7 @@
                                     <a class="remove-image" href="" data-toggle="modal" data-target="#deleteImage{{$image->id}}Modal" style="display: inline;">&#215;</a>
                                 </div>
 
+                                {{--should not reload--}}
                                 <!-- Delete Image Modal-->
                                 <div class="modal fade" id="deleteImage{{$image->id}}Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
@@ -94,7 +95,7 @@
                                         <div class="modal-body">Select "Delete" below to delete image.</div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button class="btn btn-danger" wire:submit.prevent="deleteImage({{$image->id}})">Delete</button>
+                                            <button class="btn btn-danger" wire:click="deleteImage({{$image->id}}, {{$post_id}})">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -109,10 +110,11 @@
                 <div class="container footer">
                     <div class="row justify-content-around">
                         <div class="col-4 text-center">
-                            <input type="submit" value="Update Post" class="btn btn-block cust-btn-primary">
+                            <input value="Update Post" class="btn btn-block cust-btn-primary" wire:click="update({{$post_id}})">
                         </div>
                         <div class="col-4 text-center">
-                            <button class="btn btn-block cust-btn-light"><a href="{{ url()->previous() }}" style="color: black">Cancel</a>
+                            {{--supposed to redirect to previous page but url()->previous() doesnt work for some reason--}}
+                            <button class="btn btn-block cust-btn-light"><a href="{{ route('profile_all', $post_user_id) }}" style="color: black">Cancel</a>
                         </div>
                     </div>
                 </div>
