@@ -193,7 +193,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->images = Image::where('post_id', $post->id)->limit(5)->get();
+        return view('shop.shop_edit_post', compact('post'));
     }
 
     /**

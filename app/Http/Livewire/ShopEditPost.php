@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class ShopNewPostForm extends Component
+use Illuminate\Support\Facades\Storage;
+
+
+class ShopEditPost extends Component
 {
+    public $post, $post_id, $images;
 
     use WithFileUploads;
     public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
@@ -27,7 +31,6 @@ class ShopNewPostForm extends Component
 
     protected $validationAttributes = [
         'post_title' => 'Post Title',
-        'registered_number' => 'DRN',
         'post_description' => 'Description',
         'price' => 'Price',
         'photos' => 'Photos',
@@ -37,7 +40,6 @@ class ShopNewPostForm extends Component
     protected function rules() {
         return [
                 'post_title' => 'required|min:7|max:30',
-                'registered_number' => ['required', 'min:8', 'exists:dogs', new UniquePost()],
                 'post_description' => 'required|min:20|max:1000',
                 'price' => 'required|numeric',
                 'photos.*' => 'max:30720|mimes:png,jpg,jpeg|dimensions:min_width=100,min_height=100',
@@ -45,39 +47,34 @@ class ShopNewPostForm extends Component
             ];
     }
 
-
-    public function updated($property) {
-        $this->validateOnly($property, $this->rules());
-
-        if ($property == 'registered_number' && $this->registered_number != null) {
-            session()->flash($property, 'Registered Number is valid.');
-            $dog = Dog::where('registered_number', $this->registered_number)
-                    ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
-                    ->select('dog_details.*', 'dogs.registered_number')
-                    ->first();
-            session()->flash('dog', $dog);
-        }
+    public function mount($post){
+        $this->post_id = $post->id;
+        $this->post_title = $post->post_title;
+        $this->post_description = $post->post_description;
+        $this->price = $post->price;
+        $this->images = $post->images;
     }
 
-    public function submitForm(Request $request)
-    {
+    public function deleteImage($id){
+        $image = Image::where('id', $id)->pluck('image_location');
+        Storage::delete($image);
+        Image::where('id', $id)->delete();
+
+        return back();
+    }
+
+    public function update(Request $request, $id){
+
         $validatedData = $this->validate();
 
-        $dog = Dog::where('registered_number', $validatedData['registered_number'])->first();
-        $post = Post::create([
-            'user_id' => Auth::id(),
-            'post_type_id' => 1,
-            'post_title' => $validatedData['post_title'],
-            'dog_litter_id' => $dog->dog_litter_id,
-            'post_description' => $validatedData['post_description'],
-            'price' => $validatedData['price'],
-            'status' => 'Has Documents',
-        ]);
+        $post = Post::findOrFail($id);
+        $post->post_title = $validatedData['post_title'];
+        $post->post_description = $validatedData['post_description'];
+        $post->price = $validatedData['price'];
 
-        $dog->is_Posted = 1;
-        $dog->save();
+        $post->save();
 
-       if ($validatedData['photos']){
+        if ($validatedData['photos']){
 
             foreach ($validatedData['photos'] as $photo) {
 
@@ -95,16 +92,15 @@ class ShopNewPostForm extends Component
 
                 // $location = $photo->store('posts');
                 // Image::create(['post_id' => $post->id, 'image_location' => $location, 'description' => '']);
-
             }
        }
 
-        $this->reset();
-        session()->flash('post_added', 'Successfully added a post.');
-        return redirect('shop');
+       session()->flash('post_updated', 'Successfully updated post.');
+       return redirect()->route('shop.show', [$id]);
     }
+
     public function render()
     {
-        return view('livewire.shop-new-post-form', ['photos' => $this->photos]);
+        return view('livewire.shop-edit-post');
     }
 }

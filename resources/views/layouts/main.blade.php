@@ -146,6 +146,13 @@
             toastr.success("{{ Session::get('report_submitted')}}")
         @endif
 
+        @if (Session::has('post_updated'))
+            toastr.options = {
+                "positionClass": "toast-top-center",
+            }
+            toastr.success("{{ Session::get('post_updated')}}")
+        @endif
+
 
         @if ($errors->any())
             toastr.error("{{ implode('', $errors->all(':message')) }}")
