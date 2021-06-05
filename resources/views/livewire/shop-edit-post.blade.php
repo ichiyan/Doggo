@@ -65,6 +65,7 @@
                             @foreach ($photos as $image)
                                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                                     <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail" style="">
+                                    <a class="remove-image" wire:click.prevent="removeImgPreview({{$loop->index}})" style="display: inline;">&#215;</a>
                                 </div>
                             @endforeach
                         </div>
@@ -75,35 +76,41 @@
                         <div class="form-group"><b>Images Used:</b></div>
                         <div class="row gy-2">
                             @foreach ($images as $image)
+
                                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                                    <img src="{{ asset($image->image_location) }}" class="img-thumbnail" style="">
-                                    <a class="remove-image" href="" data-toggle="modal" data-target="#deleteImage{{$image->id}}Modal" style="display: inline;">&#215;</a>
+                                    <div  id="pic{{$image->id}}" style="display: block">
+                                        <img src="{{ asset($image->image_location) }}" class="img-thumbnail" style="">
+                                        <a  class="remove-image" data-toggle="modal" data-target="#deleteImage{{$image->id}}Modal" style="display: inline;">&#215;</a>
+                                        {{-- <a class="remove-image" style="display: inline;" onclick="document.getElementById('pic{{$image->id}}').style.display = 'none'; {{ array_push($dbphotos, $image->id) }}">&#215;</a> --}}
+                                    </div>
                                 </div>
 
                                 {{--should not reload--}}
                                 <!-- Delete Image Modal-->
                                 <div class="modal fade" id="deleteImage{{$image->id}}Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete Image?</h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">Select "Delete" below to delete image.</div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <button class="btn btn-danger" wire:click="deleteImage({{$image->id}}, {{$post_id}})" >Delete</button>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete Image?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Select "Delete" below to delete image.</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-danger" wire:click="deleteImage({{$image->id}})" >Delete</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </div>
 
                             @endforeach
                         </div>
                     </div>
+
+                    {{-- @php var_dump($dbphotos) @endphp --}}
 
                 </fieldset>
 

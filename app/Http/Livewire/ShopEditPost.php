@@ -20,7 +20,9 @@ class ShopEditPost extends Component
 
     use WithFileUploads;
     public $registered_number, $user_id, $post_type, $post_title, $post_description, $price;
-    public $photos = '';
+    public $photos = [];
+    public $dbphotos = [];
+
     //new CreateForm
 
     // https://laravel-livewire.com/docs/2.x/input-validation
@@ -54,6 +56,10 @@ class ShopEditPost extends Component
         $this->price = $post->price;
         $this->images = $post->images;
         $this->post_user_id = $post->user_id;
+    }
+
+    public function removeImgPreview($ndx){
+        array_splice($this->photos, $ndx);
     }
 
     public function deleteImage($image_id){
@@ -94,6 +100,7 @@ class ShopEditPost extends Component
             }
        }
 
+       $this->reset();
        session()->flash('post_updated', 'Successfully updated post.');
        return redirect()->route('shop.show', [$id]);
     }
