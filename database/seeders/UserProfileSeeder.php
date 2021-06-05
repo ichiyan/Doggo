@@ -48,6 +48,5 @@ class UserProfileSeeder extends Seeder
         $userProfiles[2]->is_admin = true;
         $userProfiles[2]->save();
 
-
     }
 }
