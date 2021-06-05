@@ -19,21 +19,21 @@ class UserProfileSeeder extends Seeder
     public function run()
     {
         $user1 = User::create(
-            ['name' => 'JoshRegular',
+            [
             'email' => "regular@gmail.com",
             'password' => bcrypt('User123')
             ])->id;
 
 
         $user2 = User::create(
-            ['name' => 'JoshPCCI',
+            [
             'email' => "pcci@gmail.com",
             'password' => bcrypt('User123')
             ])->id;
 
 
         $user3 = User::create(
-            ['name' => 'JoshAdmin',
+            [
             'email' => "admin@gmail.com",
             'password' => bcrypt('User123')
             ])->id;
