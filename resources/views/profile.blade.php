@@ -48,10 +48,10 @@
                 </ul>
                 @if ( !Auth::check() || Auth::user()->id == $user->user_id )
                     <div class="d-flex justify-content-center">
-                        <div class="btn cust-btn-outline-primary">
+                        <a class="btn cust-btn-outline-primary" href="{{ route('edit_profile', $user->user_id) }}">
                             <i class="fa fa-edit" aria-hidden="true"></i>
                             Edit Profile
-                        </div>
+                        </a>
                     </div>
                 @endif
             </div>
@@ -66,7 +66,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for listing..."
                                 aria-label="Search" aria-describedby="basic-addon2" name="search-post" value="{{ request('search-post') }}">
                             <div class="input-group-append">
-                                <button class="btn cust-btn-light" type="submit">
+                                <button class="btn cust-btn-light-square" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -91,18 +91,21 @@
                             <a class="item" href="{{ route('profile_rehome',  $user->id) }}">
                                 Rehome
                             </a>
+                            <a class="item" href="{{ route('profile_bookmarked',  $user->id) }}">
+                                Bookmarked
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="row gy-4">
-                    <p style="padding: 0 0 0 15px; margin: 0; font-weight: 600">{{$count}} @if ($count == 1) post @else posts @endif</p>
+                    <p style="padding: 0 0 0 15px; margin: 0; font-weight: 600">{{$filter}} ({{$count}} @if ($count == 1) post @else posts @endif)</p>
                     @foreach ($posts as $post)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                             <div class="post">
                                 <div class="post-img">
                                     <img src="{{ asset($post->getImage()) }}" class="img-fluid" alt=""  style="min-height: 240px; min-width: 300px; max-height: 375px;">
-                                    <div class="options">
+                                    <div class="options profile">
                                         @if ( !Auth::check() || Auth::user()->id != $user->user_id )
                                             <a href=""><i class="icofont-heart heart"></i></a>
                                         @endif

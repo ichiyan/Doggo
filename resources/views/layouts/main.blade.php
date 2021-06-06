@@ -153,6 +153,19 @@
             toastr.success("{{ Session::get('post_updated')}}")
         @endif
 
+        @if (Session::has('profile_updated'))
+            toastr.options = {
+                "positionClass": "toast-top-center",
+            }
+            toastr.success("{{ Session::get('profile_updated')}}")
+        @endif
+
+        @if (Session::has('bookmark_fail'))
+            toastr.options = {
+                "positionClass": "toast-top-center",
+            }
+            toastr.warning("{{ Session::get('bookmark_fail')}}")
+        @endif
 
         @if ($errors->any())
             toastr.error("{{ implode('', $errors->all(':message')) }}")

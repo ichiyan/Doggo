@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\UserProfile;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Bookmark;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -134,6 +135,30 @@ class ProfileController extends Controller
         return view('profile', compact('user', 'posts', 'filter', 'count') );
     }
 
+    public function showBookmarked($user_id){
+        $user = UserProfile::find($user_id);
+        $user->email = User::findOrFail($user->user_id)->email;
+
+        $filter = 'Bookmarked';
+
+        $posts = Post::where('user_id', $user_id)
+                                ->join('post_user_profile', 'posts.id', '=', 'post_user_profile.post_id')
+                                ->paginate(9);
+
+        $count = Post::where('user_id', $user_id)
+                            ->join('post_user_profile', 'posts.id', '=', 'post_user_profile.post_id')
+                            ->count();
+
+        foreach ($posts as $post) {
+            $post->dog = $post->getDog();
+            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
+            $post->dog->age = $this->getMonths($post->dog->birthdate);
+            $post->post_type_id = $post->post_type_id;
+        }
+
+        return view('profile', compact('user', 'posts', 'filter', 'count') );
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -162,6 +187,13 @@ class ProfileController extends Controller
 
         // return redirect()->action([ProfileController::class, 'index']);
         return back();
+    }
+
+    public function editProfile($id)
+    {
+        $user = UserProfile::findOrFail($id);
+        $user->email = User::findOrFail($user->user_id)->email;
+        return view('edit_profile', compact('user'));
     }
 
     /*

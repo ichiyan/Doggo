@@ -60,11 +60,16 @@ Route::get('/profile', function() {
 
 Route::post('shop/{post_id}/report', [PostController::class, 'report'])->name('report_post');
 Route::get('shop/{post_id}/print', [PostController::class, 'print'])->name('print_post');
+
+//Show Profile
 Route::get('user/{user_id}/profile/all', [ProfileController::class, 'showAll'])->name('profile_all');
 Route::get('user/{user_id}/profile/shop', [ProfileController::class, 'showShop'])->name('profile_shop');
 Route::get('user/{user_id}/profile/stud', [ProfileController::class, 'showStud'])->name('profile_stud');
 Route::get('user/{user_id}/profile/rehome', [ProfileController::class, 'showRehome'])->name('profile_rehome');
-Route::get('user/{user_id}/profile/rehome', [ProfileController::class, 'showRehome'])->name('profile_rehome');
+Route::get('user/{user_id}/profile/bookmarked', [ProfileController::class, 'showBookmarked'])->name('profile_bookmarked');
+
+//Edit Profile
+Route::get('user/{user_id}/profile/edit', [ProfileController::class, 'editProfile'])->name('edit_profile');
 
 // line below: can use delete but it needs a form to be passed with csrf stuff. hence the Route::get since it's direct but has security issues.
 Route::get('user/{user_id}/profile/{post_id}/delete', [ProfileController::class, 'destroyPost'])->name('profile_delete');
@@ -77,7 +82,6 @@ Route::resource('stud_service', StudServiceController::class);
 
 Route::patch('image/{imgId}/edit', [PostController::class, 'editImage'])->name('editImage');
 Route::get('shop/{post_id}/bookmark', [PostController::class, 'bookmark'])->name('bookmark_post');
-
 
 Route::get('admin/dashboard', function() {
     return view('admin.dashboard');

@@ -344,7 +344,7 @@
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for listing..."
                                 aria-label="Search" aria-describedby="basic-addon2" name="search-post" value="{{ request('search-post') }}">
                             <div class="input-group-append">
-                                <button class="btn cust-btn-light" type="submit">
+                                <button class="btn cust-btn-light-square" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -380,9 +380,13 @@
                             <div class="post">
                                 <div class="post-img">
                                     <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
-                                    <div class="options">
-                                    <a href="{{ route('bookmark_post',  $post->id) }}"><i class="icofont-heart heart"></i></a>
-                                    <a href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
+                                    <div class="options shop">
+                                    @if (!Auth::check())
+                                        <a href="{{ route('bookmark_post',  $post->id) }}"><i class="icofont-heart heart"></i></a>
+                                    @else
+                                        <a class="bookmark" id="bookmark-btn-{{$post->id}}" onclick="bookmark(event, {{$post->id}})"><i class="icofont-heart heart"></i></a>
+                                    @endif
+                                    <a  class="info" href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
                                     </div>
                                 </div>
                                 <div class="post-info">
@@ -405,6 +409,30 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    function bookmark(e, $post_id){
+        e.preventDefault();
+        $.ajax({
+            type: "get",
+            url: "shop/{post_id}/bookmark",
+            data: {'post_id': $post_id},
+
+            success: function(response){
+                console.log(response);
+            },
+
+            error: function(error){
+                console.log(error);
+            },
+
+        });
+       var bookmark = document.querySelector('#bookmark-btn-'+$post_id);
+    }
+
+</script>
+
 @endsection
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookmark;
 use App\Models\Dog;
 use App\Models\DogDetail;
 use App\Models\DogLitter;
@@ -253,7 +254,6 @@ class PostController extends Controller
                         $report_file->post_id = $post->id;
                         $report_file->save();
                     }
-
                 }
                 $report = Report::create([
                     'post_id' => $post->id,
@@ -296,10 +296,22 @@ class PostController extends Controller
 
     }
 
-    public function bookmark($id) {
-        $bookmark = Post::findOrFail($id);
-        $bookmark->bookmarked()->attach(Auth::id());
 
-        return back();
+    public function bookmark(Request $request) {
+
+        if(Auth::check()){
+            $id = $request->get('post_id');
+            $bookmark = Post::findOrFail($id);
+            if( DB::table('post_user_profile')->where('post_id', $id)->where('user_profile_id', Auth::id())->exists() ){
+                DB::table('post_user_profile')->where('post_id', $id)->where('user_profile_id', Auth::id())->delete();
+            }else{
+                $bookmark->bookmarked()->attach(Auth::id());
+            }
+            return back();
+        }else{
+            // session()->flash('bookmark_fail', 'You must be logged in to bookmark posts.');
+            return back()->with('bookmark_fail', 'You must be logged in to bookmark and unbookmark posts.');
+        }
     }
+
 }
