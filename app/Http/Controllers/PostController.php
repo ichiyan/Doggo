@@ -67,7 +67,7 @@ class PostController extends Controller
         if($filters != NULL){
             $pivot = PostTag::whereIn('tag_id', $filters)->get();
         }
-        
+
         $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
                     ->paginate(18); //INTERFERS WITH THE FILTER. POSTS ON THE 2ND PAGE DOESN'T GET FILTERED
@@ -76,6 +76,9 @@ class PostController extends Controller
             $post->dog = $post->getDog();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
+            if(Auth::check()){
+                $post->bookmarked = DB::table('post_user_profile')->where('post_id', $post->id)->where('user_profile_id', Auth::id())->exists();
+            }
         }
 
         //dd($filters);

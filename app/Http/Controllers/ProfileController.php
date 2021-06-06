@@ -10,7 +10,10 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Bookmark;
 use Carbon\Carbon;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -67,6 +70,9 @@ class ProfileController extends Controller
             $post->dog = $post->getDog();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
+            if(Auth::check()){
+                $post->bookmarked = DB::table('post_user_profile')->where('post_id', $post->id)->where('user_profile_id', Auth::id())->exists();
+            }
         }
 
         return view('profile', compact('user', 'posts', 'filter', 'count') );

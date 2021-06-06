@@ -168,9 +168,17 @@
         @endif
 
         @if ($errors->any())
+        toastr.options = {
+                "positionClass": "toast-top-center",
+            }
             toastr.error("{{ implode('', $errors->all(':message')) }}")
         @endif
     </script>
 
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
 </body>
 </html>

@@ -22,7 +22,7 @@ class PostSeeder extends Seeder
         $data = [
             [
                 'user_id' => 1,
-                'dog_id' => 1,
+               // 'dog_id' => 1,
                 'dog_litter_id' => 1,
                 'post_title' => 'Shih Tzu Puppy for Sale',
                 'post_type_id' => 1,
@@ -34,7 +34,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'dog_id' => 2,
+               // 'dog_id' => 2,
                 'dog_litter_id' => 2,
                 'post_title' => 'Doberman',
                 'post_type_id' => 1,
@@ -46,7 +46,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'dog_id' => 3,
+                //'dog_id' => 3,
                 'dog_litter_id' => 3,
                 'post_title' => 'Chao Chao',
                 'post_type_id' => 1,
@@ -117,26 +117,19 @@ class PostSeeder extends Seeder
 
         foreach ($data as $pData) {
             $post = Post::create($pData);
-            $dogId = Dog::find($pData['dog_id'])->dog_detail_id;
-            $dogDetail = DogDetail::find($dogId);
+            // $dogId = Dog::find($pData['dog_id'])->dog_detail_id;
+            // $dogDetail = DogDetail::find($dogId);
 
-            switch ($i) {
-                case 0: $dogDetail->breed = 'Shih Tzu';
-                        $breed = 3;
-                        break;
-                case 1: $dogDetail->breed = 'Doberman';
-                        $breed = 7;
-                        break;
-                case 2: $dogDetail->breed = 'Chao chao';
-                        $breed = 8;
-                        break;
-            }
+            // switch ($i) {
+            //     case 0: $dogDetail->breed = 'Shih Tzu';
+            //             break;
+            //     case 1: $dogDetail->breed = 'Doberman';
+            //             break;
+            //     case 2: $dogDetail->breed = 'Chao chao';
+            //             break;
+            // }
 
-            $newID = DB::table("posts")->orderBy("id", "desc")->first()->id;
-            $tag = Tag::findOrFail($breed);
-            $tag->tags()->attach($newID);
-
-            $dogDetail->save();
+            // $dogDetail->save();
             foreach ($images[$i] as $image) {
                 $image['post_id'] = $post->id;
                 DB::table('images')->insert($image);

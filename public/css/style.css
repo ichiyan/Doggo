@@ -1251,16 +1251,26 @@ section {
 
   .shop-posts .post .options {
     position: absolute;
-    right: -100%;
     top: 8px;
-    opacity: 0;
     border-radius: 4px;
-    transition: 0.5s;
+    right: 0;
+    /* transition: 0.5s; */
     /* background: rgba(255, 255, 255, 0.3); */
     z-index: 2;
   }
 
-  .shop-posts .post .options a {
+  .shop-posts .post .options .unbookmarked {
+    right: -100%;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .shop-posts .post .options .bookmarked {
+    right: 8px;
+    opacity: 1;
+  }
+
+  .shop-posts .post .options a{
     transition: color 0.3s;
     margin: 15px 12px;
     display: block;
@@ -1298,6 +1308,18 @@ section {
     color: rgb(252, 173, 167);
   }
 
+  .shop-posts .post .options .bookmarked:hover{
+    background: rgba(252, 173, 167, 0.88);
+  }
+
+  .shop-posts .post .options .bookmarked{
+    background: rgb(252, 173, 167);
+  }
+
+  .shop-posts .post .options .bookmarked .heart{
+    color: #fff;
+  }
+
   .shop-posts .post .options .delete {
     color: rgba(255, 105, 97, 0.88);
   }
@@ -1320,6 +1342,10 @@ section {
 
   .shop-posts .post .options.profile i {
     font-size: 25px;
+  }
+
+  .shop-posts .post .options.profile .heart {
+    font-size: 35px;
   }
 
   .shop-posts .post .post-info {
@@ -1367,10 +1393,11 @@ section {
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
   }
 
-  .shop-posts .post:hover .options {
+  .shop-posts .post:hover .options .unbookmarked {
     right: 8px;
     opacity: 1;
   }
+
 
 
 /*--------------------------------------------------------------

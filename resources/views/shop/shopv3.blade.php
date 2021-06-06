@@ -3,6 +3,7 @@
 
 @section('main')
 
+
 {{-- <div class="container" style="margin-top: 10%">
     <div class="row justify-content-center">
         <div class="col-4">
@@ -285,11 +286,17 @@
                                     <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options shop">
                                     @if (!Auth::check())
-                                        <a href="{{ route('bookmark_post',  $post->id) }}"><i class="icofont-heart heart"></i></a>
-                                    @else
-                                        <a class="bookmark" id="bookmark-btn-{{$post->id}}" onclick="bookmark(event, {{$post->id}})"><i class="icofont-heart heart"></i></a>
-                                    @endif
-                                    <a  class="info" href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
+                                        <span data-toggle="modal" data-target="#bookmarkModal">
+                                             <a class="unbookmarked" data-toggle="tooltip" data-placement="right" title="bookmark post"><i class="icofont-heart heart"></i></a>
+                                        </span>
+                                    @elseif(Auth::check() && Auth::user()->id != $post->user_id)
+                                        @if ( $post->bookmarked)
+                                            <a class="bookmarked" id="bookmarked-post-{{$post->id}}" onclick="bookmark(event, {{$post->id}})" data-toggle="tooltip" data-placement="right" title="unbookmark post"><i class="icofont-heart heart"></i></a>
+                                        @else
+                                            <a class="unbookmarked" id="unbookmarked-post-{{$post->id}}" onclick="bookmark(event, {{$post->id}})" data-toggle="tooltip" data-placement="right" title="bookmark post"><i class="icofont-heart heart"></i></a>
+                                        @endif
+                                     @endif
+                                    <a  class="info unbookmarked" href="{{ route('shop.show',  $post->id) }}" data-toggle="tooltip" data-placement="right" title="more info"><i class="icofont-info  more-info"></i></a>
                                     </div>
                                 </div>
                                 <div class="post-info">
@@ -304,6 +311,50 @@
                             </div>
                         {{-- </a> --}}
                     </div>
+                    @php
+                         echo '<script>
+                            function bookmark(e, $post_id){
+                                e.preventDefault();
+                                $.ajax({
+                                    type: "get",
+                                    url: "shop/{post_id}/bookmark",
+                                    data: {"post_id": $post_id},
+
+                                    success: function(response){
+                                        console.log(response);
+                                    },
+
+                                    error: function(error){
+                                        console.log(error);
+                                    },
+
+                                });
+
+
+                                var bookmarked = document.getElementById("bookmarked-post-"+$post_id);
+                                if (bookmarked){
+                                    if(bookmarked.classList.contains("bookmarked")){
+                                        bookmarked.classList.remove("bookmarked");
+                                        bookmarked.classList.add("unbookmarked");
+                                    }else{
+                                        bookmarked.classList.remove("unbookmarked");
+                                        bookmarked.classList.add("bookmarked");
+                                    }
+                                }
+
+                                var unbookmarked = document.getElementById("unbookmarked-post-"+$post_id);
+                                if(unbookmarked){
+                                    if(unbookmarked.classList.contains("unbookmarked")){
+                                        unbookmarked.classList.remove("unbookmarked");
+                                        unbookmarked.classList.add("bookmarked");
+                                    }else{
+                                        unbookmarked.classList.remove("bookmarked");
+                                        unbookmarked.classList.add("unbookmarked");
+                                    }
+                                }
+                            }
+                            </script>';
+                    @endphp
                 @endforeach
               @else
                 @foreach ($pivot as $piv)
@@ -347,28 +398,26 @@
     </div>
 </section>
 
-<script>
+<div class="modal" id="bookmarkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Want to bookmark posts?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">You have to be logged in to bookmark posts and be able to see them in your profile.</div>
+        <div class="modal-footer">
+            {{-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> --}}
+            <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+            <a class="btn btn-primary" href="{{ route('register') }}">Sign Up</a>
+        </div>
+    </div>
+</div>
+</div>
 
-    function bookmark(e, $post_id){
-        e.preventDefault();
-        $.ajax({
-            type: "get",
-            url: "shop/{post_id}/bookmark",
-            data: {'post_id': $post_id},
-
-            success: function(response){
-                console.log(response);
-            },
-
-            error: function(error){
-                console.log(error);
-            },
-
-        });
-       var bookmark = document.querySelector('#bookmark-btn-'+$post_id);
-    }
-
-</script>
 
 @endsection
 

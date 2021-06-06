@@ -16,7 +16,8 @@ class CreatePost extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id');
-            $table->foreignId('dog_id')->constrained('dogs', 'id');
+            // $table->foreignId('dog_id')->constrained('dogs', 'id');
+            // $table->foreignId('dog_id')->constrained('dogs');
             $table->foreignId('dog_litter_id')->constrained('dog_litters', 'id');
             $table->foreignId('post_type_id')->constrained('post_types', 'id');
             $table->string('post_title', 250);

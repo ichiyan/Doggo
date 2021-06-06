@@ -46,7 +46,7 @@
                         <span class="text-secondary">{{$user->contact_number}}</span>
                     </li>
                 </ul>
-                @if ( !Auth::check() || Auth::user()->id == $user->user_id )
+                @if ( Auth::check() && Auth::user()->id == $user->user_id )
                     <div class="d-flex justify-content-center">
                         <a class="btn cust-btn-outline-primary" href="{{ route('edit_profile', $user->user_id) }}">
                             <i class="fa fa-edit" aria-hidden="true"></i>
@@ -106,13 +106,27 @@
                                 <div class="post-img">
                                     <img src="{{ asset($post->getImage()) }}" class="img-fluid" alt=""  style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options profile">
-                                        @if ( !Auth::check() || Auth::user()->id != $user->user_id )
-                                            <a href=""><i class="icofont-heart heart"></i></a>
+                                        @if (!Auth::check())
+                                            <span data-toggle="modal" data-target="#bookmarkModal">
+                                                <a class="unbookmarked" data-toggle="tooltip" data-placement="right" title="bookmark post"><i class="icofont-heart heart"></i></a>
+                                            </span>
+                                        @elseif (Auth::check() && Auth::user()->id != $user->user_id)
+                                            @if ( $post->bookmarked)
+                                                <a class="bookmarked" id="bookmarked-post-{{$post->id}}" onclick="bookmark(event, {{$post->id}})" data-toggle="tooltip" data-placement="right" title="unbookmark post"><i class="icofont-heart heart"></i></a>
+                                            @else
+                                                <a class="unbookmarked" id="unbookmarked-post-{{$post->id}}" onclick="bookmark(event, {{$post->id}})" data-toggle="tooltip" data-placement="right" title="bookmark post"><i class="icofont-heart heart"></i></a>
+                                            @endif
                                         @endif
-                                            <a href="{{ route('shop.show',  $post->id) }}"><i class="icofont-info  more-info"></i></a>
+                                        {{-- @if ( !Auth::check() || Auth::user()->id != $user->user_id )
+                                            <a class="" href=""><i class="icofont-heart heart"></i></a>
+                                        @endif --}}
+                                            <a  class="unbookmarked"  href="{{ route('shop.show',  $post->id) }}" data-toggle="tooltip" data-placement="right" title="more info"><i class="icofont-info  more-info"></i></a>
                                         @if ( Auth::check() && Auth::user()->id == $user->user_id )
-                                            <a href="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}"><i class="icofont-ui-delete delete"></i></a>
-                                            <a href="{{ route('shop.edit',  $post->id) }}"><i class="icofont-edit edit"></i></a>
+                                            {{-- <a href="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}"><i class="icofont-ui-delete delete"></i></a> --}}
+                                            <span data-toggle="modal" data-target="#deletePostModal{{$post->id}}">
+                                                <a  class="unbookmarked" data-toggle="tooltip" data-placement="right" title="delete post"><i class="icofont-ui-delete delete"></i></a>
+                                            </span>
+                                            <a  class="unbookmarked" href="{{ route('shop.edit',  $post->id) }}" data-toggle="tooltip" data-placement="right" title="edit post"><i class="icofont-edit edit"></i></a>
                                         @endif
                                     </div>
                                 </div>
@@ -126,6 +140,74 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="deletePostModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete Post?</h5>
+                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Select "Delete" below to delete post.</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-danger" form="logout-form">Delete</button>
+                                        @if(Auth::check())
+                                            <form id="logout-form" action="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}" method="POST" class="d-none">
+                                                @csrf
+                                                @method('get')
+                                            </form>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @php
+                        echo '<script>
+                                function bookmark(e, $post_id){
+                                    e.preventDefault();
+                                    $.ajax({
+                                        type: "get",
+                                        url: "shop/{post_id}/bookmark",
+                                        data: {"post_id": $post_id},
+
+                                        success: function(response){
+                                            console.log(response);
+                                        },
+
+                                        error: function(error){
+                                            console.log(error);
+                                        },
+
+                                    });
+
+
+                                    var bookmarked = document.getElementById("bookmarked-post-"+$post_id);
+                                    if (bookmarked){
+                                        if(bookmarked.classList.contains("bookmarked")){
+                                            bookmarked.classList.remove("bookmarked");
+                                            bookmarked.classList.add("unbookmarked");
+                                        }else{
+                                            bookmarked.classList.remove("unbookmarked");
+                                            bookmarked.classList.add("bookmarked");
+                                        }
+                                    }
+
+                                    var unbookmarked = document.getElementById("unbookmarked-post-"+$post_id);
+                                    if(unbookmarked){
+                                        if(unbookmarked.classList.contains("unbookmarked")){
+                                            unbookmarked.classList.remove("unbookmarked");
+                                            unbookmarked.classList.add("bookmarked");
+                                        }else{
+                                            unbookmarked.classList.remove("bookmarked");
+                                            unbookmarked.classList.add("unbookmarked");
+                                        }
+                                    }
+                                }
+                                </script>';
+                    @endphp
                     @endforeach
                     <div class="d-flex justify-content-center pagination" style="margin-top: 5%">
                         {{ $posts->links() }}
@@ -136,27 +218,24 @@
     </div>
 </section>
 
-{{-- <div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Post?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Delete" below to delete post.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" form="logout-form">Delete</button>
-                <form id="logout-form" action="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}" method="POST" class="d-none">
-                    @csrf
-                    @method('DELETE')
-                </form>
-            </div>
+<div class="modal" id="bookmarkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Want to bookmark posts?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">You have to be logged in to bookmark posts and be able to see them in your profile.</div>
+        <div class="modal-footer">
+            {{-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button> --}}
+            <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+            <a class="btn btn-primary" href="{{ route('register') }}">Sign Up</a>
         </div>
     </div>
-</div> --}}
+</div>
+</div>
 
 @endsection
