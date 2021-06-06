@@ -29,7 +29,7 @@ class UserProfileFactory extends Factory
             'address' => $this->faker->address(),
             'username' => $this->faker->userName(),
             'bio' => "Hello, I am a cupcake",
-            'profile_pic' => "/default-pic.png",
+            'profile_pic' => "storage/profile/default-user.png",
             'contact_number' => $this->faker->tollFreePhoneNumber(),
             'user_id' => User::factory(1)->create()[0]->id,
             'PCCI_member_id' => PcciMember::factory(1)->create()[0]->id,

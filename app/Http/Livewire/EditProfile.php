@@ -64,9 +64,9 @@ class EditProfile extends Component
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $photo->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-                $path = $photo->storeAs('profile-pictures', $fileNameToStore);
+                $path = $photo->storePubliclyAs('public/profile', $fileNameToStore);
 
-                $userProfile->profile_pic = $fileNameToStore;
+                $userProfile->profile_pic = 'storage/profile/'.$fileNameToStore;
             }
         }
 
