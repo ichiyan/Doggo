@@ -12,8 +12,8 @@
                     <h1 class="text-uppercase mb-0">Doggo</h1>
                     <h2 class="font-weight-light text-uppercase mb-0">Committed to ethical dog breeding</h2>
                     <div class="my-5">
-                        <h3 class="h4 font-weight-bold text-uppercase text-black-50">100% Lorem</h3>
-                        <p class="lead pr-lg-5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
+                        <h3 class="h4 font-weight-bold text-uppercase text-black-50">100% Guaranteed</h3>
+                        <p class="lead pr-lg-5">A platform for ethical dog breeding.</p>
                     </div>
                     <a href="#about" class="hero-btn scrollto"><i class="icofont-paw"></i>Learn More</a>
                 </div>
@@ -42,10 +42,7 @@
 
           <div class="section-title" data-aos="zoom-in">
             <h2>What we do</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-                Voluptas nisi in quia excepturi nihil voluptas nam et ut. Expedita omnis eum consequatur non. Sed in asperiores aut repellendus. Error quisquam ab maiores. Quibusdam sit in officia
+            <p>To promote the integrity of the purebred dog registry, to encourage ethical breeding practices, to organize world-class canine exhibitions, to disseminate canine information & education and to support purebred canine welfare.
             </p>
             <a href="http://www.pcci.org.ph/" target="_blank" class="PCCI-btn">Visit PCCI Website</a>
           </div>
@@ -66,20 +63,16 @@
            </div>
 
           <div class="col-md-8 pt-4 align-self-center" data-aos="fade-up">
-            <h3>Sell temporibus maiores provident</h3>
+            <h3>Sell</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              This is Jose, with good qualities on check:
             </p>
             <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Iure at voluptas aspernatur dignissimos doloribus repudiandae.</li>
-              <li><i class="bi bi-check"></i> Est ipsa assumenda id facilis nesciunt placeat sed doloribus praesentium.</li>
+              <li><i class="bi bi-check"></i> Registered Dog</li>
+              <li><i class="bi bi-check"></i> Ethically Raised</li>
+              <li><i class="bi bi-check"></i> Healthy</li>
+              <li><i class="bi bi-check"></i> 100% Pure Bred</li>
             </ul>
-            <p>
-              Voluptas nisi in quia excepturi nihil voluptas nam et ut. Expedita omnis eum consequatur non. Sed in asperiores aut repellendus. Error quisquam ab maiores. Quibusdam sit in officia
-            </p>
           </div>
         </div>
 
@@ -90,18 +83,18 @@
             </div>
           </div>
           <div class="col-md-8 pt-5 order-2 order-md-1 align-self-center" data-aos="fade-up">
-            <h3>Rehome Corporis temporibus maiores provident</h3>
+            <h3>Rehome</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Rehoming a dog is not always a bad decision.
             </p>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+                There are times where giving up your dog is not the worst option.
+                Many folks end up facing guilt about rehoming their dog, but in some cases it will be best for all parties involved.
+
+Facing the fact that either your life circumstances and/or your dog’s behavior mean you might need to give him up is an incredibly brave conversation to have with yourself.
             </p>
             <p>
-              Inventore id enim dolor dicta qui et magni molestiae. Mollitia optio officia illum ut cupiditate eos autem. Soluta dolorum repellendus repellat amet autem rerum illum in. Quibusdam occaecati est nisi esse. Saepe aut dignissimos distinctio id enim.
+                Sometimes, keeping your dog in your home is flat-out dangerous for your family. In these cases, it’s important to get your dog out of your home as soon as possible.
             </p>
           </div>
         </div>
@@ -113,18 +106,18 @@
             </div>
           </div>
           <div class="col-md-8 pt-5" data-aos="fade-up">
-            <h3>Stud Service consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
+            <h3>Stud Service</h3>
+            <p><i>Gain whelps according to your needs</i></p>
             <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Facilis ut et voluptatem aperiam. Autem soluta ad fugiat.</li>
+              <li><i class="bi bi-check"></i> Good Pedigree</li>
+              <li><i class="bi bi-check"></i> Champion</li>
+              <li><i class="bi bi-check"></i> Healthy</li>
             </ul>
             <p>
-              Qui consequatur temporibus. Enim et corporis sit sunt harum praesentium suscipit ut voluptatem. Et nihil magni debitis consequatur est.
+                Dogs who have characteristics that enable the breed to perform the job or function for which it was bred.
             </p>
             <p>
-              Suscipit enim et. Ut optio esse quidem quam reiciendis esse odit excepturi. Vel dolores rerum soluta explicabo vel fugiat eum non.
+              Stud Service focuses on getting progenies while having the dog's welfare in mind.
             </p>
           </div>
         </div>
@@ -139,52 +132,61 @@
         <div class="section-title">
 
           <h2>Frequently Asked Questions</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
         </div>
 
         <div class="accordion-list">
           <ul>
             <li data-aos="fade-up">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1">What is PCCI? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
                 <p>
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    The PCCI is a nonstock, nonprofit, service-oriented corporation established for the primary purpose of handling the registration of the growing number of pure-bred dogs in the country. It is internationally recognized as the only registering body for pedigreed dogs in the country and is an active member of two international canine organizations, the 90 member Federation Cynologique International (FCI) based in Brussels, Belgium.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed">What are the functions of the PCCI? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
                 <p>
-                  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    Purebred means that the sire (father) and dam (mother) of a dog are members of a recognized breed and that the ancestry of a dog consists of the same breed over many generations. Basically, this indicates that the father and mother of the dog are registered and that their father and mother were likewise registered. Therefore dogs whose sire and/or dam are not  pure breed, are ineligible for registration.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed">Does the PCCI sell dogs? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
                 <p>
-                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    Although records of the parentage of thousands of dogs registered annually are kept by the club, the PCCI is not directly involved in the sale of dogs. The club can assist prospective owners in locating breeders who may have pups but cannot guarantee either the health or quality of the dogs in its registry. It is the sole responsibility of the prospective owner to visit the seller and determine if the pup meets his expectations.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-4" class="collapsed">What documents do I get when I register my pure-bred dog? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="accordion-list-4" class="collapse" data-bs-parent=".accordion-list">
                 <p>
-                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
+                    Upon purchase, the seller should give you a registration certificate (much like a birth certificate) that is essentially a certificate of your dog's identity, providing recognition and official documentation of your dog's place in breed history. The name that appears on your dog's registration certificate was chosen by your dog's breeder and is unique. No other registered dog can have the same name. Together with your registration certificate is your dog's pedigree that traces its parentage back four-generations. You must bring this document, with the back portion properly endorsed by the seller to the PCCI to be able to transfer the dog to your name as your proof of ownership. Applications for membership are available at the PCCI office.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-5" class="collapsed">Can I change the name of my dog? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="accordion-list-5" class="collapse" data-bs-parent=".accordion-list">
                 <p>
-                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
+                    The name that appears on your dog's registration certificate is his pedigreed name for life. However, you may give your dog a call name of your choice. This is much like a nickname.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-6" class="collapsed">How do I contact the PCCI? Are there local chapters of the PCCI? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-6" class="collapse" data-bs-parent=".accordion-list">
+                <p>
+                    The PCCI holds office at Room A206 Hillcrest Condominium, 1616 E. Rodriguez Sr., Blvd., Corner Hillcrest Street, Cubao, Quezon City. Their contact number is 721-8345, local 102 to 105. The PCCI is the mother club and affiliated are several regional and breed clubs. You may call the main office to learn more about the clubs in your area or specific to your breed.
                 </p>
               </div>
             </li>
@@ -201,7 +203,7 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
         </div>
 
         <div class="row align-items-center">
