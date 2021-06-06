@@ -254,10 +254,10 @@
                     </form>
                 </div>
                 <div class="col-4 text-left">
+                  
                     <div class="ui floating labeled icon dropdown button">
                         <i class="bx bx-sort sort-icon"></i>
                         <span class="text sort-text">Sort by</span>
-                        {{-- should we include pa sort by nearest location? --}}
                         <div class="menu">
                             <div class="item">
                                 Latest addition
@@ -266,7 +266,11 @@
                                 Oldest addition
                             </div>
                             <div class="item">
+                              <form action="{{ route('shop.index') }}" method="get">
+                                @csrf
+                                <input type='hidden' value='low price' name='sort'>
                                 Lowest price
+                                </form>
                             </div>
                             <div class="item">
                                 Highest price
