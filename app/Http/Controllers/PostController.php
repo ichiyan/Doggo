@@ -56,12 +56,21 @@ class PostController extends Controller
         //     $search = $request->input('search-post');
         //     $posts = $this->getPosts($search ?? '', $filters ?? []);
         // }
+        $filters = NULL;
+        $pivot = NULL;
+        $tags = Tag::get();
 
         $search = $request->input('search-post');
-        $input = $request->all();
+        $input = $request->all('find');
+        $filters = $input["find"];
+
+        if($filters != NULL){
+            $pivot = PostTag::whereIn('tag_id', $filters)->get();
+        }
+        
         $posts = Post::where('post_type_id', 1)
                     ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->paginate(9);
+                    ->paginate(18); //INTERFERS WITH THE FILTER. POSTS ON THE 2ND PAGE DOESN'T GET FILTERED
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();
@@ -70,9 +79,10 @@ class PostController extends Controller
         }
 
         // $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
-        //dd($posts);
 
-        return view('shop.shopv3', compact('posts') );
+        //dd($filters);
+
+        return view('shop.shopv3', compact('posts', 'tags', 'pivot') );
     }
 
     public function getPosts($search, $filters) {
@@ -87,7 +97,6 @@ class PostController extends Controller
         }
 
         //dd($filters);
-
         return $posts;
     }
 
