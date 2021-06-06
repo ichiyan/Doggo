@@ -117,26 +117,32 @@ class PostSeeder extends Seeder
 
         foreach ($data as $pData) {
             $post = Post::create($pData);
-            // $dogId = Dog::find($pData['dog_id'])->dog_detail_id;
-            // $dogDetail = DogDetail::find($dogId);
+            //dog litter for now since it functions as dog_id (since we did not implement litter posts)
+            $dogId = Dog::find($pData['dog_litter_id'])->dog_detail_id;
+            $dogDetail = DogDetail::find($dogId);
 
-            // switch ($i) {
-            //     case 0: $dogDetail->breed = 'Shih Tzu';
-            //             break;
-            //     case 1: $dogDetail->breed = 'Doberman';
-            //             break;
-            //     case 2: $dogDetail->breed = 'Chao chao';
-            //             break;
-            // }
+            switch ($i) {
+                case 0: $dogDetail->breed = 'Shih Tzu';
+                        $breed = 3;
+                        break;
+                case 1: $dogDetail->breed = 'Doberman';
+                        $breed = 7;
+                        break;
+                case 2: $dogDetail->breed = 'Chao chao';
+                        $breed = 8;
+                        break;
+            }
+            $newID = DB::table("posts")->orderBy("id", "desc")->first()->id;
+            $tag = Tag::findOrFail($breed);
+            $tag->tags()->attach($newID);
 
-            // $dogDetail->save();
+            $dogDetail->save();
             foreach ($images[$i] as $image) {
                 $image['post_id'] = $post->id;
                 DB::table('images')->insert($image);
             }
             $i++;
         }
-
 
     }
 }
