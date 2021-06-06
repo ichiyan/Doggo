@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Dog;
 use App\Models\DogDetail;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -121,12 +122,19 @@ class PostSeeder extends Seeder
 
             switch ($i) {
                 case 0: $dogDetail->breed = 'Shih Tzu';
+                        $breed = 3;
                         break;
                 case 1: $dogDetail->breed = 'Doberman';
+                        $breed = 7;
                         break;
                 case 2: $dogDetail->breed = 'Chao chao';
+                        $breed = 8;
                         break;
             }
+
+            $newID = DB::table("posts")->orderBy("id", "desc")->first()->id;
+            $tag = Tag::findOrFail($breed);
+            $tag->tags()->attach($newID);
 
             $dogDetail->save();
             foreach ($images[$i] as $image) {

@@ -78,38 +78,9 @@ class PostController extends Controller
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
 
-        // $posts = $this->getPosts($search ?? '', $this->getFilters(collect($request->input())) ?? [], $request->input('prev_posts'));
-
         //dd($filters);
 
         return view('shop.shopv3', compact('posts', 'tags', 'pivot') );
-    }
-
-    public function getPosts($search, $filters) {
-        $posts = Post::where('post_type_id', 1)
-                    ->where('posts.post_title', 'LIKE', "%{$search}%")
-                    ->paginate(9);
-
-        foreach ($posts as $post) {
-            $post->dog = $post->getDog();
-            $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
-            $post->dog->age = $this->getMonths($post->dog->birthdate);
-        }
-
-        //dd($filters);
-        return $posts;
-    }
-
-    public function getFilters($collection) {
-        $filters = [];
-
-        foreach($collection as $key => $value) {
-            if ($value == "on") {
-                $filters[] = Tag::where('tag_name', str_replace('_', ' ', $key))->first()->id;
-            }
-        }
-
-        return $filters;
     }
 
     /**
