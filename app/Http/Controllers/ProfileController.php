@@ -147,13 +147,19 @@ class ProfileController extends Controller
 
         $filter = 'Bookmarked';
 
-        $posts = Post::where('user_id', $user_id)
-                                ->join('post_user_profile', 'posts.id', '=', 'post_user_profile.post_id')
-                                ->paginate(9);
+        $posts = DB::table('posts')
+                    ->join('post_user_profile', function ($join) {
+                        $join->on('posts.id', '=', 'post_user_profile.post_id')
+                            ->where('post_user_profile.user_profile_id', '=', Auth::id());
+                    })
+                    ->paginate(9);
 
-        $count = Post::where('user_id', $user_id)
-                            ->join('post_user_profile', 'posts.id', '=', 'post_user_profile.post_id')
-                            ->count();
+        $count = DB::table('posts')
+                    ->join('post_user_profile', function ($join) {
+                        $join->on('posts.id', '=', 'post_user_profile.post_id')
+                            ->where('post_user_profile.user_profile_id', '=', Auth::id());
+                    })
+                ->count();
 
         foreach ($posts as $post) {
             $post->dog = $post->getDog();

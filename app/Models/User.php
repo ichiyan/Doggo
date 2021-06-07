@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
     //protected $primaryKey = 'user_id';
@@ -46,5 +47,10 @@ class User extends Authenticatable
         // return $this->belongsTo(UserProfile::class);
         return $this->hasOne('App\Models\UserProfile');
     }
+
+    public function message() {
+        return $this->hasMany("App\Models\Message");
+    }
+
 
 }

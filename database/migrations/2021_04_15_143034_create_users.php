@@ -23,7 +23,7 @@ class CreateUsers extends Migration
             $table->timestamp('logged_in')->nullable();
             $table->timestamp('logged_out')->nullable();
             $table->boolean('is_online')->default(0);
-            $table->timestamp('last_activity')->nullable();
+            $table->timestamp('last_activity')->default(now());
             $table->rememberToken();
         });
 
