@@ -33,7 +33,7 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 3,
                // 'dog_id' => 2,
                 'dog_litter_id' => 2,
                 'post_title' => 'Doberman',
@@ -45,7 +45,7 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 4,
                 //'dog_id' => 3,
                 'dog_litter_id' => 3,
                 'post_title' => 'Chao Chao',
@@ -75,22 +75,23 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 3,
                 //'dog_id' => 5,
                 'dog_litter_id' => 5,
-                'post_title' => 'Pomeranian Puppy for Sale (Male)',
+                'post_title' => 'Shiba Inu',
                 'post_type_id' => 1,
-                'post_description' => '3x Dewormed and 3x Vaccinated by Registered Veterinarian
+                'post_description' => '
+                    3x Dewormed and 3x Vaccinated by Registered Veterinarian
                     Diet: Pedigree Wet Food, BeefPro Puppy
                     Vitamins: LC-VIT, Vet-C',
 
-                'price' => 15000,
+                'price' => 75000,
                 'status' => 'Has Documents',
                 'interests' => 19,
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 4,
                 //'dog_id' => 6,
                 'dog_litter_id' => 6,
                 'post_title' => 'English bulldog for sale',
@@ -126,7 +127,7 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 3,
                 //'dog_id' => 8,
                 'dog_litter_id' => 8,
                 'post_title' => 'Cute English Bulldog For Sale',
@@ -151,7 +152,7 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 4,
                 //'dog_id' => 9,
                 'dog_litter_id' => 9,
                 'post_title' => 'Ilonggo dog chow breed',
@@ -176,26 +177,32 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 3,
                 //'dog_id' => 11,
                 'dog_litter_id' => 1,
-                'post_title' => 'Bullmastff puppy (female)',
+                'post_title' => 'Quality German Shepherd Puppies For Sale',
                 'post_type_id' => 1,
-                'post_description' => 'Bullmastiff
+                'post_description' => 'Quality German Shepherd Puppies for Sale!
 
-                    Champline pcci registered
+                DOB: March 02, 2021
 
-                    Female
+                2 Males & 4 Females
 
-                    Dob:14 nov 2020',
+                Quality German Shepherd Pure Breed Puppies For Sale!!!
 
-                'price' => 45000,
+                Very playful, outgoing and well socialized around small children.  Remarkable temperament.
+
+                Vaccinated, dewormed and vet checked. With PCCI papers.
+
+                If interested, contact: 09209119105 (Viber & WhatsApp)',
+
+                'price' => 30000,
                 'status' => 'Has Documents',
-                'interests' => 9,
+                'interests' => 91,
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 4,
                 //'dog_id' => 12,
                 'dog_litter_id' => 2,
                 'post_title' => 'Pembroke Welsh Corgi',
@@ -232,7 +239,7 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 3,
                 //'dog_id' => 14
                 'dog_litter_id' => 4,
                 'post_title' => 'America Bully',
@@ -265,7 +272,7 @@ class PostSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => 1,
+                'user_id' => 4,
                 //'dog_id' => 15,
                 'dog_litter_id' => 5,
                 'post_title' => 'white pekingese',
@@ -353,12 +360,7 @@ class PostSeeder extends Seeder
                     ],
                     [//5th post
                         [
-                            'image_location' => 'barry-1.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'barry-2.jpeg',
+                            'image_location' => 'Inu-1.jpeg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
@@ -435,17 +437,17 @@ class PostSeeder extends Seeder
                     ],
                     [//11th post
                         [
-                            'image_location' => 'mastff-1.jpeg',
+                            'image_location' => 'german-1.jpeg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
                         [
-                            'image_location' => 'mastff-2.jpeg',
+                            'image_location' => 'german-2.jpeg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
                         [
-                            'image_location' => 'mastff-3.jpeg',
+                            'image_location' => 'german-3.jpeg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
@@ -507,6 +509,12 @@ class PostSeeder extends Seeder
 
         $arr = [];
         $i = 0;
+
+        foreach ($data as $pData) {
+            foreach ($pData as $key => $value) {
+
+            }
+        }
 
         foreach ($data as $pData) {
             $post = Post::create($pData);
