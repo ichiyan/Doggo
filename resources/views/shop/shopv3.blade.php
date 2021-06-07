@@ -288,7 +288,7 @@
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{ asset('storage/posts/'.$post->getImage()) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                    <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options shop">
                                     @if (!Auth::check())
                                         <span data-toggle="modal" data-target="#bookmarkModal">
@@ -311,8 +311,7 @@
                                     </span>
                                     {{-- add location --}}
                                     <span class="badge badge-info">{{$post->interests}} Interested</span>
-                                    <p style="text-overflow: ellipsis; white-space: nowrap;
-                                    overflow: hidden;">{{ $post->post_description }}</p>
+                                    <p>{{ $post->post_description }}</p>
                                 </div>
                             </div>
                         {{-- </a> --}}
@@ -370,7 +369,7 @@
                           {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                               <div class="post">
                                   <div class="post-img">
-                                      <img src="{{ url("public/storage/posts/" . $post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                      <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                       <div class="options shop">
                                       @if (!Auth::check())
                                           <a href="{{ route('bookmark_post',  $post->id) }}"><i class="icofont-heart heart"></i></a>

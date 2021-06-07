@@ -85,11 +85,11 @@ class ShopNewPostForm extends Component
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $photo->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-                $path = $photo->storeAs('posts', $fileNameToStore);
-
+                $path = $photo->storePubliclyAs('public/posts', $fileNameToStore);
+                
                 $image = new Image();
                 $image->post_id = $post->id;
-                $image->image_location = $fileNameToStore;
+                $image->image_location = 'storage/posts/'.$fileNameToStore;
                 $image->description = '';
                 $image->save();
 

@@ -30,7 +30,7 @@
 
                                     @foreach ($post->images as $key => $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ asset('storage/posts/'.$image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
+                                            <img src="{{ asset($image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
                                         </div>
                                     @endforeach
 
