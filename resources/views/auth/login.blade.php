@@ -10,13 +10,13 @@
             <img class="shape-top-right" data-aos="fade-left" data-aos-delay="100" data-aos-duration="1000" src="{{asset('images/shape-top-right-v2.svg')}}" />
             <img class="shape-bottom" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000" src="{{asset('images/shape-bottom-v2.svg')}}" />
         </div>
-        <div class="container">
+        <div class="container login">
             <div class="card login-card" data-aos="fade-up">
                 <div class="row no-gutters">
                     <div class="col-md-5">
                         <img src="{{ asset('images/login-img.jpg') }}" alt="login" class="login-card-img">
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card-body">
                              <p class="login-card-description">Sign into your account</p>
                             <form action="{{ route ('login') }}" method="POST">

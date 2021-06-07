@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\PostTag::factory(50)->create();
         // \App\Models\PostRegular::factory(40)->create();
         $this->call([ImageSeeder::class]);
+        $this->call([UserProfileSeeder::class]);
+        $this->call([MessagesSeeder::class]);
     }
 }

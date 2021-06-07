@@ -98,10 +98,17 @@
                 </ul>
                 <div class="row justify-content-around">
                     <div class="col-6">
-                        <div class="btn cust-btn-outline-primary">
-                            <i class="fa fa-comments" aria-hidden="true"></i>
-                            Message
-                        </div>
+                        @if (Auth::check())
+                            <a class="btn cust-btn-outline-primary"  href="{{ route('inbox.show', Auth::id()) }}">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                Message
+                            </a>
+                        @else
+                            <button class="btn cust-btn-outline-primary"  data-toggle="modal" data-target="#messageModal">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                Message
+                            </button>
+                        @endif
                     </div>
                     <div class="col-6">
                         <a class="btn cust-btn-outline-primary" href="{{ route('profile_all', $user->id) }}">
