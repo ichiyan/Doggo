@@ -104,7 +104,7 @@
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{ asset($post->getImage()) }}" class="img-fluid" alt=""  style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                    <img src="{{ asset('storage/posts/'.$post->getImage()) }}" class="img-fluid" alt=""  style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options profile">
                                         @if (!Auth::check())
                                             <span data-toggle="modal" data-target="#bookmarkModal">

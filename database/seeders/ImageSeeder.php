@@ -22,17 +22,17 @@ class ImageSeeder extends Seeder
             if ($post->id > 3) {
                 DB::table('images')->insert([
                     'post_id' => $post->id,
-                    'image_location' => "storage/posts/default-dog-pic.jpg",
+                    'image_location' => "default-dog-pic.jpg",
                     'description' => "A picture about the dog being posted",
                 ]);
                 DB::table('images')->insert([
                     'post_id' => $post->id,
-                    'image_location' => "storage/posts/default-dog-pic.jpg",
+                    'image_location' => "default-dog-pic.jpg",
                     'description' => "A picture about the dog being posted",
                 ]);
                 DB::table('images')->insert([
                     'post_id' => $post->id,
-                    'image_location' => "storage/posts/default-dog-pic.jpg",
+                    'image_location' => "default-dog-pic.jpg",
                     'description' => "A picture about the dog being posted",
                 ]);
             }

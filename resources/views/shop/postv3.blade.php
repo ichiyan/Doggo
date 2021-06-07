@@ -30,7 +30,7 @@
 
                                     @foreach ($post->images as $key => $image)
                                         <div class="swiper-slide">
-                                            <img src="{{ url($image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
+                                            <img src="{{ asset('storage/posts/'.$image->image_location) }}" data-toggle="modal" data-target="#image-{{$key}}" alt="picture" class="album sub-pic mr-2" >
                                         </div>
                                     @endforeach
 
@@ -98,10 +98,17 @@
                 </ul>
                 <div class="row justify-content-around">
                     <div class="col-6">
-                        <div class="btn cust-btn-outline-primary">
-                            <i class="fa fa-comments" aria-hidden="true"></i>
-                            Message
-                        </div>
+                        @if (Auth::check())
+                            <a class="btn cust-btn-outline-primary"  href="{{ route('inbox.show', Auth::id()) }}">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                Message
+                            </a>
+                        @else
+                            <button class="btn cust-btn-outline-primary"  data-toggle="modal" data-target="#messageModal">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                Message
+                            </button>
+                        @endif
                     </div>
                     <div class="col-6">
                         <a class="btn cust-btn-outline-primary" href="{{ route('profile_all', $user->id) }}">
