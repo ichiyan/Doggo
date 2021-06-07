@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/inbox/{id}', [InboxController::class, 'show'])->name('inbox.show');
 });
 
-Route::get('/send-mail', function () {
+Route::get('/test-mail', function () {
 
     Mail::to('newuser@example.com')->send(new PCCI_Verification());
     return 'A message has been sent to Mailtrap!';
