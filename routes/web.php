@@ -82,6 +82,7 @@ Route::resource('stud_service', StudServiceController::class);
 
 Route::patch('image/{imgId}/edit', [PostController::class, 'editImage'])->name('editImage');
 Route::get('shop/{post_id}/bookmark', [PostController::class, 'bookmark'])->name('bookmark_post');
+Route::get('shop/sort/', [PostController::class, 'sort'])->name('sort');
 
 Route::get('admin/dashboard', function() {
     return view('admin.dashboard');

@@ -269,7 +269,8 @@
                               <form action="{{ route('shop.index') }}" method="get">
                                 @csrf
                                 <input type='hidden' value='low price' name='sort'>
-                                Lowest price
+                                <input type='hidden' value='{{$posts}}' name='old_post'>
+                                <input type='submit' value='Lowest price'>
                                 </form>
                             </div>
                             <div class="item">
