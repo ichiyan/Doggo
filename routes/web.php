@@ -107,7 +107,7 @@ Route::get('PCCIregister', function () {
     return view('auth/PCCIregister');
 });
 
-Route::get('NonMember', function () {
+Route::get('NonMemberRegister', function () {
     return view('auth/NonMemberRegister');
 });
 

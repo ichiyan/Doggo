@@ -23,7 +23,7 @@
                                     <a href="/PCCIregister" name="PCCI" id="register" class="btn btn-block login-btn mb-4">
                                         Register as PCCI member
                                     </a>
-                                    <a href="/NonMember"name="regular" id="register" class="btn btn-block login-btn mb-4">
+                                    <a href="/NonMemberRegister"name="Nonmember" id="Nonmember" class="btn btn-block login-btn mb-4">
                                         Register as non-member
                                     </a>
                                 </div>
