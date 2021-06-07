@@ -33,7 +33,7 @@ class PCCI_Verification extends Mailable
             ->markdown('mails.verification')
             ->with([
                 'name' => 'PCCI member',
-                'link' => 'https://mailtrap.io/inboxes/1295024/messages/2165371408'
+                'link' => 'http://127.0.0.1:8000/login'
             ]);
     }
 }

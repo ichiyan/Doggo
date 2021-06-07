@@ -48,6 +48,7 @@ Route::get('/create', function() {
     return view('shop.create_post');
 });
 
+
 Route::get('/chat', function() {
     return view('shop.create_post');
 });
@@ -102,9 +103,15 @@ Route::get('modal', function () {
     return view('modal');
 });
 
+Route::get('PCCIregister', function () {
+    return view('auth/PCCIregister');
+});
+
+Route::get('NonMember', function () {
+    return view('auth/NonMemberRegister');
+});
 
 Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
-
 
 Auth::routes(['verify' => true]);
 
@@ -114,10 +121,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/inbox/{id}', [InboxController::class, 'show'])->name('inbox.show');
 });
 
-Route::get('/test-mail', function () {
+Route::get('/verify-mail', function () {
 
     Mail::to('newuser@example.com')->send(new PCCI_Verification());
-    return 'A message has been sent to Mailtrap!';
+     return view('auth/login');;
 
 });
 
