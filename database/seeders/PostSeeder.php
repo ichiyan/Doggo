@@ -16,281 +16,361 @@ class PostSeeder extends Seeder
      *
      * @return void
      */
+
+    public function mutator($breed) {
+        $dog = Dog::factory(1)->create()[0];
+        $dogDetail = DogDetail::find($dog->dog_detail_id);
+        $dogDetail->breed = $breed;
+        $dogDetail->save();
+        return $dog;
+    }
+
     public function run()
     {
-
         $data = [
             [
-                'user_id' => 1,
-               // 'dog_id' => 1,
-                'dog_litter_id' => 1,
-                'post_title' => 'Shih Tzu Puppy for Sale',
-                'post_type_id' => 1,
-                'post_description' => 'Completely dewormed and vaccinated',
-                'price' => 30000,
-                'status' => 'Has Documents',
-                'interests' => 12,
-                'updated_at' => now(),
+                [
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Shih Tzu")['id'],
+                    'dog_litter_id' => 1,
+                    'post_title' => 'Shih Tzu Puppy for Sale',
+                    'post_type_id' => 1,
+                    'post_description' => 'Completely dewormed and vaccinated',
+                    'price' => 30000,
+                    'status' => 'Has Documents',
+                    'interests' => 12,
+                    // 'updated_at' => now(),
+                ],
             ],
             [
-                'user_id' => 3,
-               // 'dog_id' => 2,
-                'dog_litter_id' => 2,
-                'post_title' => 'Doberman',
-                'post_type_id' => 1,
-                'post_description' => 'Vaccinated, Dewormed, and a champion.',
-                'price' => 20000,
-                'status' => 'Has Documents',
-                'interests' => 45,
-                'updated_at' => now(),
+                // [
+                //     ...(array)$this->mutator("Doberman"),
+                // ],
+                [
+                    'user_id' => 3,
+                    'dog_id' => $this->mutator("Doberman")['id'],
+                    'dog_litter_id' => 2,
+                    'post_title' => 'Doberman',
+                    'post_type_id' => 1,
+                    'post_description' => 'Vaccinated, Dewormed, and a champion.',
+                    'price' => 20000,
+                    'status' => 'Has Documents',
+                    'interests' => 45,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 4,
-                //'dog_id' => 3,
-                'dog_litter_id' => 3,
-                'post_title' => 'Chao Chao',
-                'post_type_id' => 1,
-                'post_description' => 'Vaccinated, Dewormed, and a teddy bear in the house. A chunky boy that likes to sleep.',
-                'price' => 60000,
-                'status' => 'Has Documents',
-                'interests' => 9,
-                'updated_at' => now(),
+                // [
+                //     ...(array)$this->mutator("Chao Chao"),
+                // ],
+                [
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Chao Chao")['id'],
+                    'dog_litter_id' => 3,
+                    'post_title' => 'Chao Chao',
+                    'post_type_id' => 1,
+                    'post_description' => 'Vaccinated, Dewormed, and a teddy bear in the house. A chunky boy that likes to sleep.',
+                    'price' => 60000,
+                    'status' => 'Has Documents',
+                    'interests' => 9,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 1,
-                //'dog_id' => 4,
-                'dog_litter_id' => 4,
-                'post_title' => 'Pure Choco Liver Shih Tzu Female',
-                'post_type_id' => 1,
-                'post_description' => 'Female 2 months
+                // [
+                //     ...(array)$this->mutator("Shih Tzu"),
+                // ],
+                [
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Shih Tzu")['id'],
+                    'dog_litter_id' => 4,
+                    'post_title' => 'Pure Choco Liver Shih Tzu Female',
+                    'post_type_id' => 1,
+                    'post_description' => 'Female 2 months
 
-                Choco Liver
+                    Choco Liver
 
-                Open for Viewing
+                    Open for Viewing
 
-                contact 09778098000',
-                'price' => 20000,
-                'status' => 'Has Documents',
-                'interests' => 9,
-                'updated_at' => now(),
+                    contact 09778098000',
+                    'price' => 20000,
+                    'status' => 'Has Documents',
+                    'interests' => 9,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 3,
-                //'dog_id' => 5,
-                'dog_litter_id' => 5,
-                'post_title' => 'Shiba Inu',
-                'post_type_id' => 1,
-                'post_description' => '
-                    3x Dewormed and 3x Vaccinated by Registered Veterinarian
-                    Diet: Pedigree Wet Food, BeefPro Puppy
-                    Vitamins: LC-VIT, Vet-C',
+                // [
+                //     ...(array)$this->mutator("Shiba Inu"),
+                // ],
+                [
+                    'user_id' => 3,
+                    'dog_id' => $this->mutator("Shiba Inu")['id'],
+                    'dog_litter_id' => 5,
+                    'post_title' => 'Shiba Inu',
+                    'post_type_id' => 1,
+                    'post_description' => '
+                        3x Dewormed and 3x Vaccinated by Registered Veterinarian
+                        Diet: Pedigree Wet Food, BeefPro Puppy
+                        Vitamins: LC-VIT, Vet-C',
 
-                'price' => 75000,
-                'status' => 'Has Documents',
-                'interests' => 19,
-                'updated_at' => now(),
+                    'price' => 75000,
+                    'status' => 'Has Documents',
+                    'interests' => 19,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 4,
-                //'dog_id' => 6,
-                'dog_litter_id' => 6,
-                'post_title' => 'English bulldog for sale',
-                'post_type_id' => 1,
-                'post_description' => 'English bulldog for sale
+                // [
+                //     ...(array)$this->mutator("Bulldog"),
+                // ],
+                [
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Bulldog")['id'],
+                    'dog_litter_id' => 6,
+                    'post_title' => 'English bulldog for sale',
+                    'post_type_id' => 1,
+                    'post_description' => 'English bulldog for sale
 
-                papers on process
+                    papers on process
 
-                3months old
+                    3months old
 
-                please do contact for more info.',
+                    please do contact for more info.',
 
-                'price' => 70000,
-                'status' => 'Has Documents',
-                'interests' => 9,
-                'updated_at' => now(),
+                    'price' => 70000,
+                    'status' => 'Has Documents',
+                    'interests' => 9,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 1,
-                //'dog_id' => 7,
-                'dog_litter_id' => 7,
-                'post_title' => 'BLUE Eyes Siberian Husky',
-                'post_type_id' => 1,
-                'post_description' => 'Pure Siberian Husky with PCCI papers
+                // [
+                //     ...(array)$this->mutator("Husky"),
+                // ],
+                [
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Husky")['id'],
+                    'dog_litter_id' => 7,
+                    'post_title' => 'BLUE Eyes Siberian Husky',
+                    'post_type_id' => 1,
+                    'post_description' => 'Pure Siberian Husky with PCCI papers
 
-                puppy share available
+                    puppy share available
 
-                price negotiable',
+                    price negotiable',
 
-                'price' => 15000,
-                'status' => 'Has Documents',
-                'interests' => 9,
-                'updated_at' => now(),
+                    'price' => 15000,
+                    'status' => 'Has Documents',
+                    'interests' => 9,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 3,
-                //'dog_id' => 8,
-                'dog_litter_id' => 8,
-                'post_title' => 'Cute English Bulldog For Sale',
-                'post_type_id' => 1,
-                'post_description' => 'Cute English Bulldog For Sale @ Philippines Only.
+                // [
+                //     ...(array)$this->mutator("Bulldog"),
+                // ],
+                [
+                    'user_id' => 3,
+                    'dog_id' => $this->mutator("Bulldog")['id'],
+                    'dog_litter_id' => 8,
+                    'post_title' => 'Cute English Bulldog For Sale',
+                    'post_type_id' => 1,
+                    'post_description' => 'Cute English Bulldog For Sale @ Philippines Only.
 
-                Black Seal Merle - Male
+                    Black Seal Merle - Male
 
-                100,000 or your best offer. ✌
+                    100,000 or your best offer. ✌
 
-                Visit our Fb Page @ King Ely
+                    Visit our Fb Page @ King Ely
 
-                Feel free to contact @ 09485001333
+                    Feel free to contact @ 09485001333
 
-                Location @ Tagaytay
+                    Location @ Tagaytay
 
-                Stay Safe.',
+                    Stay Safe.',
 
-                'price' => 100000,
-                'status' => 'Has Documents',
-                'interests' => 9,
-                'updated_at' => now(),
+                    'price' => 100000,
+                    'status' => 'Has Documents',
+                    'interests' => 9,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 4,
-                //'dog_id' => 9,
-                'dog_litter_id' => 9,
-                'post_title' => 'Ilonggo dog chow breed',
-                'post_type_id' => 1,
-                'post_description' => 'Chow puppy for sale',
+                // [
+                //     ...(array)$this->mutator("Chao Chao"),
+                // ],
+                [
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Chao Chao")['id'],
+                    'dog_litter_id' => 9,
+                    'post_title' => 'Ilonggo dog chow breed',
+                    'post_type_id' => 1,
+                    'post_description' => 'Chow puppy for sale',
 
-                'price' => 50000,
-                'status' => 'Has Documents',
-                'interests' => 9,
-                'updated_at' => now(),
+                    'price' => 50000,
+                    'status' => 'Has Documents',
+                    'interests' => 9,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 1,
-                //'dog_id' => 10,
-                'dog_litter_id' => 10,
-                'post_title' => 'Bull terrier',
-                'post_type_id' => 1,
-                'post_description' => 'perfect Bull terrier both white and black males and females need a cute home now',
-                'price' => 55000,
-                'status' => 'Has Documents',
-                'interests' => 30,
-                'updated_at' => now(),
+                // [
+                //     ...(array)$this->mutator("German Shepherd"),
+                // ],
+                [
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Terrier")['id'],
+                    'dog_litter_id' => 10,
+                    'post_title' => 'Bull terrier',
+                    'post_type_id' => 1,
+                    'post_description' => 'perfect Bull terrier both white and black males and females need a cute home now',
+                    'price' => 55000,
+                    'status' => 'Has Documents',
+                    'interests' => 30,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 3,
-                //'dog_id' => 11,
-                'dog_litter_id' => 1,
-                'post_title' => 'Quality German Shepherd Puppies For Sale',
-                'post_type_id' => 1,
-                'post_description' => 'Quality German Shepherd Puppies for Sale!
+                // [
+                //     ...(array)$this->mutator("German Shepherd"),
+                // ],
+                [
+                    'user_id' => 3,
+                    'dog_id' => $this->mutator("German Shepherd")['id'],
+                    'dog_litter_id' => 1,
+                    'post_title' => 'Quality German Shepherd Puppies For Sale',
+                    'post_type_id' => 1,
+                    'post_description' => 'Quality German Shepherd Puppies for Sale!
 
-                DOB: March 02, 2021
+                    DOB: March 02, 2021
 
-                2 Males & 4 Females
+                    2 Males & 4 Females
 
-                Quality German Shepherd Pure Breed Puppies For Sale!!!
+                    Quality German Shepherd Pure Breed Puppies For Sale!!!
 
-                Very playful, outgoing and well socialized around small children.  Remarkable temperament.
+                    Very playful, outgoing and well socialized around small children.  Remarkable temperament.
 
-                Vaccinated, dewormed and vet checked. With PCCI papers.
+                    Vaccinated, dewormed and vet checked. With PCCI papers.
 
-                If interested, contact: 09209119105 (Viber & WhatsApp)',
+                    If interested, contact: 09209119105 (Viber & WhatsApp)',
 
-                'price' => 30000,
-                'status' => 'Has Documents',
-                'interests' => 91,
-                'updated_at' => now(),
+                    'price' => 30000,
+                    'status' => 'Has Documents',
+                    'interests' => 91,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 4,
-                //'dog_id' => 12,
-                'dog_litter_id' => 2,
-                'post_title' => 'Pembroke Welsh Corgi',
-                'post_type_id' => 1,
-                'post_description' => 'Pembroke Welsh Corgi
-                    4 males
-                    Champ line (Ukraine)
-                    Complete vaccines/deworming
-                    PCCI pedigree papers on hand',
-                'price' => 70000,
-                'status' => 'Has Documents',
-                'interests' => 12,
-                'updated_at' => now(),
+                // [
+                //     ...(array)$this->mutator("Corgi"),
+                // ],
+                [
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Corgi")['id'],
+                    'dog_litter_id' => 2,
+                    'post_title' => 'Pembroke Welsh Corgi',
+                    'post_type_id' => 1,
+                    'post_description' => 'Pembroke Welsh Corgi
+                        4 males
+                        Champ line (Ukraine)
+                        Complete vaccines/deworming
+                        PCCI pedigree papers on hand',
+                    'price' => 70000,
+                    'status' => 'Has Documents',
+                    'interests' => 12,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 1,
-                //'dog_id' => 3,
-                'dog_litter_id' => 3,
-                'post_title' => 'Doberman Puppies',
-                'post_type_id' => 1,
-                'post_description' => 'VACCINATED
+                // [
+                //     ...(array)$this->mutator("Doberman"),
+                // ],
+                [
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Doberman")['id'],
+                    'dog_litter_id' => 3,
+                    'post_title' => 'Doberman Puppies',
+                    'post_type_id' => 1,
+                    'post_description' => 'VACCINATED
 
-                    PCCI
+                        PCCI
 
-                    DEWORMED
+                        DEWORMED
 
-                    TANZA CAVITE
+                        TANZA CAVITE
 
-                    DOB March 31, 2021',
+                        DOB March 31, 2021',
 
-                'price' => 15000,
-                'status' => 'Has Documents',
-                'interests' => 1,
-                'updated_at' => now(),
+                    'price' => 15000,
+                    'status' => 'Has Documents',
+                    'interests' => 1,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 3,
-                //'dog_id' => 14
-                'dog_litter_id' => 4,
-                'post_title' => 'America Bully',
-                'post_type_id' => 1,
-                'post_description' => 'Standard/Classic Tri-Color American Bully
+                // [
+                //     ...(array)$this->mutator("Bully"),
+                // ],
+                [
+                    'user_id' => 3,
+                    'dog_id' => $this->mutator("Bully")['id'],
+                    'dog_litter_id' => 4,
+                    'post_title' => 'American Bully',
+                    'post_type_id' => 1,
+                    'post_description' => 'Standard/Classic Tri-Color American Bully
 
-                    3 Female
-                    2 Male
+                        3 Female
+                        2 Male
 
-                    RKCP Champ "Rhino" x HappyBullyz Bailey
-                    ( FBI Chico Rhino x HappyBullyz MaddieRhino) (TNK Skye of HappyBullyz x HappyBullyz Bella)
+                        RKCP Champ "Rhino" x HappyBullyz Bailey
+                        ( FBI Chico Rhino x HappyBullyz MaddieRhino) (TNK Skye of HappyBullyz x HappyBullyz Bella)
 
-                    RARE COLOR
+                        RARE COLOR
 
-                    ☑ 2 Months
-                    ☑ 4x deworm
-                    ☑ 2x vaccine by licensed vet
-                    ☑ LT on process
-                    ☑ UKC aby
-                    ☑️ Mixed Raw Meat & Protein Fed
+                        ☑ 2 Months
+                        ☑ 4x deworm
+                        ☑ 2x vaccine by licensed vet
+                        ☑ LT on process
+                        ☑ UKC aby
+                        ☑️ Mixed Raw Meat & Protein Fed
 
-                    Open for viewing in Soldier Hills, Muntinlupa or we can bring the puppies to your home for sure buyers 🙂
-                    Can send more photos! Feel free to message for questions and queries.
+                        Open for viewing in Soldier Hills, Muntinlupa or we can bring the puppies to your home for sure buyers 🙂
+                        Can send more photos! Feel free to message for questions and queries.
 
-                    Thanks!',
+                        Thanks!',
 
-                'price' => 100000,
-                'status' => 'Has Documents',
-                'interests' => 76,
-                'updated_at' => now(),
+                    'price' => 100000,
+                    'status' => 'Has Documents',
+                    'interests' => 76,
+                    'updated_at' => now(),
+                ]
             ],
             [
-                'user_id' => 4,
-                //'dog_id' => 15,
-                'dog_litter_id' => 5,
-                'post_title' => 'white pekingese',
-                'post_type_id' => 1,
-                'post_description' => 'white male pekingese
+                // [
+                //     ...(array)$this->mutator("pekingese"),
+                // ],
+                [
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Pekingese")['id'],
+                    'dog_litter_id' => 5,
+                    'post_title' => 'white pekingese',
+                    'post_type_id' => 1,
+                    'post_description' => 'white male pekingese
 
-                2 months old
+                    2 months old
 
-                open for viewing
+                    open for viewing
 
-                09778098000
+                    09778098000
 
-                Keywords: white pekingese',
+                    Keywords: white pekingese',
 
-                'price' => 100000,
-                'status' => 'Has Documents',
-                'interests' => 8,
-                'updated_at' => now(),
+                    'price' => 100000,
+                    'status' => 'Has Documents',
+                    'interests' => 8,
+                    'updated_at' => now(),
+                ]
             ],
         ];
 
@@ -510,40 +590,49 @@ class PostSeeder extends Seeder
         $arr = [];
         $i = 0;
 
-        foreach ($data as $pData) {
-            foreach ($pData as $key => $value) {
-
-            }
-        }
 
         foreach ($data as $pData) {
-            $post = Post::create($pData);
-            //dog litter for now since it functions as dog_id (since we did not implement litter posts)
-            $dogId = Dog::find($pData['dog_litter_id'])->dog_detail_id;
-            $dogDetail = DogDetail::find($dogId);
 
-            switch ($i) {
-                case 0: $dogDetail->breed = 'Shih Tzu';
-                        $breed = 3;
-                        break;
-                case 1: $dogDetail->breed = 'Doberman';
-                        $breed = 7;
-                        break;
-                case 2: $dogDetail->breed = 'Chao chao';
-                        $breed = 8;
-                        break;
-            }
-            $newID = DB::table("posts")->orderBy("id", "desc")->first()->id;
-            $tag = Tag::findOrFail($breed);
-            $tag->tags()->attach($newID);
+            $post = Post::create($pData[0]);
+            $dogDetail = DogDetail::find($post->dog_id);
 
-            $dogDetail->save();
+            $tag = Tag::findOrFail($dogDetail->id);
+            $tag->tags()->attach($post->id);
+
             foreach ($images[$i] as $image) {
                 $image['post_id'] = $post->id;
                 DB::table('images')->insert($image);
             }
             $i++;
         }
+        // foreach ($data as $pData) {
+        //     $dogDetail = \App\Models\UserProfile::factory(1)->create()[0];
+        //     $post = Post::create($pData);
+        //     $dogId = Dog::find($pData['dog_litter_id'])->dog_detail_id;
+        //     $dogDetail = DogDetail::find($dogId);
+
+        //     switch ($i) {
+        //         case 0: $dogDetail->breed = 'Shih Tzu';
+        //                 $breed = 3;
+        //                 break;
+        //         case 1: $dogDetail->breed = 'Doberman';
+        //                 $breed = 7;
+        //                 break;
+        //         case 2: $dogDetail->breed = 'Chao chao';
+        //                 $breed = 8;
+        //                 break;
+        //     }
+        //     $newID = DB::table("posts")->orderBy("id", "desc")->first()->id;
+        //     $tag = Tag::findOrFail($breed);
+        //     $tag->tags()->attach($newID);
+
+        //     $dogDetail->save();
+        //     foreach ($images[$i] as $image) {
+        //         $image['post_id'] = $post->id;
+        //         DB::table('images')->insert($image);
+        //     }
+        //     $i++;
+        // }
 
     }
 }
