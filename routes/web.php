@@ -48,6 +48,7 @@ Route::get('/create', function() {
     return view('shop.create_post');
 });
 
+
 Route::get('/chat', function() {
     return view('shop.create_post');
 });
@@ -106,8 +107,11 @@ Route::get('PCCIregister', function () {
     return view('auth/PCCIregister');
 });
 
-Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
+Route::get('NonMember', function () {
+    return view('auth/NonMemberRegister');
+});
 
+Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');
 
 Auth::routes(['verify' => true]);
 
