@@ -42,7 +42,7 @@
 
             <div class="col-lg-4 col-md-6 footer-links">
               <h4>Our Social Networks</h4>
-              <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+              <p> Stay updated by following our various social media accounts. </p>
               <div class="social-links mt-3">
                 <a href="https://twitter.com/philcanineclub" target="_blank"  class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="https://www.facebook.com/Philippine.Canine.Club.Inc/" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -55,7 +55,7 @@
       </div>
       <div class="container-fluid py-3 footer-bottom">
         <div class="container copyright">
-          &copy; Copyright <strong><span>Doggo</span></strong>. All Rights Reserved
+          &copy; Copyright 2021 <strong><span>Doggo</span></strong>. All Rights Reserved
         </div>
       </div>
   </footer><!-- End Footer -->

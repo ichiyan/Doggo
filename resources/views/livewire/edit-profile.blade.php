@@ -13,7 +13,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-4">
                             <div class="profile-img">
-                                <img id="profile-pic"  src="{{ asset('images/default-user.png') }}" alt=""/>
+                                <img id="profile-pic"  src="{{ asset($user->profile_pic) }}" alt=""/>
                                 <div class="file btn btn-lg btn-primary">
                                     Change Photo
                                     <input wire:model="new_photo" type="file" id="new_photo" name="new_photo" placeholder="Images..." multiple accept="new_photo/*">
