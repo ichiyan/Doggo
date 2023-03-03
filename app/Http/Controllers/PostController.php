@@ -73,9 +73,13 @@ class PostController extends Controller
                     ->paginate(18); //INTERFERS WITH THE FILTER. POSTS ON THE 2ND PAGE DOESN'T GET FILTERED
 
         foreach ($posts as $post) {
-            $post->dog = $post->getDog();
+            // $post->dog = $post->getDog();
+            $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
+                ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+                ->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
+            $post->img = Image::where('post_id', $post->id)->pluck('image_location')[0];
             if(Auth::check()){
                 $post->bookmarked = DB::table('post_user_profile')->where('post_id', $post->id)->where('user_profile_id', Auth::id())->exists();
             }

@@ -254,7 +254,7 @@
                     </form>
                 </div>
                 <div class="col-4 text-left">
-                  
+
                     <div class="ui floating labeled icon dropdown button">
                         <i class="bx bx-sort sort-icon"></i>
                         <span class="text sort-text">Sort by</span>
@@ -288,7 +288,7 @@
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
                                 <div class="post-img">
-                                    <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                    <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                     <div class="options shop">
                                     @if (!Auth::check())
                                         <span data-toggle="modal" data-target="#bookmarkModal">
@@ -369,7 +369,7 @@
                           {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                               <div class="post">
                                   <div class="post-img">
-                                      <img src="{{ asset($post->getImage() ) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                      <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
                                       <div class="options shop">
                                       @if (!Auth::check())
                                           <a href="{{ route('bookmark_post',  $post->id) }}"><i class="icofont-heart heart"></i></a>

@@ -1363,7 +1363,7 @@ section {
     margin-bottom: 15px;
     font-size: 20px;
     color: #5a4977;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
 
   .shop-posts .post .post-info .breed {

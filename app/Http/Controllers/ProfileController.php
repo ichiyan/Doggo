@@ -67,7 +67,11 @@ class ProfileController extends Controller
         $count = Post::where('user_id', $user_id)->count();
 
         foreach ($posts as $post) {
-            $post->dog = $post->getDog();
+            // $post->dog = $post->getDog();
+            $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
+            ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+            ->first();
+            $post->img = Image::where('post_id', $post->id)->pluck('image_location')->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
             if(Auth::check()){
