@@ -27,6 +27,7 @@ class DogDetailFactory extends Factory
             'birthdate' => $this->faker->date(),
             'gender' => $this->faker->randomElement(['M', 'F']),
             'breed' => $this->faker->randomElement(['Shiba Inu', 'Chihuahua', 'Shih Tzu', 'German Shepherd', 'Bulldog', 'Terrier']),
+            'size' => $this->faker->randomElement(['Small (less than 10 kg)', 'Medium (11-26 kg)', 'Large (27-45 kg)', 'Extra Large (greater than 45 kg)']),
         ];
     }
 }

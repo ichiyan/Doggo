@@ -17,10 +17,11 @@ class PostSeeder extends Seeder
      * @return void
      */
 
-    public function mutator($breed) {
+    public function mutator($breed, $size) {
         $dog = Dog::factory(1)->create()[0];
         $dogDetail = DogDetail::find($dog->dog_detail_id);
         $dogDetail->breed = $breed;
+        $dogDetail->size = $size;
         $dogDetail->save();
         return $dog;
     }
@@ -31,9 +32,9 @@ class PostSeeder extends Seeder
             [
                 [
                     'user_id' => 1,
-                    'dog_id' => $this->mutator("Shih Tzu")['id'],
+                    'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)")['id'],
                     'dog_litter_id' => 1,
-                    'post_title' => 'Shih Tzu Puppy for Sale',
+                    'post_title' => 'Shih Tzu Puppy',
                     'post_type_id' => 1,
                     'post_description' => 'Completely dewormed and vaccinated',
                     'price' => 30000,
@@ -48,7 +49,7 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 3,
-                    'dog_id' => $this->mutator("Doberman")['id'],
+                    'dog_id' => $this->mutator("Doberman", "Large (27-45 kg)")['id'],
                     'dog_litter_id' => 2,
                     'post_title' => 'Doberman',
                     'post_type_id' => 1,
@@ -61,13 +62,13 @@ class PostSeeder extends Seeder
             ],
             [
                 // [
-                //     ...(array)$this->mutator("Chao Chao"),
+                //     ...(array)$this->mutator("Chow Chow"),
                 // ],
                 [
                     'user_id' => 4,
-                    'dog_id' => $this->mutator("Chao Chao")['id'],
+                    'dog_id' => $this->mutator("Chow Chow", "Large (27-45 kg)")['id'],
                     'dog_litter_id' => 3,
-                    'post_title' => 'Chao Chao',
+                    'post_title' => 'Chow Chow',
                     'post_type_id' => 1,
                     'post_description' => 'Vaccinated, Dewormed, and a teddy bear in the house. A chunky boy that likes to sleep.',
                     'price' => 60000,
@@ -82,7 +83,7 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 1,
-                    'dog_id' => $this->mutator("Shih Tzu")['id'],
+                    'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)")['id'],
                     'dog_litter_id' => 4,
                     'post_title' => 'Pure Choco Liver Shih Tzu Female',
                     'post_type_id' => 1,
@@ -105,7 +106,7 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 3,
-                    'dog_id' => $this->mutator("Shiba Inu")['id'],
+                    'dog_id' => $this->mutator("Shiba Inu", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 5,
                     'post_title' => 'Shiba Inu',
                     'post_type_id' => 1,
@@ -126,18 +127,11 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 4,
-                    'dog_id' => $this->mutator("Bulldog")['id'],
+                    'dog_id' => $this->mutator("Bulldog", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 6,
-                    'post_title' => 'English bulldog for sale',
+                    'post_title' => 'English bulldog',
                     'post_type_id' => 1,
-                    'post_description' => 'English bulldog for sale
-
-                    papers on process
-
-                    3months old
-
-                    please do contact for more info.',
-
+                    'post_description' => 'English bulldog for sale.',
                     'price' => 70000,
                     'status' => 'Has Documents',
                     'interests' => 9,
@@ -150,13 +144,13 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 1,
-                    'dog_id' => $this->mutator("Husky")['id'],
+                    'dog_id' => $this->mutator("Husky", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 7,
-                    'post_title' => 'BLUE Eyes Siberian Husky',
+                    'post_title' => 'Blue-eyed Siberian Husky',
                     'post_type_id' => 1,
-                    'post_description' => 'Pure Siberian Husky with PCCI papers
+                    'post_description' => 'Pure Siberian Husky;
 
-                    puppy share available
+                    puppy share available,
 
                     price negotiable',
 
@@ -172,23 +166,13 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 3,
-                    'dog_id' => $this->mutator("Bulldog")['id'],
+                    'dog_id' => $this->mutator("Bulldog", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 8,
-                    'post_title' => 'Cute English Bulldog For Sale',
+                    'post_title' => 'Cute English Bulldog',
                     'post_type_id' => 1,
-                    'post_description' => 'Cute English Bulldog For Sale @ Philippines Only.
-
-                    Black Seal Merle - Male
-
+                    'post_description' => 'Cute English Bulldog for sale @ Philippines only.
                     100,000 or your best offer. ✌
-
-                    Visit our Fb Page @ King Ely
-
-                    Feel free to contact @ 09485001333
-
-                    Location @ Tagaytay
-
-                    Stay Safe.',
+                    Visit our Fb Page @ King Ely',
 
                     'price' => 100000,
                     'status' => 'Has Documents',
@@ -198,11 +182,11 @@ class PostSeeder extends Seeder
             ],
             [
                 // [
-                //     ...(array)$this->mutator("Chao Chao"),
+                //     ...(array)$this->mutator("Chow Chow"),
                 // ],
                 [
                     'user_id' => 4,
-                    'dog_id' => $this->mutator("Chao Chao")['id'],
+                    'dog_id' => $this->mutator("Chow Chow", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 9,
                     'post_title' => 'Ilonggo dog chow breed',
                     'post_type_id' => 1,
@@ -220,7 +204,7 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 1,
-                    'dog_id' => $this->mutator("Terrier")['id'],
+                    'dog_id' => $this->mutator("Terrier", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 10,
                     'post_title' => 'Bull terrier',
                     'post_type_id' => 1,
@@ -237,23 +221,14 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 3,
-                    'dog_id' => $this->mutator("German Shepherd")['id'],
+                    'dog_id' => $this->mutator("German Shepherd", "Large (27-45 kg)")['id'],
                     'dog_litter_id' => 1,
-                    'post_title' => 'Quality German Shepherd Puppies For Sale',
+                    'post_title' => 'Quality German Shepherd Puppies',
                     'post_type_id' => 1,
                     'post_description' => 'Quality German Shepherd Puppies for Sale!
-
-                    DOB: March 02, 2021
-
-                    2 Males & 4 Females
-
-                    Quality German Shepherd Pure Breed Puppies For Sale!!!
-
                     Very playful, outgoing and well socialized around small children.  Remarkable temperament.
 
-                    Vaccinated, dewormed and vet checked. With PCCI papers.
-
-                    If interested, contact: 09209119105 (Viber & WhatsApp)',
+                    Vaccinated, dewormed and vet checked. With PCCI papers.',
 
                     'price' => 30000,
                     'status' => 'Has Documents',
@@ -267,15 +242,13 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 4,
-                    'dog_id' => $this->mutator("Corgi")['id'],
+                    'dog_id' => $this->mutator("Corgi", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 2,
                     'post_title' => 'Pembroke Welsh Corgi',
                     'post_type_id' => 1,
                     'post_description' => 'Pembroke Welsh Corgi
-                        4 males
                         Champ line (Ukraine)
-                        Complete vaccines/deworming
-                        PCCI pedigree papers on hand',
+                        Complete vaccines/deworming',
                     'price' => 70000,
                     'status' => 'Has Documents',
                     'interests' => 12,
@@ -288,19 +261,11 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 1,
-                    'dog_id' => $this->mutator("Doberman")['id'],
+                    'dog_id' => $this->mutator("Doberman", "Large (27-45 kg)")['id'],
                     'dog_litter_id' => 3,
                     'post_title' => 'Doberman Puppies',
                     'post_type_id' => 1,
-                    'post_description' => 'VACCINATED
-
-                        PCCI
-
-                        DEWORMED
-
-                        TANZA CAVITE
-
-                        DOB March 31, 2021',
+                    'post_description' => 'VACCINATED, DEWORMED.',
 
                     'price' => 15000,
                     'status' => 'Has Documents',
@@ -314,21 +279,15 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 3,
-                    'dog_id' => $this->mutator("Bully")['id'],
+                    'dog_id' => $this->mutator("Bully", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 4,
                     'post_title' => 'American Bully',
                     'post_type_id' => 1,
                     'post_description' => 'Standard/Classic Tri-Color American Bully
 
-                        3 Female
-                        2 Male
-
                         RKCP Champ "Rhino" x HappyBullyz Bailey
                         ( FBI Chico Rhino x HappyBullyz MaddieRhino) (TNK Skye of HappyBullyz x HappyBullyz Bella)
 
-                        RARE COLOR
-
-                        ☑ 2 Months
                         ☑ 4x deworm
                         ☑ 2x vaccine by licensed vet
                         ☑ LT on process
@@ -352,19 +311,11 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 4,
-                    'dog_id' => $this->mutator("Pekingese")['id'],
+                    'dog_id' => $this->mutator("Pekingese", "Small (less than 10 kg)")['id'],
                     'dog_litter_id' => 5,
                     'post_title' => 'white pekingese',
                     'post_type_id' => 1,
-                    'post_description' => 'white male pekingese
-
-                    2 months old
-
-                    open for viewing
-
-                    09778098000
-
-                    Keywords: white pekingese',
+                    'post_description' => 'white male pekingese',
 
                     'price' => 100000,
                     'status' => 'Has Documents',
@@ -596,7 +547,13 @@ class PostSeeder extends Seeder
             $post = Post::create($pData[0]);
             $dogDetail = DogDetail::find($post->dog_id);
 
-            $tag = Tag::findOrFail($dogDetail->id);
+            $tag = Tag::where('tag_name', $dogDetail->breed)->firstOrFail();
+            $tag->tags()->attach($post->id);
+
+            $tag = Tag::where('tag_name', $dogDetail->gender)->firstOrFail();
+            $tag->tags()->attach($post->id);
+
+            $tag = Tag::where('tag_name', $dogDetail->size)->firstOrFail();
             $tag->tags()->attach($post->id);
 
             foreach ($images[$i] as $image) {
@@ -618,7 +575,7 @@ class PostSeeder extends Seeder
         //         case 1: $dogDetail->breed = 'Doberman';
         //                 $breed = 7;
         //                 break;
-        //         case 2: $dogDetail->breed = 'Chao chao';
+        //         case 2: $dogDetail->breed = 'Chow Chow';
         //                 $breed = 8;
         //                 break;
         //     }

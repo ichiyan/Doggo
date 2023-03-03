@@ -16,12 +16,12 @@ class TagSeeder extends Seeder
     {
         // $array = ['cute', 'valiant', 'grumpy', 'chill', 'shy', 'enthusiastic', 'mischievous'];
         $array = [ 'Shiba Inu', 'Chihuahua', 'Shih Tzu', 'German Shepherd', 'Bulldog', 'Terrier',
-                    'Doberman', 'Chao chao',
+                    'Doberman', 'Chow Chow', 'Husky', 'Corgi', 'Bully', 'Pekingese',
                     'Calabarzon', 'West Visayas', 'Central Visayas', 'Soccskargen',
-                    'Male', 'Female', 'Small (0-25 lbs)', 'Medium (0-25 lbs)',
-                    'Large (61-100 lbs)', 'Extra Large (101 lbs or more)', ];
+                    'M', 'F', 'Small (less than 10 kg)', 'Medium (11-26 kg)',
+                    'Large (27-45 kg)', 'Extra Large (greater than 45 kg)', ];
         $categories = [ 'Breed', 'Breed', 'Breed', 'Breed', 'Breed', 'Breed',
-                    'Breed', 'Breed',
+                    'Breed', 'Breed', 'Breed', 'Breed', 'Breed', 'Breed',
                     'Location', 'Location', 'Location', 'Location',
                     'Gender', 'Gender', 'Size', 'Size', 'Size', 'Size', ];
 

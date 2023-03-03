@@ -20,6 +20,7 @@ class CreateDogDetails extends Migration
             $table->date('birthdate');
             $table->string('gender', 10);
             $table->string('breed', 100);
+            $table->string('size', 50);
             $table->timestamps();
         });
     }
