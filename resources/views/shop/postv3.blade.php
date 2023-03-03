@@ -72,7 +72,7 @@
                                 <li><strong>Breed</strong>: {{$dog->breed}}</li>
                                 <li><strong>Age</strong>: {{$dog->age}} Months</li>
                                 <li><strong>Gender</strong>: {{$dog->gender}}</li>
-                                {{--add size--}}
+                                <li><strong>Size</strong>: {{$dog->size}}</li>
                                 <li><strong>Description</strong>: {{ $post->post_description }}</li>
                             </ul>
                             <div class="d-flex justify-content-center">

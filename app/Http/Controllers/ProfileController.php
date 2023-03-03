@@ -95,7 +95,10 @@ class ProfileController extends Controller
         $count = Post::where('user_id', $user_id)->where('post_type_id', 1)->count();
 
         foreach ($posts as $post) {
-            $post->dog = $post->getDog();
+            // $post->dog = $post->getDog();
+            $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
+            ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+            ->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
@@ -116,7 +119,10 @@ class ProfileController extends Controller
         $count = Post::where('user_id', $user_id)->where('post_type_id', 2)->count();
 
         foreach ($posts as $post) {
-            $post->dog = $post->getDog();
+            // $post->dog = $post->getDog();
+            $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
+            ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+            ->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
@@ -137,7 +143,10 @@ class ProfileController extends Controller
         $count = Post::where('user_id', $user_id)->where('post_type_id', 3)->count();
 
         foreach ($posts as $post) {
-            $post->dog = $post->getDog();
+            // $post->dog = $post->getDog();
+            $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
+            ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+            ->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
@@ -166,7 +175,10 @@ class ProfileController extends Controller
                 ->count();
 
         foreach ($posts as $post) {
-            $post->dog = $post->getDog();
+            // $post->dog = $post->getDog();
+            $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
+            ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
+            ->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
             $post->post_type_id = $post->post_type_id;
