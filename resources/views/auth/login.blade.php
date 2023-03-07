@@ -61,7 +61,7 @@
                                         </a>
                                     @endif
 
-                                    <p class="login-card-footer-text">Don't have an account? <a href="{{ route('register') }}" class="text-reset">Sign Up Here</a></p>
+                                    <p class="login-card-footer-text">Don't have an account? <a href="{{ route('register') }}" class="text-reset sign-up-in-link">Sign Up Here</a></p>
                                 </div>
                             </form>
                         </div>

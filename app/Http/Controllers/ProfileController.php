@@ -179,6 +179,7 @@ class ProfileController extends Controller
             $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
             ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
             ->first();
+            $post->img = Image::where('post_id', $post->id)->pluck('image_location')->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
             $post->post_type_id = $post->post_type_id;

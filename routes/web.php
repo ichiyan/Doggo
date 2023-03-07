@@ -103,12 +103,12 @@ Route::get('modal', function () {
     return view('modal');
 });
 
-Route::get('PCCIregister', function () {
-    return view('auth/PCCIregister');
+Route::get('pcci-register', function () {
+    return view('auth/pcci-register');
 });
 
-Route::get('NonMemberRegister', function () {
-    return view('auth/NonMemberRegister');
+Route::get('non-member-register', function () {
+    return view('auth/non-member-register');
 });
 
 Route::get('/dog', [CreatePostController::class, 'validateDog'])->name('DRN');

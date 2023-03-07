@@ -362,17 +362,17 @@ class PostSeeder extends Seeder
                     ],
                     [
                         [
-                            'image_location' => 'chao-1.jpeg',
+                            'image_location' => 'chow-1.jpeg',
                             'description' => 'He likes snow',
                             'updated_at' => now(),
                         ],
                         [
-                            'image_location' => 'chao-2.jpeg',
+                            'image_location' => 'chow-2.jpeg',
                             'description' => 'Play time',
                             'updated_at' => now(),
                         ],
                         [
-                            'image_location' => 'chao-3.jpeg',
+                            'image_location' => 'chow-3.jpeg',
                             'description' => 'Time to find comfortable space.',
                             'updated_at' => now(),
                         ],

@@ -1093,6 +1093,7 @@ section {
 
 .container.login {
     width: 1200px !important;
+    top: 20px;
 }
 
 .login-card {
@@ -1189,6 +1190,11 @@ section {
     font-size: 14px;
     color: #919aa3;
 }
+
+.sign-up-in-link{
+    color: #007bff !important;
+}
+
 
 /*--------------------------------------------------------------
 # Shop

@@ -20,14 +20,14 @@
                         <div class="card-body">
                              <p class="login-card-description">Register a new account</p>
                                 <div class="form-group ">
-                                    <a href="/PCCIregister" name="PCCI" id="register" class="btn btn-block login-btn mb-4">
+                                    <a href="/pcci-register" name="PCCI" id="register" class="btn btn-block login-btn mb-4">
                                         Register as PCCI member
                                     </a>
-                                    <a href="/NonMemberRegister"name="Nonmember" id="Nonmember" class="btn btn-block login-btn mb-4">
+                                    <a href="/non-member-register"name="Nonmember" id="Nonmember" class="btn btn-block login-btn mb-4">
                                         Register as non-member
                                     </a>
                                 </div>
-                                <p class="login-card-footer-text">Already have an account? <a href="{{ route('login') }}" class="text-reset">Login Here</a></p>
+                                <p class="login-card-footer-text">Already have an account? <a href="{{ route('login') }}" class="text-reset sign-up-in-link">Login Here</a></p>
                         </div>
                     </div>
                 </div>

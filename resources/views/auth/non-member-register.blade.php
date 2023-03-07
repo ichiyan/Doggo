@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                             <p class="login-card-description">Register PCCI account</p>
+                             <p class="login-card-description">Register Non-member account</p>
                             <form action="{{ route ('register') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
@@ -30,9 +30,15 @@
                                         </span>
                                     @enderror
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="PCCI Member ID" class="sr-only">PCCI Member ID</label>
-                                    <input id="PCCI Member ID" type="text" class="form-control " name="memberID" required autofocus placeholder="Member ID">
+                                    <label for="Fname" class="sr-only">First Name</label>
+                                    <input id="Fname" type="text" class="form-control " name="fname" required autofocus placeholder="First Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Lname" class="sr-only">Last Name</label>
+                                    <input id="Lname" type="text" class="form-control " name="lname" required autofocus placeholder="Last Name">
                                 </div>
                                 <div class="form-group mb-4">
                                         <label for="password" class="sr-only">Password</label>
@@ -51,14 +57,13 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                            </div>
-
+                                </div>
                                 <div class="form-group ">
-                                    <<a href="/verify-email" name="register" id="register" class="btn btn-block login-btn mb-4">
+                                    <a href="/verify-email" name="register" id="register" class="btn btn-block login-btn mb-4">
                                         {{ __('Register') }}
                                     </a>
                                 </div>
-                                <p class="login-card-footer-text">Already have an account? <a href="{{ route('login') }}" class="text-reset">Login Here</a></p>
+                                <p class="login-card-footer-text">Already have an account? <a href="{{ route('login') }}" class="text-reset sign-up-in-link">Login Here</a></p>
                             </form>
                         </div>
                     </div>
