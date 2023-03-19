@@ -44,9 +44,7 @@ class PostSeeder extends Seeder
                 ],
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Doberman"),
-                // ],
+
                 [
                     'user_id' => 2,
                     'dog_id' => $this->mutator("Doberman", "Large (27-45 kg)")['id'],
@@ -61,9 +59,7 @@ class PostSeeder extends Seeder
                 ]
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Chow Chow"),
-                // ],
+
                 [
                     'user_id' => 2,
                     'dog_id' => $this->mutator("Chow Chow", "Large (27-45 kg)")['id'],
@@ -78,9 +74,7 @@ class PostSeeder extends Seeder
                 ]
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Shih Tzu"),
-                // ],
+
                 [
                     'user_id' => 2,
                     'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)")['id'],
@@ -101,9 +95,7 @@ class PostSeeder extends Seeder
                 ]
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Shiba Inu"),
-                // ],
+
                 [
                     'user_id' => 4,
                     'dog_id' => $this->mutator("Shiba Inu", "Medium (11-26 kg)")['id'],
@@ -122,9 +114,7 @@ class PostSeeder extends Seeder
                 ]
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Bulldog"),
-                // ],
+
                 [
                     'user_id' => 2,
                     'dog_id' => $this->mutator("Bulldog", "Medium (11-26 kg)")['id'],
@@ -139,9 +129,7 @@ class PostSeeder extends Seeder
                 ]
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Husky"),
-                // ],
+
                 [
                     'user_id' => 4,
                     'dog_id' => $this->mutator("Husky", "Medium (11-26 kg)")['id'],
@@ -162,53 +150,15 @@ class PostSeeder extends Seeder
             ],
             [
                 // [
-                //     ...(array)$this->mutator("Bulldog"),
-                // ],
-                [
-                    'user_id' => 1,
-                    'dog_id' => $this->mutator("Bulldog", "Medium (11-26 kg)")['id'],
-                    'dog_litter_id' => 8,
-                    'post_title' => 'Cute English Bulldog',
-                    'post_type_id' => 1,
-                    'post_description' => 'Cute English Bulldog for sale @ Philippines only.
-                    100,000 or your best offer. ✌
-                    Visit our Fb Page @ King Ely',
-
-                    'price' => 100000,
-                    'status' => 'Has Documents',
-                    'interests' => 9,
-                    'updated_at' => now(),
-                ]
-            ],
-            [
-                // [
-                //     ...(array)$this->mutator("Chow Chow"),
-                // ],
-                [
-                    'user_id' => 1,
-                    'dog_id' => $this->mutator("Chow Chow", "Medium (11-26 kg)")['id'],
-                    'dog_litter_id' => 9,
-                    'post_title' => 'Ilonggo dog chow breed',
-                    'post_type_id' => 1,
-                    'post_description' => 'Chow puppy for sale',
-
-                    'price' => 50000,
-                    'status' => 'Has Documents',
-                    'interests' => 9,
-                    'updated_at' => now(),
-                ]
-            ],
-            [
-                // [
                 //     ...(array)$this->mutator("German Shepherd"),
                 // ],
                 [
                     'user_id' => 1,
                     'dog_id' => $this->mutator("Terrier", "Medium (11-26 kg)")['id'],
                     'dog_litter_id' => 10,
-                    'post_title' => 'Bull terrier',
+                    'post_title' => 'Terrier',
                     'post_type_id' => 1,
-                    'post_description' => 'perfect Bull terrier both white and black males and females need a cute home now',
+                    'post_description' => 'West Highland White Terrier. 3x Dewormed and 3x Vaccinated by registered Veterinarian',
                     'price' => 55000,
                     'status' => 'Has Documents',
                     'interests' => 30,
@@ -237,9 +187,7 @@ class PostSeeder extends Seeder
                 ]
             ],
             [
-                // [
-                //     ...(array)$this->mutator("Corgi"),
-                // ],
+
                 [
                     'user_id' => 3,
                     'dog_id' => $this->mutator("Corgi", "Medium (11-26 kg)")['id'],
@@ -252,74 +200,6 @@ class PostSeeder extends Seeder
                     'price' => 70000,
                     'status' => 'Has Documents',
                     'interests' => 12,
-                    'updated_at' => now(),
-                ]
-            ],
-            [
-                // [
-                //     ...(array)$this->mutator("Doberman"),
-                // ],
-                [
-                    'user_id' => 1,
-                    'dog_id' => $this->mutator("Doberman", "Large (27-45 kg)")['id'],
-                    'dog_litter_id' => 3,
-                    'post_title' => 'Doberman Puppies',
-                    'post_type_id' => 1,
-                    'post_description' => 'VACCINATED, DEWORMED.',
-
-                    'price' => 15000,
-                    'status' => 'Has Documents',
-                    'interests' => 1,
-                    'updated_at' => now(),
-                ]
-            ],
-            [
-                // [
-                //     ...(array)$this->mutator("Bully"),
-                // ],
-                [
-                    'user_id' => 3,
-                    'dog_id' => $this->mutator("Bully", "Medium (11-26 kg)")['id'],
-                    'dog_litter_id' => 4,
-                    'post_title' => 'American Bully',
-                    'post_type_id' => 1,
-                    'post_description' => 'Standard/Classic Tri-Color American Bully
-
-                        RKCP Champ "Rhino" x HappyBullyz Bailey
-                        ( FBI Chico Rhino x HappyBullyz MaddieRhino) (TNK Skye of HappyBullyz x HappyBullyz Bella)
-
-                        ☑ 4x deworm
-                        ☑ 2x vaccine by licensed vet
-                        ☑ LT on process
-                        ☑ UKC aby
-                        ☑️ Mixed Raw Meat & Protein Fed
-
-                        Open for viewing in Soldier Hills, Muntinlupa or we can bring the puppies to your home for sure buyers 🙂
-                        Can send more photos! Feel free to message for questions and queries.
-
-                        Thanks!',
-
-                    'price' => 100000,
-                    'status' => 'Has Documents',
-                    'interests' => 76,
-                    'updated_at' => now(),
-                ]
-            ],
-            [
-                // [
-                //     ...(array)$this->mutator("pekingese"),
-                // ],
-                [
-                    'user_id' => 1,
-                    'dog_id' => $this->mutator("Pekingese", "Small (less than 10 kg)")['id'],
-                    'dog_litter_id' => 5,
-                    'post_title' => 'white pekingese',
-                    'post_type_id' => 1,
-                    'post_description' => 'white male pekingese',
-
-                    'price' => 100000,
-                    'status' => 'Has Documents',
-                    'interests' => 8,
                     'updated_at' => now(),
                 ]
             ],
@@ -379,19 +259,19 @@ class PostSeeder extends Seeder
                     ],
                     [//4th post
                         [
-                            'image_location' => 'choco-1.jpeg',
+                            'image_location' => 'choco-shih-tzu-1.jpg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
                         [
-                            'image_location' => 'choco-2.jpeg',
+                            'image_location' => 'choco-shih-tzu-2.jpg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
                     ],
                     [//5th post
                         [
-                            'image_location' => 'Inu-1.jpeg',
+                            'image_location' => 'black-shiba-inu-1.jpg',
                             'description' => '',
                             'updated_at' => now(),
                         ],
@@ -430,36 +310,41 @@ class PostSeeder extends Seeder
                             'updated_at' => now(),
                         ],
                     ],
-                    [//8th post
-                        [
-                            'image_location' => 'bulldog2-1.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'bulldog2-2.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'bulldog2-3.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                    ],
-                    [//9th post
-                        [
-                            'image_location' => 'chow-1.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'chow-2.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                    ],
+                    // [//8th post
+                    //     [
+                    //         'image_location' => 'bulldog2-1.jpeg',
+                    //         'description' => '',
+                    //         'updated_at' => now(),
+                    //     ],
+                    //     [
+                    //         'image_location' => 'bulldog2-2.jpeg',
+                    //         'description' => '',
+                    //         'updated_at' => now(),
+                    //     ],
+                    //     [
+                    //         'image_location' => 'bulldog2-3.jpeg',
+                    //         'description' => '',
+                    //         'updated_at' => now(),
+                    //     ],
+                    // ],
+                    // [//9th post
+                    //     [
+                    //         'image_location' => 'chow-1.jpeg',
+                    //         'description' => '',
+                    //         'updated_at' => now(),
+                    //     ],
+                    //     [
+                    //         'image_location' => 'chow-2.jpeg',
+                    //         'description' => '',
+                    //         'updated_at' => now(),
+                    //     ],
+                    // ],
                     [//10th post
+                        [
+                            'image_location' => 'terrier-1.jpeg',
+                            'description' => '',
+                            'updated_at' => now(),
+                        ],
                         [
                             'image_location' => 'terrier-1.jpeg',
                             'description' => '',
@@ -500,42 +385,7 @@ class PostSeeder extends Seeder
                             'updated_at' => now(),
                         ],
                     ],
-                    [//13th post
-                        [
-                            'image_location' => 'dob-1.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'dob-2.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'dob-3.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                    ],
-                    [//14th post
-                        [
-                            'image_location' => 'bully-1.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                    ],
-                    [//15th post
-                        [
-                            'image_location' => 'pekingese-1.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                        [
-                            'image_location' => 'pekingese-2.jpeg',
-                            'description' => '',
-                            'updated_at' => now(),
-                        ],
-                    ],
+
                 ];
 
         $arr = [];

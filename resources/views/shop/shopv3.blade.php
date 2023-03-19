@@ -287,8 +287,8 @@
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                         {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                             <div class="post">
-                                <div class="post-img">
-                                    <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                <div class="post-img" style="background-image: url({{ asset('storage/posts/'.$post->img) }})">
+                                    {{-- <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;"> --}}
                                     <div class="options shop">
                                     @if (!Auth::check())
                                         <span data-toggle="modal" data-target="#bookmarkModal">
@@ -368,8 +368,8 @@
                       <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                           {{-- <a href="{{ route('shop.show',  $post->id) }}"> --}}
                               <div class="post">
-                                  <div class="post-img">
-                                      <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;">
+                                  <div class="post-img" style="background-image: url({{ asset('storage/posts/'.$post->img) }})">
+                                      {{-- <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt="" style="min-height: 240px; min-width: 300px; max-height: 375px;"> --}}
                                       <div class="options shop">
                                       @if (!Auth::check())
                                           <a href="{{ route('bookmark_post',  $post->id) }}"><i class="icofont-heart heart"></i></a>
