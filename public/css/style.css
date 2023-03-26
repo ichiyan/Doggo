@@ -1327,6 +1327,7 @@ section {
 
   .shop-posts .post .options .heart:hover {
     color: rgb(252, 173, 167);
+    cursor: pointer;
   }
 
   .shop-posts .post .options .bookmarked:hover{
