@@ -12,7 +12,8 @@
         <li class="dropdown">
             <a href="#">
                 <span class="nav-link">{{ Auth::user()->profiles->name }}</span>
-                <img class="img-profile rounded-circle" src="{{asset('images/profile-user.svg')}}">
+                {{-- <img class="img-profile rounded-circle" src="{{asset('images/profile-user.svg')}}"> --}}
+                <img class="img-profile rounded-circle" src="{{ url(Auth::user()->profiles->profile_pic) }}">
             </a>
             <ul>
                 @if ( Auth::user()->profiles->is_admin || Auth::user()->profiles->pcci_member_id != null )

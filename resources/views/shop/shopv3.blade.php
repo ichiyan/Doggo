@@ -305,7 +305,9 @@
                                     </div>
                                 </div>
                                 <div class="post-info">
-                                    <h4>{{ $post->post_title }}<span class="price">&#8369  {{ number_format($post->price, 2, '.', ',') }}</span></h4>
+                                    {{-- <h4>{{ $post->post_title }}<span class="price">&#8369  {{ number_format($post->price, 2, '.', ',') }}</span></h4> --}}
+                                    <h4>{{ $post->post_title }}</h4>
+                                    <h4><span class="price">&#8369  {{ number_format($post->price, 2, '.', ',') }}</span></h4>
                                     <span class="breed">
                                         {{ $post->dog->breed }} | {{ $post->dog->age }} |
                                     </span>
@@ -380,7 +382,9 @@
                                       </div>
                                   </div>
                                   <div class="post-info">
-                                      <h4>{{ $post->post_title }}<span class="price">&#8369  {{ number_format($post->price, 2, '.', ',') }}</span></h4>
+                                      {{-- <h4>{{ $post->post_title }}<span class="price">&#8369  {{ number_format($post->price, 2, '.', ',') }}</span></h4> --}}
+                                      <h4>{{ $post->post_title }}</h4>
+                                      <h4><span class="price">&#8369  {{ number_format($post->price, 2, '.', ',') }}</span></h4>
                                       <span class="breed">
                                           {{ $post->dog->breed }} | {{ $post->dog->age }} |
                                       </span>

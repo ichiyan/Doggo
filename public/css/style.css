@@ -1391,7 +1391,7 @@ section {
 
   .shop-posts .post .post-info .price {
     /* display: block; */
-    float: right;
+    /* float: right; */
     font-size: 20px;
     font-weight: 900;
     color: #7861ad;
