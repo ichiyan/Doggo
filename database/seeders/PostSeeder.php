@@ -17,8 +17,9 @@ class PostSeeder extends Seeder
      * @return void
      */
 
-    public function mutator($breed, $size) {
+    public function mutator($breed, $size, $dog_owner_id) {
         $dog = Dog::factory(1)->create()[0];
+        $dog->dog_owner_id = $dog_owner_id;
         $dogDetail = DogDetail::find($dog->dog_detail_id);
         $dogDetail->breed = $breed;
         $dogDetail->size = $size;
@@ -33,7 +34,7 @@ class PostSeeder extends Seeder
 
                 [
                     'user_id' => 4,
-                    'dog_id' => $this->mutator("Husky", "Medium (11-26 kg)")['id'],
+                    'dog_id' => $this->mutator("Husky", "Medium (11-26 kg)", 4)['id'],
                     'dog_litter_id' => 1,
                     'post_title' => 'Blue-eyed Siberian Husky',
                     'post_type_id' => 1,
@@ -55,7 +56,7 @@ class PostSeeder extends Seeder
                 // ],
                 [
                     'user_id' => 1,
-                    'dog_id' => $this->mutator("Terrier", "Medium (11-26 kg)")['id'],
+                    'dog_id' => $this->mutator("Terrier", "Medium (11-26 kg)", 1)['id'],
                     'dog_litter_id' => 2,
                     'post_title' => 'Terrier',
                     'post_type_id' => 1,
@@ -71,8 +72,8 @@ class PostSeeder extends Seeder
                 //     ...(array)$this->mutator("German Shepherd"),
                 // ],
                 [
-                    'user_id' => 2,
-                    'dog_id' => $this->mutator("German Shepherd", "Large (27-45 kg)")['id'],
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("German Shepherd", "Large (27-45 kg)", 1)['id'],
                     'dog_litter_id' => 3,
                     'post_title' => 'Quality German Shepherd Puppies',
                     'post_type_id' => 1,
@@ -91,7 +92,7 @@ class PostSeeder extends Seeder
 
                 [
                     'user_id' => 3,
-                    'dog_id' => $this->mutator("Corgi", "Medium (11-26 kg)")['id'],
+                    'dog_id' => $this->mutator("Corgi", "Medium (11-26 kg)", 3)['id'],
                     'dog_litter_id' => 4,
                     'post_title' => 'Pembroke Welsh Corgi',
                     'post_type_id' => 1,
@@ -107,8 +108,8 @@ class PostSeeder extends Seeder
             [
 
                 [
-                    'user_id' => 2,
-                    'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)")['id'],
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)", 4)['id'],
                     'dog_litter_id' => 5,
                     'post_title' => 'Pure Choco Liver Shih Tzu Female',
                     'post_type_id' => 1,
@@ -128,8 +129,8 @@ class PostSeeder extends Seeder
             [
 
                 [
-                    'user_id' => 4,
-                    'dog_id' => $this->mutator("Shiba Inu", "Medium (11-26 kg)")['id'],
+                    'user_id' => 3,
+                    'dog_id' => $this->mutator("Shiba Inu", "Medium (11-26 kg)", 3)['id'],
                     'dog_litter_id' => 6,
                     'post_title' => 'Shiba Inu',
                     'post_type_id' => 1,
@@ -147,8 +148,8 @@ class PostSeeder extends Seeder
             [
 
                 [
-                    'user_id' => 2,
-                    'dog_id' => $this->mutator("Bulldog", "Medium (11-26 kg)")['id'],
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Bulldog", "Medium (11-26 kg)", 1)['id'],
                     'dog_litter_id' => 7,
                     'post_title' => 'English bulldog',
                     'post_type_id' => 1,
@@ -161,8 +162,8 @@ class PostSeeder extends Seeder
             ],
             [
                 [
-                    'user_id' => 2,
-                    'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)")['id'],
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Shih Tzu", "Small (less than 10 kg)", 4)['id'],
                     'dog_litter_id' => 8,
                     'post_title' => 'Shih Tzu Puppy',
                     'post_type_id' => 1,
@@ -176,8 +177,8 @@ class PostSeeder extends Seeder
             [
 
                 [
-                    'user_id' => 2,
-                    'dog_id' => $this->mutator("Doberman", "Large (27-45 kg)")['id'],
+                    'user_id' => 1,
+                    'dog_id' => $this->mutator("Doberman", "Large (27-45 kg)", 1)['id'],
                     'dog_litter_id' => 9,
                     'post_title' => 'Doberman',
                     'post_type_id' => 1,
@@ -191,8 +192,8 @@ class PostSeeder extends Seeder
             [
 
                 [
-                    'user_id' => 2,
-                    'dog_id' => $this->mutator("Chow Chow", "Large (27-45 kg)")['id'],
+                    'user_id' => 4,
+                    'dog_id' => $this->mutator("Chow Chow", "Large (27-45 kg)", 4)['id'],
                     'dog_litter_id' => 10,
                     'post_title' => 'Chow Chow',
                     'post_type_id' => 1,
@@ -230,7 +231,7 @@ class PostSeeder extends Seeder
                             'updated_at' => now(),
                         ],
                         [
-                            'image_location' => 'terrier-1.jpeg',
+                            'image_location' => 'terrier-2.jpeg',
                             'description' => '',
                             'updated_at' => now(),
                         ],

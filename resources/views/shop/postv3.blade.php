@@ -44,7 +44,7 @@
                                     <h3>Post Details</h3>
                                 </div>
                                 <div class="group post-utilities col-1 post-details-dropdown">
-                                    <i class="fas fa-ellipsis-v" class="dropdown-toggle" style="font-size: 14px; color: gray;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                    <i class="fas fa-ellipsis-v" class="dropdown-toggle" style="font-size: 14px; color: gray; cursor: pointer;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <button class="dropdown-item" type="button" data-toggle="modal" data-target="#reportModal">Report</button>
                                         {{-- print == new tab and information(tbd) be shown --}}

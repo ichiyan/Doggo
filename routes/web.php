@@ -83,6 +83,7 @@ Route::get('user/{user_id}/profile/edit', [ProfileController::class, 'editProfil
 Route::get('user/{user_id}/profile/{post_id}/delete', [ProfileController::class, 'destroyPost'])->name('profile_delete');
 // Route::delete('user/{user_id}/profile/{post_id}/delete', [ProfileController::class, 'destroyPost'])->name('profile_delete');
 Route::get('user/{user_id}/profile/{post_id}/edit', [ProfileController::class, 'showRehome'])->name('profile_edit');
+Route::get('user/{user_id}/profile/unbookmark/{post_id}', [ProfileController::class, 'unbookmark'])->name('unbookmark_post');
 
 Route::resource('shop', PostController::class);
 Route::resource('rehome', RehomeController::class);

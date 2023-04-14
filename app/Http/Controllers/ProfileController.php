@@ -99,6 +99,7 @@ class ProfileController extends Controller
             $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
             ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
             ->first();
+            $post->img = Image::where('post_id', $post->id)->pluck('image_location')->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
@@ -123,6 +124,7 @@ class ProfileController extends Controller
             $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
             ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
             ->first();
+            $post->img = Image::where('post_id', $post->id)->pluck('image_location')->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
@@ -147,6 +149,7 @@ class ProfileController extends Controller
             $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
             ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
             ->first();
+            $post->img = Image::where('post_id', $post->id)->pluck('image_location')->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
         }
@@ -179,10 +182,13 @@ class ProfileController extends Controller
             $post->dog = Dog::where('dog_litter_id', $post->dog_litter_id)
             ->join('dog_details', 'dog_details.id', '=', 'dogs.dog_detail_id')
             ->first();
-            $post->img = Image::where('post_id', $post->id)->pluck('image_location')->first();
+            $post->img = Image::where('post_id', $post->post_id)->pluck('image_location')->first();
             $post->dog->fullName = $post->dog->first_name . ' ' . $post->dog->kennel_name;
             $post->dog->age = $this->getMonths($post->dog->birthdate);
             $post->post_type_id = $post->post_type_id;
+            if(Auth::check()){
+                $post->bookmarked = DB::table('post_user_profile')->where('post_id', $post->post_id)->where('user_profile_id', Auth::id())->exists();
+            }
         }
 
         return view('profile', compact('user', 'posts', 'filter', 'count') );
@@ -252,6 +258,24 @@ class ProfileController extends Controller
     }
 
 
+    public function unbookmark(Request $request) {
+
+        if(Auth::check()){
+            $id = $request->get('post_id');
+            $bookmark = Post::findOrFail($id);
+            if( DB::table('post_user_profile')->where('post_id', $id)->where('user_profile_id', Auth::id())->exists() ){
+                DB::table('post_user_profile')->where('post_id', $id)->where('user_profile_id', Auth::id())->delete();
+            }else{
+                $bookmark->bookmarked()->attach(Auth::id());
+            }
+            return redirect()->back();
+        }else{
+            // session()->flash('bookmark_fail', 'You must be logged in to bookmark posts.');
+            return back()->with('bookmark_fail', 'You must be logged in to bookmark and unbookmark posts.');
+        }
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -282,4 +306,6 @@ class ProfileController extends Controller
         $result = $date->diffInMonths($currentDate);
         return $result;
     }
+
+
 }

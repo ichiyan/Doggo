@@ -102,32 +102,24 @@
                     <p style="padding: 0 0 0 15px; margin: 0; font-weight: 600">{{$filter}} ({{$count}} @if ($count == 1) post @else posts @endif)</p>
                     @foreach ($posts as $post)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                            <div class="post">
+                            <div class="post" id="post-{{$post->post_id}}">
                                 <div class="post-img" style="background-image: url({{ asset('storage/posts/'.$post->img) }})">
                                     {{-- <img src="{{ asset('storage/posts/'.$post->img) }}" class="img-fluid" alt=""  style="min-height: 240px; min-width: 300px; max-height: 375px;"> --}}
                                     <div class="options profile">
-                                        @if (!Auth::check())
-                                            <span data-toggle="modal" data-target="#bookmarkModal">
-                                                <a class="unbookmarked" data-toggle="tooltip" data-placement="right" title="bookmark post"><i class="icofont-heart heart"></i></a>
-                                            </span>
-                                        @elseif (Auth::check() && Auth::user()->id != $user->user_id)
-                                            @if ( $post->bookmarked)
-                                                <a class="bookmarked" id="bookmarked-post-{{$post->id}}" onclick="bookmark(event, {{$post->id}})" data-toggle="tooltip" data-placement="right" title="unbookmark post"><i class="icofont-heart heart"></i></a>
-                                            @else
-                                                <a class="unbookmarked" id="unbookmarked-post-{{$post->id}}" onclick="bookmark(event, {{$post->id}})" data-toggle="tooltip" data-placement="right" title="bookmark post"><i class="icofont-heart heart"></i></a>
-                                            @endif
-                                        @endif
-                                        {{-- @if ( !Auth::check() || Auth::user()->id != $user->user_id )
-                                            <a class="" href=""><i class="icofont-heart heart"></i></a>
-                                        @endif --}}
+                                        @if ($filter != "Bookmarked")
                                             <a  class="unbookmarked"  href="{{ route('shop.show',  $post->id) }}" data-toggle="tooltip" data-placement="right" title="more info"><i class="icofont-info  more-info"></i></a>
-                                        @if ( Auth::check() && Auth::user()->id == $user->user_id )
-                                            {{-- <a href="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}"><i class="icofont-ui-delete delete"></i></a> --}}
-                                            <span data-toggle="modal" data-target="#deletePostModal{{$post->id}}">
-                                                <a  class="unbookmarked" data-toggle="tooltip" data-placement="right" title="delete post"><i class="icofont-ui-delete delete"></i></a>
-                                            </span>
-                                            <a  class="unbookmarked" href="{{ route('shop.edit',  $post->id) }}" data-toggle="tooltip" data-placement="right" title="edit post"><i class="icofont-edit edit"></i></a>
+                                            @if ( Auth::check() && Auth::user()->id == $user->user_id )
+                                                {{-- <a href="{{ route('profile_delete', ['user_id' => Auth::id(), 'post_id' => $post->id]) }}"><i class="icofont-ui-delete delete"></i></a> --}}
+                                                <span data-toggle="modal" data-target="#deletePostModal{{$post->id}}">
+                                                    <a  class="unbookmarked" data-toggle="tooltip" data-placement="right" title="delete post"><i class="icofont-ui-delete delete"></i></a>
+                                                </span>
+                                                <a  class="unbookmarked" href="{{ route('shop.edit',  $post->id) }}" data-toggle="tooltip" data-placement="right" title="edit post"><i class="icofont-edit edit"></i></a>
+                                            @endif
+                                        @else
+                                            <a class="bookmarked" id="bookmarked-post-{{$post->post_id}}" onclick="bookmark(event, {{$post->post_id}}, {{$user->user_id }})" data-toggle="tooltip" data-placement="right" title="unbookmark post"><i class="icofont-heart heart"></i></a>
+                                            <a  class="unbookmarked"  href="{{ route('shop.show',  $post->post_id) }}" data-toggle="tooltip" data-placement="right" title="more info"><i class="icofont-info  more-info"></i></a>
                                         @endif
+
                                     </div>
                                 </div>
                                 <div class="post-info">
@@ -168,11 +160,11 @@
                         </div>
                         @php
                         echo '<script>
-                                function bookmark(e, $post_id){
+                                function bookmark(e, $post_id, $user_id){
                                     e.preventDefault();
                                     $.ajax({
                                         type: "get",
-                                        url: "shop/{post_id}/bookmark",
+                                        url: "unbookmark/{post_id}",
                                         data: {"post_id": $post_id},
 
                                         success: function(response){
@@ -187,10 +179,13 @@
 
 
                                     var bookmarked = document.getElementById("bookmarked-post-"+$post_id);
+                                    var post = document.getElementById("post-"+$post_id)
                                     if (bookmarked){
                                         if(bookmarked.classList.contains("bookmarked")){
                                             bookmarked.classList.remove("bookmarked");
                                             bookmarked.classList.add("unbookmarked");
+                                            // better to add animation when removing and to adjust other posts afterwards
+                                            // post.remove();
                                         }else{
                                             bookmarked.classList.remove("unbookmarked");
                                             bookmarked.classList.add("bookmarked");
@@ -207,6 +202,8 @@
                                             unbookmarked.classList.add("unbookmarked");
                                         }
                                     }
+
+
                                 }
                                 </script>';
                     @endphp

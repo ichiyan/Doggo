@@ -295,10 +295,10 @@ class PostController extends Controller
             }else{
                 $bookmark->bookmarked()->attach(Auth::id());
             }
-            return back();
+            // return back();
         }else{
             // session()->flash('bookmark_fail', 'You must be logged in to bookmark posts.');
-            return back()->with('bookmark_fail', 'You must be logged in to bookmark and unbookmark posts.');
+            // return back()->with('bookmark_fail', 'You must be logged in to bookmark and unbookmark posts.');
         }
     }
 

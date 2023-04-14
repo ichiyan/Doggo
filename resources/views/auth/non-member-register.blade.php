@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                             <p class="login-card-description">Register Non-member account</p>
+                             <p class="login-card-description">Register non-member account</p>
                             <form action="{{ route ('register') }}" method="POST">
                                 @csrf
                                 <div class="form-group">

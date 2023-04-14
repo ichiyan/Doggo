@@ -79,7 +79,7 @@
 
                                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                                     <div  id="pic{{$image->id}}" style="display: block">
-                                        <img src="{{ asset($image->image_location) }}" class="img-thumbnail" style="">
+                                        <img src="{{ asset('storage/posts/'.$image->image_location) }}" class="img-thumbnail" style="">
                                         <a  class="remove-image" data-toggle="modal" data-target="#deleteImage{{$image->id}}Modal" style="display: inline;">&#215;</a>
                                         {{-- <a class="remove-image" style="display: inline;" onclick="document.getElementById('pic{{$image->id}}').style.display = 'none'; {{ array_push($dbphotos, $image->id) }}">&#215;</a> --}}
                                     </div>
