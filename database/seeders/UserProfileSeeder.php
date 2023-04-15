@@ -21,21 +21,21 @@ class UserProfileSeeder extends Seeder
         $user1 = User::create(
             [
             'email' => "regular@gmail.com",
-            'password' => bcrypt('User123')
+            'password' => bcrypt('regularp@ssw0rd')
             ])->id;
 
 
         $user2 = User::create(
             [
             'email' => "pcci@gmail.com",
-            'password' => bcrypt('User123')
+            'password' => bcrypt('pccip@ssw0rd')
             ])->id;
 
 
         $user3 = User::create(
             [
             'email' => "admin@gmail.com",
-            'password' => bcrypt('User123')
+            'password' => bcrypt('adminp@ssw0rd')
             ])->id;
 
         $userProfiles = \App\Models\UserProfile::factory(3)->create();

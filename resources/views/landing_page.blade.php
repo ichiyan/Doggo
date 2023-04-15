@@ -12,8 +12,8 @@
                     <h1 class="text-uppercase mb-0">Doggo</h1>
                     <h2 class="font-weight-light text-uppercase mb-0">Committed to ethical dog breeding</h2>
                     <div class="my-5">
-                        <h3 class="h4 font-weight-bold text-uppercase text-black-50">100% Guaranteed</h3>
-                        <p class="lead pr-lg-5">A platform for ethical dog breeding.</p>
+                        <h3 class="h4 font-weight-bold text-uppercase text-black-50">Shop responsibly with us</h3>
+                        <p class="lead pr-lg-5">We provide an online trading and services platform for ethical dog breeders.</p>
                     </div>
                     <a href="#about" class="hero-btn scrollto"><i class="icofont-paw"></i>Learn More</a>
                 </div>
